@@ -1,0 +1,255 @@
+// Scss Document;
+
+/* 스크롤바 설정*/
+// .conWrap::-webkit-scrollbar {
+//   width: 5px;
+// }
+// /* 스크롤바 막대 설정*/
+// .conWrap::-webkit-scrollbar-thumb {
+//   background-color: #dadada;
+//   background-clip: padding-box;
+//   /* 스크롤바 둥글게 설정    */
+//   border-radius: 10px;
+// }
+// /* 스크롤바 뒷 배경 설정*/
+// .conWrap::-webkit-scrollbar-track {
+//   background-color: #ececec;
+// }
+
+/*** add class ***/
+/* align */
+.align-left {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+.align-center {
+  text-align: center !important;
+  justify-content: center !important;
+}
+.align-right {
+  text-align: right !important;
+  justify-content: flex-end !important;
+}
+.valign-top {
+  align-items: flex-start !important;
+}
+.valign-middle {
+  align-items: center !important;
+}
+.valign-bottom {
+  align-items: flex-end !important;
+}
+.conArea {
+  width: 100%;
+  display: inline-grid;
+  min-height: calc(100vh - 457px);
+}
+.smodWrap {
+  width: 100%;
+  height: 100%;
+  color: #3e3e52;
+
+  // min-width: 1024px;
+  .fixArea {
+    width: 100%;
+    background-color: white;
+    // position: fixed;
+    // top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+    .top-area {
+      width: 100%;
+      // padding: 10px;
+      max-width: 1280px;
+      .menu {
+        display: none;
+      }
+      .logo-left {
+        display: inline-flex;
+        align-items: center;
+        width: 22%;
+        position: relative;
+        top: 1px;
+        span {
+          font-size: 20px;
+          color: #111111;
+        }
+        .pc-logo {
+          display: block;
+        }
+        .mo-logo {
+          display: none;
+        }
+      }
+    }
+    .smodGnb {
+      width: 60%;
+      .spanWarp {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+
+        span {
+          max-width: 140px;
+          display: inline-block;
+          padding: 20px 0px 0px 0px;
+          font-size: 18px; // vw 계산 1280 / 100= 값, 18px / 값 = vw
+          font-weight: 300;
+          width: calc(100% / 6);
+          text-align: center;
+
+          &.active {
+            font-weight: bold;
+            border-bottom: 2px solid #0099ff;
+          }
+        }
+        span:hover {
+          cursor: pointer;
+          color: #0099ff;
+          border-bottom: 2px solid #0099ff;
+        }
+      }
+    }
+  }
+  .conWrap {
+    position: relative;
+    // background-color: #252b35;
+  }
+}
+
+.sidebar,
+.sidebar-backdrop {
+  display: none;
+
+  &.show {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .smodWrap {
+    .fixArea {
+      .top-area {
+        justify-content: space-between;
+        .logo-left {
+          height: 55px;
+          .pc-logo {
+            display: none;
+          }
+          .mo-logo {
+            display: block;
+            margin-right: 5px;
+          }
+        }
+        .ico-menu-wrap {
+          width: 15%;
+          display: flex;
+          align-items: center;
+          .ico-menu {
+            display: flex;
+            width: 24px;
+            height: 24px;
+            -webkit-mask: url("/icons/menu.svg") no-repeat 50% 50%;
+            mask: url("/icons/menu.svg") no-repeat 50% 50%;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            background-color: black;
+            margin-left: 16px;
+          }
+        }
+
+        .logo-left {
+        }
+      }
+      .smodGnb {
+        display: none;
+      }
+    }
+  }
+
+  .sidebar {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 240px;
+    max-width: 100%;
+    height: 100%;
+    z-index: 210;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity));
+
+    transition: linear 0.3s;
+
+    &.show {
+      left: 0;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px;
+      .ico-close {
+        width: 24px;
+        height: 24px;
+        -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+        mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        background-color: black;
+      }
+    }
+
+    .nav-wrapper {
+      padding-left: 20px;
+      padding-top: 20px;
+      .nav {
+        .nav-item {
+          padding: 10px;
+          .nav-link {
+            padding: 0;
+            font-size: 16px;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-align: left;
+            color: #111;
+            &.active {
+              font-weight: bold;
+            }
+          }
+          .nav-link:hover {
+            cursor: pointer;
+            color: #0099ff;
+          }
+        }
+      }
+    }
+  }
+  .sidebar-backdrop {
+    display: block !important;
+    z-index: 200;
+    --bs-backdrop-bg: #000;
+    --bs-backdrop-opacity: 0.5;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bs-backdrop-bg);
+
+    &.show {
+      left: 0;
+      opacity: 0.8;
+    }
+  }
+}

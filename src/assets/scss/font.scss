@@ -1,0 +1,48 @@
+// Scss Document;
+// @import url(/node_modules/material-design-icons/iconfont/material-icons.css);
+@font-face {
+  font-family: "Noto Sans KR";
+  //font-family: 'NotoKrR' ;
+  font-style: normal;
+  font-weight: 300;
+  src: local("Noto Sans regular"), local("notokr-regular"), url("../fonts/notokr-regular.eot");
+  src: url("../fonts/notokr-regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/notokr-regular.woff2") format("woff2"),
+    url("../fonts/notokr-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  //font-family: 'NotoKrM';
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans medium"), local("notokr-medium"), url("../fonts/notokr-medium.eot");
+  src: url("../fonts/notokr-medium.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/notokr-medium.woff2") format("woff2"),
+    url("../fonts/notokr-medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  //font-family: 'NotoKrB';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans bold"), local("notokr-bold"), url("../fonts/notokr-bold.eot");
+  src: url("../fonts/notokr-bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/notokr-bold.woff2") format("woff2"),
+    url("../fonts/notokr-bold.woff") format("woff");
+}
+
+// @font-face {
+//   font-family: "Material Icons";
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+//   src:
+//     local("Material Icons"),
+//     local("MaterialIcons-Regular"),
+//     url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2)
+//       format("woff2"),
+//     url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff)
+//       format("woff"),
+//     url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf)
+//       format("truetype");
+// }

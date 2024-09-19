@@ -1,0 +1,623 @@
+$text-color: #fff;
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin button-base {
+  cursor: pointer;
+  height: 35px;
+  color: $text-color;
+  border: 1px solid #888;
+  background-color: #36373d;
+}
+.hero-list-wrap {
+  padding-top: 20px;
+}
+
+.hero-list {
+  color: #fff;
+  .hero-filter-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .filter-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex: 1;
+      .filter {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        width: 100%;
+        background-color: #36373d;
+        border-radius: 5px;
+        .filter-button {
+          @include flex-center;
+          @include button-base;
+          flex: 1;
+          padding: 8px 0;
+
+          &.selected {
+            background-color: #399eee;
+          }
+
+          &:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+          }
+
+          &:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+          .star {
+            @include flex-center;
+            margin-right: 6px;
+            background-repeat: no-repeat;
+            position: relative;
+            top: -2px;
+          }
+        }
+        .search-input {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border: 1px solid #ccc;
+          font-size: 14px;
+          height: 35px;
+          width: 100%;
+          padding: 0 10px;
+        }
+        .search-button {
+          @include flex-center;
+          padding: 8px 10px;
+          border: 1px solid #ccc;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          background-color: #ff6b6b;
+          color: #fff;
+          cursor: pointer;
+          height: 35px;
+        }
+        .icon {
+          width: 23px;
+          height: 23px;
+          display: inline-block;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+    .reset-button {
+      @include flex-center;
+      @include button-base;
+      gap: 5px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      width: 100%;
+
+      &:hover {
+        background-color: lighten(#36373d, 10%);
+      }
+    }
+  }
+  .hero-grid {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    place-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .pick-box-wrap {
+      display: inline-block;
+      width: 100%;
+      position: relative;
+      //   max-width: 25;
+      &::after {
+        content: "";
+        display: block;
+        margin-top: 31.03%;
+      }
+      .pick-box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: url(/images/pick_slot.png);
+        background-size: cover;
+        .icon {
+          margin-right: 4px;
+        }
+
+        .profile-img {
+          position: absolute;
+          right: 3.7%;
+          bottom: 12%;
+          height: 77%;
+          width: auto; // 너비를 자동으로 조정
+          object-fit: cover;
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+        }
+        .pick-box-content-1 {
+          position: absolute;
+          height: 24%;
+          left: 13%;
+          top: 17%;
+          .job-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 5px;
+          }
+          sapn {
+            font-size: 14px;
+          }
+        }
+        .pick-box-content-2 {
+          position: absolute;
+          left: 10%;
+          bottom: 21%;
+          height: 1.4em;
+          .type-icon {
+            width: 25px;
+            height: 25px;
+          }
+          .zodic-icon {
+            width: 21px;
+            height: 21px;
+          }
+          .star-icon {
+            width: 18px;
+            height: 18px;
+          }
+        }
+        span {
+          vertical-align: middle;
+          font-size: 16px;
+          font-weight: 200;
+          color: #fff;
+        }
+      }
+      .pick-box:hover {
+        background: url(/images/pick_slot_hover.png);
+        background-size: cover;
+      }
+    }
+  }
+  .camping-content-wrap {
+    flex: 1 1 0%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    .hero-icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      .hero-icon-wrap {
+        padding: 0.7em 0.9em;
+        display: inline-block;
+        vertical-align: top;
+        transform-origin: center;
+
+        .hero-icon {
+          position: relative;
+          text-align: start;
+          z-index: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          span {
+            font-size: 13px;
+            margin-top: 5px;
+            font-weight: 200;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 80px;
+          }
+          .profile-img {
+            position: relative;
+            z-index: 1;
+            width: 75px;
+            height: 75px;
+          }
+          .profile-outline {
+            position: absolute;
+            top: -0.15em;
+            left: -0.15em;
+            z-index: 2;
+            width: 83px;
+            height: 83px;
+          }
+          .icon-wrap {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: -2px;
+            left: -8px;
+            width: 90px;
+            z-index: 3;
+            .icon {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .option-wrap {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 51px;
+            left: -7px;
+            width: 100px;
+            z-index: 3;
+            .ico-lock {
+              width: 24px;
+              height: 24px;
+              background: url("/icons/lock_icon.png") no-repeat center center;
+              background-size: contain;
+              cursor: pointer;
+              display: inline-block; // 또는 block
+            }
+            .ico-hero-delete {
+              width: 24px;
+              height: 24px;
+              -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+              mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+              -webkit-mask-size: cover;
+              mask-size: cover;
+              cursor: pointer;
+              background-color: #fff;
+              &:hover {
+                background-color: #ff6b6b;
+              }
+            }
+          }
+        }
+      }
+      .hero-icon-wrap:hover {
+        position: relative;
+        cursor: pointer;
+        transform: scale(1.15); /* 요소를 1.1배로 키움 */
+      }
+    }
+    .camping-result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      text-align: left;
+      background-color: transparent !important;
+      color: #fff;
+
+      .team {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .index-cell {
+        width: 100%;
+      }
+      th {
+        font-size: 18px;
+      }
+      td {
+        font-size: 16px;
+        padding: 15px 10px;
+        .ico-camp-save {
+          cursor: pointer;
+          display: flex;
+          background-color: #fff;
+          width: 30px;
+          height: 30px;
+          -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+          mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+          -webkit-mask-size: cover;
+
+          mask-size: cover;
+        }
+        .ico-trash {
+          cursor: pointer;
+          display: flex;
+          background-color: #fff;
+          width: 25px;
+          height: 25px;
+          -webkit-mask: url("/icons/trash-icon.svg") no-repeat 50% 50%;
+          mask: url("/icons/trash-icon.svg") no-repeat 50% 50%;
+          -webkit-mask-size: cover;
+
+          mask-size: cover;
+        }
+      }
+
+      thead {
+        tr {
+          // background-color: #36373d;
+          color: #fff;
+          text-align: center;
+        }
+      }
+
+      tbody {
+        tr {
+          &:nth-of-type(even) {
+            background-color: rgba(
+              128,
+              128,
+              128,
+              0.2
+            ); // 짝수 번째 행에 회색 반투명 색 적용
+          }
+        }
+      }
+      .hero-icon {
+        position: relative;
+        text-align: start;
+        z-index: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span {
+          font-size: 13px;
+          margin-top: 5px;
+          font-weight: 200;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 80px;
+        }
+        .profile-img {
+          position: relative;
+          z-index: 1;
+          width: 50px;
+          height: 50px;
+        }
+        .profile-outline {
+          position: absolute;
+          top: -0.15em;
+          left: 10px;
+          z-index: 2;
+          width: 55px;
+          height: 55px;
+        }
+        .icon-wrap {
+          display: flex;
+          justify-content: space-between;
+          position: absolute;
+          top: -4px;
+          left: 4px;
+          width: 65px;
+          z-index: 3;
+          .icon {
+            width: 22px;
+            height: 22px;
+          }
+        }
+      }
+    }
+    .load-more-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .load-more-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #36373d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 150px;
+    }
+
+    .load-more-button:hover {
+      background-color: #399eee;
+    }
+  }
+}
+
+.camping-tab-wrap {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px 20px 10px;
+  .camping-tab-wrap-item {
+    position: relative;
+    background-color: #36373d;
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    @include flex-center;
+    cursor: pointer;
+    &.active {
+      background-color: #399eee;
+    }
+    &:not(.active):hover {
+      background-color: lighten(#36373d, 10%);
+    }
+    .bookmark-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  i {
+    &.color-gray {
+      background-color: #fff;
+    }
+
+    &.ico {
+      display: flex;
+      width: 70px;
+      height: 70px;
+
+      &.ico-add_hero {
+        -webkit-mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-edit_hero {
+        -webkit-mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp {
+        -webkit-mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp-save {
+        -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+
+        mask-size: cover;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  // xl 브레이크포인트
+  .custom-xl-20 {
+    width: 20% !important;
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-list-wrap {
+    .hero-list {
+      .hero-filter-wrap {
+        .filter-row {
+          flex-direction: column;
+          .filter {
+            .filter-button {
+              height: 30px;
+            }
+            .search-input {
+              height: 30px;
+            }
+            .search-button {
+              height: 30px;
+            }
+          }
+        }
+        .reset-button {
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+      .hero-grid {
+        .pick-box-wrap {
+          .pick-box-content-1 {
+            top: 16%;
+            .job-icon {
+              width: 20px;
+              height: 20px;
+            }
+            .pick-box-name {
+              font-size: 12px;
+            }
+          }
+          .pick-box-content-2 {
+            bottom: 18.5%;
+            .type-icon {
+              width: 22px;
+              height: 22px;
+            }
+            .zodic-icon {
+              width: 19px;
+              height: 19px;
+            }
+            .zodic-icon {
+              width: 19px;
+              height: 19px;
+            }
+            .star-icon {
+              width: 15px;
+              height: 15px;
+            }
+          }
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .camping-tab-wrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #36373d;
+    padding: 10px 0;
+    z-index: 5;
+
+    .camping-tab-wrap-item {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      @include flex-center;
+      cursor: pointer;
+      &.active {
+        background-color: #399eee;
+      }
+      &:not(.active):hover {
+        background-color: lighten(#36373d, 10%);
+      }
+    }
+    i {
+      &.color-gray {
+        background-color: #fff;
+      }
+      &.ico {
+        display: flex;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .results-container {
+    position: relative;
+    bottom: 20px;
+    margin-bottom: 70px;
+    .camping-result-table {
+      font-size: 14px !important; // 폰트 크기 줄이기
+
+      .index-cell {
+        width: 50px !important;
+      }
+
+      th,
+      td {
+        padding: 8px 5px; // 패딩 줄이기
+      }
+    }
+    .load-more-container {
+      text-align: center;
+      margin-bottom: 20px !important;
+    }
+  }
+}

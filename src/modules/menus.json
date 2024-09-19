@@ -1,0 +1,33 @@
+[
+  {
+    "id": "home",
+    "title": "홈",
+    "to": "/",
+    "sidebar": true
+  },
+  {
+    "id": "hero",
+    "title": "영웅",
+    "to": "/hero",
+    "sidebar": true
+  },
+  {
+    "id": "arti",
+    "title": "아티팩트",
+    "to": "#",
+    "sidebar": true
+  },
+
+  {
+    "id": "camp",
+    "title": "미궁시뮬레이터",
+    "to": "/camping",
+    "sidebar": true
+  },
+  {
+    "id": "tearMaker",
+    "title": "티어메이커",
+    "to": "#",
+    "sidebar": true
+  }
+]
