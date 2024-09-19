@@ -105,6 +105,8 @@ export default function HeroFilter(props: IHeroFilterProps) {
     setFilterStatus: React.Dispatch<React.SetStateAction<filterStatus[]>>,
     value: string,
   ) => {
+    console.log("filterStatus", filterStatus);
+    console.log("value", value);
     const isAllFilter = value === "All";
     const updatedStatus = filterStatus.map((filter) => {
       if (isAllFilter) {
@@ -117,6 +119,8 @@ export default function HeroFilter(props: IHeroFilterProps) {
         return filter;
       }
     });
+    console.log("updatedStatus", updatedStatus);
+
     const anyFilterSelected = updatedStatus.some(
       (filter) => filter.isSelect && filter.value !== "All",
     );
@@ -183,7 +187,7 @@ export default function HeroFilter(props: IHeroFilterProps) {
               key={option.value}
               className={`filter-button ${option.isSelect ? "selected" : ""}`}
               onClick={() =>
-                handleFilterClick(filter2Status, setFilter2Status, "filter2")
+                handleFilterClick(filter2Status, setFilter2Status, option.value)
               }
             >
               {option.value === "All" ? (
@@ -218,7 +222,7 @@ export default function HeroFilter(props: IHeroFilterProps) {
               key={option.value}
               className={`filter-button ${option.isSelect ? "selected" : ""}`}
               onClick={() =>
-                handleFilterClick(filter3Status, setFilter3Status, "filter3")
+                handleFilterClick(filter3Status, setFilter3Status, option.value)
               }
             >
               {option.value === "All" ? (
@@ -241,7 +245,7 @@ export default function HeroFilter(props: IHeroFilterProps) {
               key={option.value}
               className={`filter-button ${option.isSelect ? "selected" : ""}`}
               onClick={() =>
-                handleFilterClick(filter4Status, setFilter4Status, "filter4")
+                handleFilterClick(filter4Status, setFilter4Status, option.value)
               }
             >
               {option.value === "All" ? (
