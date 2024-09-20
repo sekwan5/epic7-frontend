@@ -50,6 +50,8 @@ export class AbstractApi {
   ): InternalAxiosRequestConfig => {
     const { method } = config;
 
+    config.headers["X-API-Key"] = import.meta.env.VITE_API_KEY;
+
     if (method === "get") {
       config.params = {
         ...config.params,
