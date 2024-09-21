@@ -61,6 +61,18 @@ interface IHero {
     efr: number;
   };
 }
+// export interface CampingResult {
+//     id: string;
+//     personalities: string[];
+//     topics_en: string[];
+//     topics_kr: string[];
+//     common_skills: any[];
+//     buff_skills: any[];
+//     debuff_skills: any[];
+//     buffs: any[];
+//     debuffs: any[];
+//     common: any[];
+//   }
 
 // 전체 영웅 데이터의 타입 정의
 interface HeroData {

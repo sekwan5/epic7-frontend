@@ -1,5 +1,5 @@
+import { type CampingResult } from "@/modules/api";
 import CampingResultRow from "./CampingResultRow";
-import type { CampingResult } from "@/modules/api/hero";
 
 export interface ICampingResultRow {
   data: CampingResult[];

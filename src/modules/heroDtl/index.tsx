@@ -27,7 +27,7 @@ export default function HeroDtlWrap(props: {
           />
           <div className="tab-content">
             {activeTab1 === "BUILDS" && <BuildsContent builds={builds} />}
-            {activeTab1 === "RTA" && <RTAContent data={data} />}
+            {activeTab1 === "RTA" && <RTAContent />}
           </div>
         </div>
       </div>

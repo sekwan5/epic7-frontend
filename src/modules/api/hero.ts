@@ -1,6 +1,7 @@
 import { AxiosInstance } from "axios";
 import { IndexSignatureType } from "../types";
 import { ApiBase } from "./base";
+import { IHero } from "../data/getHeroData";
 export interface IHeroBuild {
   hero_id: string;
   artifactCode: string;
@@ -17,6 +18,19 @@ export interface IHeroBuild {
   gs: number;
   hp: number;
   createDate: Date;
+}
+export interface CampingResult {
+  team: IHero[];
+  bestChatOption1: ChatOption;
+  bestChatOption2: ChatOption;
+  score: number;
+  id?: string;
+}
+interface ChatOption {
+  option_en: string;
+  option_kr: string;
+  hero: IHero;
+  score: number;
 }
 
 export class ApiHero extends ApiBase<IndexSignatureType> {

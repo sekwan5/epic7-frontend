@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CampingResult, IHero } from "@/modules/api/hero";
+import { CampingResult } from "@/modules/api/hero";
+import { IHero } from "@/modules/data/getHeroData";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface campState {
@@ -41,7 +42,7 @@ export const campReducer = createSlice({
     },
     lockCampingHeroList: (state, action: PayloadAction<IHero>) => {
       if (state.campingHeroList) {
-        state.campingHeroList = state.campingHeroList.map((hero) =>
+        state.campingHeroList = state.campingHeroList.map((hero: IHero) =>
           hero.id === action.payload.id
             ? { ...hero, isLock: !action.payload.isLock }
             : hero,
@@ -63,7 +64,7 @@ export const campReducer = createSlice({
     delCampingBookMarkList: (state, action: PayloadAction<CampingResult>) => {
       if (state.campBookMarkList) {
         state.campBookMarkList = state.campBookMarkList.filter(
-          (item) => item.id !== action.payload.id,
+          (item: CampingResult) => item.id !== action.payload.id,
         );
       }
     },

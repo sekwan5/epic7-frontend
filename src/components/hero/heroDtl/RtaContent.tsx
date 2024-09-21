@@ -1,6 +1,4 @@
-import { IHero } from "@/modules/data/getHeroData";
-
-export default function RTAContent({ data }: { data: IHero }) {
+export default function RTAContent() {
   return (
     <div className="rta-content">
       <h3>RTA 정보</h3>
