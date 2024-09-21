@@ -107,8 +107,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
     );
 
     const totalBuilds = filteredBuilds.length;
-
-    return Object.entries(usage)
+    const result = Object.entries(usage)
       .map(([code, count]) => ({
         code,
         count,
@@ -116,6 +115,8 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
       }))
       .sort((a, b) => b.count - a.count)
       .slice(0, 4);
+    console.log("result", result);
+    return result;
   }, [filteredBuilds]);
 
   const handleSetSelection = (key: string) => {

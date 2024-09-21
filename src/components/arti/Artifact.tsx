@@ -108,6 +108,13 @@ export default function Artifact({ data }: { data: any }) {
           />
         ))}
       </div>
+      {artiData?.status === "new" || artiData?.status === "update" ? (
+        <img
+          className="status-icon"
+          src={`images/${artiData?.status}.png`}
+          alt="hero"
+        />
+      ) : null}
     </div>
   );
 }

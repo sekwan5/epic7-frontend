@@ -1,0 +1,97 @@
+import HeroDtlTab from "@/components/hero/heroDtl/HeroDtlTab";
+import CoImage from "@/components/common/CoImages";
+import { getHeroStats, IHero } from "../data/getHeroData";
+import PickBox from "@/components/hero/PickBox";
+import { getArtifactByStats } from "../data/getArtiData";
+import Artifact from "@/components/arti/Artifact";
+
+export default function HomeContent() {
+  const heroList = getHeroStats();
+  const artiList = getArtifactByStats();
+
+  return (
+    <>
+      <div className="container home">
+        <div className="update-info">
+          <HeroDtlTab tabs={["UPDATE"]} activeTab={"UPDATE"} />
+          <div className="update-content">
+            <div className="update-hero">
+              <div className="hero-grid">
+                {heroList.map((item: IHero) => {
+                  return (
+                    <div className="col-6 col-md-6 col-xl-4 ">
+                      <div className="pick-box-wrap">
+                        <PickBox data={item} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="update-arti">
+              <div className="arti-wrap d-flex justify-content-center">
+                {artiList.map((item) => (
+                  <div
+                    className="col-6 d-flex justify-content-center"
+                    style={{ marginBottom: "20px" }}
+                    key={item.identifier}
+                  >
+                    <Artifact data={{ code: item.identifier }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="notice-wrap">
+          <HeroDtlTab tabs={["NOTICE"]} activeTab={"NOTICE"} />
+          <div className="notice d-flex justify-content-center align-items-center ">
+            <div>
+              <p>Discord 서버가 개설되었습니다. </p>
+              <p>
+                버그또는 오타제보, 새로은 기능이나 기존 기능에 대한 개선사항을
+                요청해주세요.
+              </p>
+            </div>
+            <a
+              href="https://discord.gg/CNZE82hpF8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="discord-link"
+            >
+              <div className="discord-btn">
+                <CoImage src="/images/discord.svg" alt="discord" />
+              </div>
+            </a>
+          </div>
+          <h2 className="text-center mt-5">업데이트 노트</h2>
+          <p>2024.09.22 </p>
+          <p>홈 {`>`} 신규, 업데이트 영웅, 아티팩트가 추가되었습니다.</p>
+          <p>영웅상세 {`>`} 실시간 아레나 통계가 추가되었습니다.</p>
+          <p>52,185건의 실시간 아레나 데이터가 추가되었습니다.</p>
+          <p className="border-bottom pb-2">
+            영웅상세 {`>`} RTA {`>`} 영웅의 픽률, 승률, 프리밴률, 장비세트,
+            아티팩트 채용률을 확인하실 수 있습니다.
+          </p>
+          <p>2024.09.21 </p>
+          <p>영웅상세 {`>`} 영융 빌드가 추가되었습니다.</p>
+          <p>668,795건의 영융 빌드 데이터가 추가되었습니다.</p>
+
+          <p className="border-bottom pb-2">
+            영웅상세 {`>`} BUILDS {`>`} 장비세트를 선택하면 세트에 맞는
+            스탯,아티팩트 채용률을 확인하실 수 있습니다.
+          </p>
+
+          <p className="border-bottom pb-2">
+            2024.09.19 / 미궁 시뮬레이터 기능이 추가되었습니다.
+          </p>
+          <p className="border-bottom pb-2">
+            2024.09.17 / 영웅 목록 페이지가 추가되었습니다.
+          </p>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+    </>
+  );
+}

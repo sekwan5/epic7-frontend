@@ -101,46 +101,6 @@
 }
 .hero-dtl {
   .hero-dtl-content {
-    .tab-container {
-      display: inline-block; // 내용물 크기만큼만 차지하도록 변경
-      background-color: #1e2124;
-      border-radius: 8px 8px 0 0; // 상단 모서리만 둥글게
-      overflow: hidden;
-
-      .tabs {
-        display: flex;
-
-        .tab {
-          padding: 10px 20px;
-          background-color: transparent;
-          border: none;
-          color: #8a8f98;
-          cursor: pointer;
-          transition:
-            background-color 0.3s,
-            color 0.3s;
-          font-size: 16px;
-          font-weight: 500;
-
-          &:first-child {
-            border-top-left-radius: 8px; // 첫 번째 탭의 왼쪽 상단 모서리만 둥글게
-          }
-
-          &:last-child {
-            border-top-right-radius: 8px; // 마지막 탭의 오른쪽 상단 모서리도 둥글게
-          }
-
-          &.active {
-            background-color: #399eee;
-            color: #ffffff;
-          }
-
-          &:hover {
-            background-color: #2a2e35;
-          }
-        }
-      }
-    }
     .tab-content {
       border-top: 1px solid #393e46;
       padding: 20px 5px;
@@ -248,7 +208,42 @@
     }
   }
 }
+.tab-container {
+  display: inline-block; // 내용물 크기만큼만 차지하도록 변경
+  background-color: #1e2124;
+  border-radius: 8px 8px 0 0; // 상단 모서리만 둥글게
+  overflow: hidden;
 
+  .tabs {
+    display: flex;
+
+    .tab {
+      padding: 10px 20px;
+      background-color: transparent;
+      border: none;
+      color: #8a8f98;
+      cursor: pointer;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+      font-size: 16px;
+      font-weight: 500;
+
+      &:first-child {
+        border-top-left-radius: 8px; // 첫 번째 탭의 왼쪽 상단 모서리만 둥글게
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px; // 마지막 탭의 오른쪽 상단 모서리도 둥글게
+      }
+
+      &.active {
+        background-color: #399eee;
+        color: #ffffff;
+      }
+    }
+  }
+}
 @media (max-width: 767px) {
   .hero-dtl-header-wrap {
     .hero-dtl-header {

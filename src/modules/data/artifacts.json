@@ -3291,7 +3291,7 @@
     "health_base": 45.0,
     "health_max": 585.0,
     "job": null,
-    "identifier": ""
+    "identifier": "ef439"
   },
   {
     "id": "art0204",
@@ -3345,7 +3345,7 @@
     "health_base": 27.0,
     "health_max": 351.0,
     "job": null,
-    "identifier": ""
+    "identifier": "ef437"
   },
   {
     "id": "art0209",
@@ -3363,7 +3363,8 @@
     "health_base": null,
     "health_max": null,
     "job": "j04",
-    "identifier": "efr28"
+    "identifier": "efr28",
+    "status": "new"
   },
   {
     "id": "art3_1",
@@ -3381,7 +3382,8 @@
     "health_base": 21.0,
     "health_max": 273.0,
     "job": null,
-    "identifier": "ef301"
+    "identifier": "ef301",
+    "status": ""
   },
   {
     "id": "art3_10",

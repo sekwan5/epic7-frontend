@@ -5,6 +5,7 @@ interface IArtifact {
   arti_nm_kr: string;
   arti_nm_en: string;
   grade: number;
+  status: string | null;
   arti_desc_kr: string | null;
   arti_desc_en: string | null;
   arti_max_kr: string;
@@ -48,14 +49,19 @@ export function getArtifactByCode(identifier: string): IArtifact | undefined {
   return artifactsByIdentifier[identifier];
 }
 
-export function getArtifactsByJob(job: string | null): IArtifact[] {
-  return Object.values(artifacts).filter((artifact) => artifact.job === job);
-}
+export function getArtifactByStats(): IArtifact[] {
+  return Object.values(artifacts)
+    .filter((arti) => arti.status === "new" || arti.status === "update")
+    .sort((a, b) => {
+      // 먼저 status로 정렬 (new가 update보다 앞으로)
+      if (a.status !== b.status) {
+        return a.status === "new" ? -1 : 1;
+      }
 
-export function getArtifactsByGrade(grade: number): IArtifact[] {
-  return Object.values(artifacts).filter(
-    (artifact) => artifact.grade === grade,
-  );
+      // status가 같다면 grade로 정렬 (높은 grade가 앞으로)
+      const gradeOrder: { [key: string]: number } = { "5": 3, "4": 2, "3": 1 };
+      return (gradeOrder[b.grade] || 0) - (gradeOrder[a.grade] || 0);
+    });
 }
 
 // Artifact와 ArtifactData 인터페이스도 export
