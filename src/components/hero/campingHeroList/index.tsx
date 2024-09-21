@@ -15,7 +15,7 @@ import {
   getBestChatOptions,
   getHeroCombinations,
 } from "@/components/camp/hook";
-import { api, IHero } from "@/modules/api";
+import { getAllHeroes, IHero } from "@/modules/data/getHeroData";
 
 export default function CampingList() {
   const dispatch = useAppDispatch();
@@ -30,18 +30,14 @@ export default function CampingList() {
     }
   }, []);
 
-  const getHeroList = async () => {
-    try {
-      const heroList = await api.hero.getHeroes({ limit: 400 });
-      const updatedHeroList = heroList.map((hero) => ({
-        ...hero,
-        isShow: true,
-      }));
-      dispatch(setHeroList(updatedHeroList));
-      dispatch(resetCampingHeroList());
-    } catch (error) {
-      console.log(error);
-    }
+  const getHeroList = () => {
+    const heroList = getAllHeroes();
+    const updatedHeroList = heroList.map((hero) => ({
+      ...hero,
+      isShow: true,
+    }));
+    dispatch(setHeroList(updatedHeroList));
+    dispatch(resetCampingHeroList());
   };
 
   const setData = (data: IHero[]) => {

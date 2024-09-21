@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client";
 import { useEffect, useState } from "react";
 import ResetIcon from "@/components/common/ResetIcon";
 import SearchIcon from "@/components/common/SearchIcon";
 import CoImage from "@/components/common/CoImages";
 import { getIconPosition, jobIcon, typeIcon } from "@/modules/utils";
-import { IHero } from "@/modules/api";
-
+import { IHero } from "@/modules/data/getHeroData";
 export interface filterStatus {
   value: string;
   isSelect: boolean;
@@ -19,11 +17,6 @@ export interface IHeroFilterProps {
 
 export default function HeroFilter(props: IHeroFilterProps) {
   const { data, setData } = props;
-
-  // const [items, setItems] = useState<IHero[]>([]);
-  // useEffect(() => {
-  //   setItems(data);
-  // }, [data]);
 
   const [heroNm, setHeroNm] = useState("");
   const [filter2Status, setFilter2Status] = useState<filterStatus[]>([
@@ -97,7 +90,7 @@ export default function HeroFilter(props: IHeroFilterProps) {
 
   function setSearchData() {
     const updatedData = filterHeroList();
-    setData(updatedData);
+    setData(updatedData as IHero[]);
   }
 
   const handleFilterClick = (

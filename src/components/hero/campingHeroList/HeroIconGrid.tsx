@@ -1,7 +1,6 @@
-"use client";
 import { IHeroFilterProps } from "../heroList/HeroFilter";
 import HeroIcon from "../heroIcon";
-import { IHero } from "@/modules/api/hero";
+import { IHero } from "@/modules/data/getHeroData";
 import { useAppDispatch } from "@/store/hooks";
 import {
   deleteCampingHeroList,

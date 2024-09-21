@@ -1,5 +1,5 @@
 import CoImage from "@/components/common/CoImages";
-import { IHero } from "@/modules/api";
+import { IHero } from "@/modules/data/getHeroData";
 import { Fragment } from "react";
 
 export default function ProfileImg(props: { data: IHero }) {

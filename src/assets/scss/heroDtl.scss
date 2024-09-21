@@ -1,0 +1,325 @@
+.hero-dtl-header-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .hero-dtl-header {
+    max-width: 1200px;
+    height: 154px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+
+    .profile-img-wrap {
+      position: relative;
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      background-color: #777;
+      .profile-img {
+        position: relative;
+        z-index: 1;
+        width: 100px;
+        height: 100px;
+      }
+      .profile-outline {
+        position: absolute;
+        top: -0.5em;
+        left: -0.3em;
+        z-index: 2;
+        width: 113px;
+        height: 113px;
+      }
+    }
+
+    .text-wrap {
+      margin-left: 20px;
+      .name-wrap {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        span {
+          font-size: 24px;
+          font-weight: 600;
+          display: inline-block;
+          color: #fff;
+        }
+        .star-wrap {
+          display: flex;
+          align-items: center;
+          margin-left: 5px;
+          position: relative;
+          bottom: 2px;
+          .star-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: -6px;
+          }
+        }
+      }
+      .info-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .type-icon {
+          width: 24px;
+          height: 24px;
+          margin-right: 3px;
+        }
+        .zodiac-icon {
+          position: relative;
+          top: 2px;
+          width: 22px;
+          height: 22px;
+          margin-right: 3px;
+        }
+        .job-icon {
+          width: 21px;
+          height: 21px;
+          margin-right: 3px;
+        }
+
+        span {
+          font-size: 16px;
+          font-weight: 200;
+          color: #999;
+          margin-right: 5px;
+        }
+      }
+      .recently {
+        margin-top: 10px;
+        position: relative;
+        font-size: 12px;
+        color: #999;
+      }
+    }
+  }
+}
+.hero-dtl {
+  .hero-dtl-content {
+    .tab-container {
+      display: inline-block; // 내용물 크기만큼만 차지하도록 변경
+      background-color: #1e2124;
+      border-radius: 8px 8px 0 0; // 상단 모서리만 둥글게
+      overflow: hidden;
+
+      .tabs {
+        display: flex;
+
+        .tab {
+          padding: 10px 20px;
+          background-color: transparent;
+          border: none;
+          color: #8a8f98;
+          cursor: pointer;
+          transition:
+            background-color 0.3s,
+            color 0.3s;
+          font-size: 16px;
+          font-weight: 500;
+
+          &:first-child {
+            border-top-left-radius: 8px; // 첫 번째 탭의 왼쪽 상단 모서리만 둥글게
+          }
+
+          &:last-child {
+            border-top-right-radius: 8px; // 마지막 탭의 오른쪽 상단 모서리도 둥글게
+          }
+
+          &.active {
+            background-color: #399eee;
+            color: #ffffff;
+          }
+
+          &:hover {
+            background-color: #2a2e35;
+          }
+        }
+      }
+    }
+    .tab-content {
+      border-top: 1px solid #393e46;
+      padding: 20px 5px;
+      border-radius: 0 0 8px 8px;
+      color: #ffffff;
+      margin-top: -5px;
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 20px;
+      }
+
+      .builds-content {
+        // ... (기존 스타일)
+
+        .charts-container {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 30px;
+
+          .chart-wrapper {
+            width: 49%; // 약간의 간격을 두기 위해 48%로 설정
+            border-radius: 5px;
+
+            h4 {
+              margin-top: 0;
+              margin-bottom: 10px;
+            }
+            .stats-chart {
+              width: 100%;
+
+              .chart-row {
+                display: flex;
+                align-items: center;
+                height: 40px;
+                padding: 10px 5px;
+                border-radius: 6px;
+                &.stat {
+                  &:hover {
+                    background-color: transparent;
+                  }
+                }
+                &:hover {
+                  background-color: #333;
+                }
+
+                &.selected {
+                  background-color: #444;
+                }
+
+                .stat-icon {
+                  margin-right: 5px;
+                  width: 20px;
+                  height: 20px;
+                }
+                .set-icon {
+                  position: relative;
+                  top: 1px;
+                  margin-right: 5px;
+                  width: 28px;
+                  height: 28px;
+                }
+              }
+
+              .stat-name {
+                width: 100px;
+                text-align: right;
+                padding-right: 10px;
+                display: flex;
+                align-items: center;
+              }
+
+              .stat-bar-container {
+                flex-grow: 1;
+                height: 20px;
+                background-color: #555b64;
+                border-radius: 10px;
+                overflow: hidden;
+              }
+
+              .stat-bar {
+                height: 100%;
+                transition:
+                  width 0.3s ease,
+                  opacity 0.3s ease;
+              }
+
+              .stat-value {
+                width: 80px;
+                text-align: left;
+                padding-left: 10px;
+              }
+            }
+          }
+        }
+        .artifact-usage {
+          .arti-wrap {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-dtl-header-wrap {
+    .hero-dtl-header {
+      height: 104px;
+      .profile-img-wrap {
+        width: 75px;
+        height: 75px;
+        .profile-img {
+          position: relative;
+          z-index: 1;
+          width: 75px;
+          height: 75px;
+        }
+        .profile-outline {
+          position: absolute;
+          top: -0.15em;
+          left: -0.15em;
+          z-index: 2;
+          width: 83px;
+          height: 83px;
+        }
+      }
+      .text-wrap {
+        .name-wrap {
+          margin-bottom: 5px;
+          span {
+            font-size: 18px;
+          }
+          .star-wrap {
+            .star-icon {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+        .info-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          .type-icon {
+            width: 22px;
+            height: 22px;
+          }
+          .zodiac-icon {
+            width: 20px;
+            height: 20px;
+          }
+          .job-icon {
+            width: 19px;
+            height: 19px;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+        .recently {
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    .builds-content {
+      .charts-container {
+        flex-direction: column;
+        .chart-wrapper {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}

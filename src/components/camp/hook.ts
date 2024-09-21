@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IHero } from "@/modules/api/hero";
+import { IHero } from "@/modules/data/getHeroData";
 
-export function CampDataBuilder(personalities: number[]) {
+export function CampDataBuilder(personalities: string[]) {
   const res = {};
   const p = Array.isArray(personalities) ? personalities : [-1, -1];
 
   for (let i = 0; i < campData.topics.length; i++) {
     const topic = campData.topics[i];
     (res as Record<string, number>)[topic.name] =
-      Math.max(topic.values[p[0]] || 0, 0) +
-      Math.max(topic.values[p[1]] || 0, 0);
+      Math.max(topic.values[p[0] as number] || 0, 0) +
+      Math.max(topic.values[p[1] as number] || 0, 0);
   }
   return res;
 }
@@ -42,7 +42,7 @@ export function getHeroCombinations(heroList: any[]) {
     const requiredCount = 4 - lockedHeroes.length;
     const remainingCombinations = getCombinations(
       unlockedHeroes,
-      requiredCount
+      requiredCount,
     );
     return remainingCombinations.map((combination) => [
       ...lockedHeroes,

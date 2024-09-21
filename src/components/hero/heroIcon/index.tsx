@@ -1,5 +1,4 @@
-"use client";
-import { IHero } from "@/modules/api";
+import { IHero } from "@/modules/data/getHeroData";
 import ProfileImg from "./ProfileImg";
 import CoImage from "@/components/common/CoImages";
 

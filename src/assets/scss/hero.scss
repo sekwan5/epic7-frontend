@@ -52,13 +52,6 @@ $text-color: #fff;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
           }
-          .star {
-            @include flex-center;
-            margin-right: 6px;
-            background-repeat: no-repeat;
-            position: relative;
-            top: -2px;
-          }
         }
         .search-input {
           border-top-left-radius: 5px;
@@ -164,7 +157,7 @@ $text-color: #fff;
             width: 25px;
             height: 25px;
           }
-          .zodic-icon {
+          .zodiac-icon {
             width: 21px;
             height: 21px;
           }
@@ -235,6 +228,7 @@ $text-color: #fff;
             width: 83px;
             height: 83px;
           }
+
           .icon-wrap {
             display: flex;
             justify-content: space-between;
@@ -494,6 +488,13 @@ $text-color: #fff;
     }
   }
 }
+.star {
+  @include flex-center;
+  margin-right: 6px;
+  background-repeat: no-repeat;
+  position: relative;
+  top: -2px;
+}
 
 @media (min-width: 1200px) {
   // xl 브레이크포인트
@@ -545,14 +546,11 @@ $text-color: #fff;
               width: 22px;
               height: 22px;
             }
-            .zodic-icon {
+            .zodiac-icon {
               width: 19px;
               height: 19px;
             }
-            .zodic-icon {
-              width: 19px;
-              height: 19px;
-            }
+
             .star-icon {
               width: 15px;
               height: 15px;

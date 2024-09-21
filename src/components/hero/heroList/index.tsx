@@ -1,27 +1,19 @@
-import { api, IHero } from "@/modules/api";
 import HeroFilter from "./HeroFilter";
 import HeroGrid from "./HeroGrid";
 import { useEffect, useState } from "react";
+import { getAllHeroes, IHero } from "@/modules/data/getHeroData";
 
 export default function HeroList() {
   const [data, setData] = useState<IHero[]>([]);
 
   useEffect(() => {
-    getHeroList();
+    const heroList = getAllHeroes();
+    const updatedHeroList = heroList.map((hero) => ({
+      ...hero,
+      isShow: true,
+    }));
+    setData(updatedHeroList);
   }, []);
-
-  const getHeroList = async () => {
-    try {
-      const heroList = await api.hero.getHeroes({ limit: 400 });
-      const updatedHeroList = heroList.map((hero) => ({
-        ...hero,
-        isShow: true,
-      }));
-      setData(updatedHeroList);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="hero-list">

@@ -1,4 +1,4 @@
-import { IHero } from "@/modules/api";
+import { IHero } from "@/modules/data/getHeroData";
 import PickBox from "../PickBox";
 import { IHeroFilterProps } from "./HeroFilter";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ export default function HeroGrid(props: IHeroFilterProps) {
         if (!item.isShow) return null; // 보이지 않는 항목은 렌더링하지 않음
         return (
           <Link
-            to={`#`}
+            to={`/hero/${item.id}`}
             className="col-6 col-md-4 col-lg-3 custom-xl-20"
             style={{ display: "inline-block" }}
             key={item.id}

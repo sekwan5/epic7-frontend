@@ -1,4 +1,3 @@
-"use client";
 import { useAppSelector } from "@/store/hooks";
 
 export default function CampingTab(props: {
@@ -7,7 +6,7 @@ export default function CampingTab(props: {
 }) {
   const { setTab, tab } = props;
   const bookmarkCount = useAppSelector(
-    (state) => state.camp.campBookMarkList.length
+    (state) => state.camp.campBookMarkList.length,
   );
 
   return (

@@ -1,57 +1,22 @@
 import { AxiosInstance } from "axios";
 import { IndexSignatureType } from "../types";
 import { ApiBase } from "./base";
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
-interface Camping {
-  id: string;
-  personalities: number[];
-  topics_en: string[];
-  common_skills: any[]; // 또는 더 구체적인 타입을 사용할 수 있습니다
-  buff_skills: any[];
-  debuff_skills: any[];
-  buffs: any[];
-  debuffs: any[];
-  common: any[];
-  topics_kr: string[];
-  campValue?: {
+export interface IHeroBuild {
+  hero_id: string;
+  artifactCode: string;
+  sets: {
     [key: string]: number;
   };
-}
-
-export interface IHero {
-  id: string;
-  nm_kr: string;
-  nm_en: string;
-  name: string;
-  job_id: string;
-  job_nm: string;
-  type_id: string;
-  type_nm: string;
-  zodiac_id: string;
-  zodiac_nm: string;
-  grade: string;
-  keyword?: string;
-  status?: string;
-  isShow?: boolean;
-  campPick?: boolean;
-  isLock?: boolean;
-  camping: Camping;
-}
-
-interface ChatOption {
-  option_en: string;
-  option_kr: string;
-  hero: IHero;
-  score: number;
-}
-
-export interface CampingResult {
-  team: IHero[];
-  bestChatOption1: ChatOption;
-  bestChatOption2: ChatOption;
-  score: number;
-  id?: string;
+  atk: number;
+  chc: number;
+  chd: number;
+  spd: number;
+  def: number;
+  eff: number;
+  efr: number;
+  gs: number;
+  hp: number;
+  createDate: Date;
 }
 
 export class ApiHero extends ApiBase<IndexSignatureType> {
@@ -62,11 +27,9 @@ export class ApiHero extends ApiBase<IndexSignatureType> {
     this.client = client;
   }
 
-  async getHeroes(params: { limit?: number } = {}): Promise<IHero[]> {
-    return this.client
-      .get(`${this.apiPath}`, { params: params })
-      .then((res) => {
-        return res.data;
-      });
+  async getHeroBuilds(hero_id: string): Promise<IHeroBuild[]> {
+    return this.client.get(`/builds/${hero_id}`).then((res) => {
+      return res.data;
+    });
   }
 }
