@@ -178,7 +178,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
       },
       {
         stat: "chd",
-        name: "치명타 피해",
+        name: "치명 피해",
         value: averageStats.chd,
         max: statMaxValues.chd,
       },
@@ -209,91 +209,106 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
     "#4DB6AC",
   ];
 
+  // builds 길이가 0인 경우를 확인하는 변수 추가
+  const hasNoBuilds = builds.length === 0;
+
   return (
     <div className="builds-content">
       <div className="charts-container">
         <div className="chart-wrapper">
           <h3>평균 스탯 (상위2% 빌드)</h3>
-          <div className="stats-chart">
-            {statsChartData.map((stat, index) => (
-              <div key={stat.name} className="chart-row stat">
-                <CoImage
-                  className="stat-icon"
-                  src={`${imgUrl}/stat/${stat.stat}.png`}
-                  alt={stat.name}
-                  width={20}
-                  height={20}
-                />
-                <div className="stat-name">{stat.name}</div>
-                <div className="stat-bar-container">
-                  <div
-                    className="stat-bar"
-                    style={{
-                      width: `${(stat.value / stat.max) * 100}%`,
-                      backgroundColor: statColors[index],
-                    }}
+          {hasNoBuilds ? (
+            <p>데이터가 없습니다.</p>
+          ) : (
+            <div className="stats-chart">
+              {statsChartData.map((stat, index) => (
+                <div key={stat.name} className="chart-row stat">
+                  <CoImage
+                    className="stat-icon"
+                    src={`${imgUrl}/stat/${stat.stat}.png`}
+                    alt={stat.name}
+                    width={20}
+                    height={20}
                   />
+                  <div className="stat-name">{stat.name}</div>
+                  <div className="stat-bar-container">
+                    <div
+                      className="stat-bar"
+                      style={{
+                        width: `${(stat.value / stat.max) * 100}%`,
+                        backgroundColor: statColors[index],
+                      }}
+                    />
+                  </div>
+                  <div className="stat-value">{stat.value}</div>
                 </div>
-                <div className="stat-value">{stat.value}</div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         <div className="chart-wrapper">
           <h3>세트 사용률</h3>
-          <div className="stats-chart">
-            {setOptions.map((option, index) => (
-              <div
-                key={option.key}
-                className={`chart-row ${selectedSet === option.key ? "selected" : ""}`}
-                onClick={() => handleSetSelection(option.key)}
-              >
-                <CoImage
-                  className="set-icon"
-                  src={`${imgUrl}/set/${option.label1 || "set_random"}.png`}
-                  alt={option.label1}
-                />
-                <CoImage
-                  className="set-icon"
-                  src={`${imgUrl}/set/${option.label2 || "set_random"}.png`}
-                  alt={option.label2}
-                />
-                {option.label3 && (
+          {hasNoBuilds ? (
+            <p>데이터가 없습니다.</p>
+          ) : (
+            <div className="stats-chart">
+              {setOptions.map((option, index) => (
+                <div
+                  key={option.key}
+                  className={`chart-row ${selectedSet === option.key ? "selected" : ""}`}
+                  onClick={() => handleSetSelection(option.key)}
+                >
                   <CoImage
                     className="set-icon"
-                    src={`${imgUrl}/set/${option.label3 || "set_random"}.png`}
-                    alt={option.label3}
+                    src={`${imgUrl}/set/${option.label1 || "set_random"}.png`}
+                    alt={option.label1}
                   />
-                )}
+                  <CoImage
+                    className="set-icon"
+                    src={`${imgUrl}/set/${option.label2 || "set_random"}.png`}
+                    alt={option.label2}
+                  />
+                  {option.label3 && (
+                    <CoImage
+                      className="set-icon"
+                      src={`${imgUrl}/set/${option.label3 || "set_random"}.png`}
+                      alt={option.label3}
+                    />
+                  )}
 
-                <div className="stat-bar-container">
-                  <div
-                    className="stat-bar"
-                    style={{
-                      width: `${option.usage}%`,
-                      backgroundColor: colors[index % colors.length],
-                    }}
-                  />
+                  <div className="stat-bar-container">
+                    <div
+                      className="stat-bar"
+                      style={{
+                        width: `${option.usage}%`,
+                        backgroundColor: colors[index % colors.length],
+                      }}
+                    />
+                  </div>
+                  <div className="stat-value">{option.usage.toFixed(1)}%</div>
                 </div>
-                <div className="stat-value">{option.usage.toFixed(1)}%</div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className="artifact-usage">
         <h3>아티팩트 사용률</h3>
-        <div className="arti-wrap">
-          {artifactUsage.map((item) => (
-            <div
-              className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
-              style={{ marginBottom: "20px" }}
-              key={item.code}
-            >
-              <Artifact data={item} />
-            </div>
-          ))}
-        </div>
+        {hasNoBuilds ? (
+          <p>데이터가 없습니다.</p>
+        ) : (
+          <div className="arti-wrap">
+            {artifactUsage.map((item) => (
+              <div
+                className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center"
+                style={{ marginBottom: "20px" }}
+                key={item.code}
+              >
+                <Artifact data={item} />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

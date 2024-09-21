@@ -15,7 +15,7 @@
     "health_base": 76.0,
     "health_max": 988.0,
     "job": "j06",
-    "identifier": "ef514"
+    "identifier": "efh01"
   },
   {
     "id": "art0002",
@@ -3939,7 +3939,7 @@
     "health_base": 27.0,
     "health_max": 351.0,
     "job": "j04",
-    "identifier": "ef512"
+    "identifier": "efr04"
   },
   {
     "id": "art4_7",
@@ -4011,7 +4011,7 @@
     "health_base": 54.0,
     "health_max": 702.0,
     "job": "j02",
-    "identifier": "ef510"
+    "identifier": "efk02"
   },
   {
     "id": "art5_11",
@@ -4173,7 +4173,7 @@
     "health_base": 32.0,
     "health_max": 416.0,
     "job": "j01",
-    "identifier": "ef513"
+    "identifier": "efw01"
   },
   {
     "id": "art5_3",
