@@ -150,7 +150,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
         stat: "atk",
         name: "공격력",
         value: averageStats.atk,
-        max: averageStats.atk < 4000 ? statMaxValues.atk : 8500,
+        max: averageStats.atk < 4500 ? statMaxValues.atk : 8500,
       },
       {
         stat: "def",
