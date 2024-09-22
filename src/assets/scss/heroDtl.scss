@@ -533,10 +533,14 @@
               }
               .text {
                 width: 50%;
+                align-items: start !important;
               }
             }
             .rta-chart {
               width: 100%;
+            }
+            .rta-chart .recharts-cartesian-axis-tick-value {
+              font-size: 14px;
             }
           }
           .rta-section2 {
