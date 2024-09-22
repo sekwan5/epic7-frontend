@@ -1,7 +1,5 @@
 import {
   Line,
-  XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
@@ -12,6 +10,8 @@ import {
 import PickBox from "../../PickBox";
 import { IHero } from "@/modules/data/getHeroData";
 import { IRTAData } from "@/modules/api";
+import CustomXAxis from "./CustomXAxis";
+import CustomYAxis from "./CustomYAxis";
 export interface DailyStats {
   date: string;
   games: number;
@@ -78,15 +78,22 @@ export function Section1({
           <ResponsiveContainer>
             <ComposedChart data={dailyStats}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis
+              <CustomXAxis
                 dataKey="date"
                 angle={-45}
                 textAnchor="end"
                 height={70}
                 interval={0}
+                allowDataOverflow={false}
+                allowDecimals={true}
+                allowDuplicatedCategory={true}
               />
-              <YAxis yAxisId="left" orientation="left" stroke="#FF4D6D" />
-              <YAxis yAxisId="right" orientation="right" stroke="#399eee" />
+              <CustomYAxis yAxisId="left" orientation="left" stroke="#FF4D6D" />
+              <CustomYAxis
+                yAxisId="right"
+                orientation="right"
+                stroke="#399eee"
+              />
               <Tooltip />
               <Legend />
               <Bar

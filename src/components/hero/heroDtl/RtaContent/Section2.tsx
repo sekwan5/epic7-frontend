@@ -23,7 +23,6 @@ export function Section2(props: {
       )
     : [];
 
-  // 카운터를 승률 낮은 순으로 정렬
   const colors = [
     "#8884d8",
     "#82ca9d",
@@ -35,24 +34,18 @@ export function Section2(props: {
     "#8dd1e1",
   ];
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
+
   const handleSetSelection = (key: string[]) => {
     if (isSetSelected(key)) {
-      // 이미 선택된 세트라면 선택 해제
       onEquipSelect([]);
     } else {
-      // 새로운 세트 선택
       onEquipSelect(key);
     }
   };
 
   const isSetSelected = (sets: string[]) => {
-    // console.log("sets", sets);
-    // console.log("selectedSet", selectedSet);
-
-    // 길이가 다르면 false 반환
     if (sets.length !== selectedSet.length) return false;
 
-    // 각 세트의 출현 횟수를 비교
     const setCounts = new Map<string, number>();
     const selectedSetCounts = new Map<string, number>();
 
@@ -64,7 +57,6 @@ export function Section2(props: {
       selectedSetCounts.set(set, (selectedSetCounts.get(set) || 0) + 1);
     });
 
-    // 모든 세트의 출현 횟수가 일치하는지 확인
     for (const [set, count] of setCounts) {
       if (selectedSetCounts.get(set) !== count) return false;
     }
@@ -73,13 +65,11 @@ export function Section2(props: {
   };
 
   const parseSets = (setKey: string): string[] => {
-    // Remove parentheses and split by comma
-    const sets = setKey
+    return setKey
       .slice(1, -1)
       .split(",")
-      .map((s) => s.trim().replace(/'/g, ""));
-    // Filter out empty strings and return
-    return sets.filter(Boolean);
+      .map((s) => s.trim().replace(/'/g, ""))
+      .filter(Boolean);
   };
 
   return (
@@ -168,9 +158,8 @@ export function Section2(props: {
           <>
             <h4>세트 사용률</h4>
             <div className="stats-chart">
-              {Object.entries(top8Equips).map(([setKey, rate], index) => {
+              {Object.entries(top8Equips).map(([setKey, data], index) => {
                 const sets = parseSets(setKey);
-
                 return (
                   <div
                     key={setKey}
@@ -196,12 +185,17 @@ export function Section2(props: {
                       <div
                         className="stat-bar"
                         style={{
-                          width: `${Number(rate)}%`,
+                          width: `${data.usage_rate}%`,
                           backgroundColor: colors[index % colors.length],
                         }}
                       />
+                      <div className="stat-value">
+                        {data.usage_rate.toFixed(2)}%
+                      </div>
                     </div>
-                    <div className="stat-value">{Number(rate).toFixed(2)}%</div>
+                    <div className="stat-winrate">
+                      승률: {data.win_rate.toFixed(2)}%
+                    </div>
                   </div>
                 );
               })}

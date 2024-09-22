@@ -42,10 +42,28 @@ export interface IRTAData {
   pick_rate: number;
   preban_count: number;
   preban_rate: number;
-  top_8_equips: string;
-  top_8_equips_with_artifacts: string;
+  top_8_equips: {
+    [key: string]: {
+      usage_rate: number;
+      win_rate: number;
+    };
+  };
+  top_8_equips_with_artifacts: Array<{
+    set: string[];
+    arti: {
+      [key: string]: {
+        usage_rate: number;
+        win_rate: number;
+      };
+    };
+    usage_rate: number;
+    win_rate: number;
+  }>;
   top_4_artifacts: {
-    [key: string]: number;
+    [key: string]: {
+      usage_rate: number;
+      win_rate: number;
+    };
   };
   top_5_teammates: {
     [key: string]: {

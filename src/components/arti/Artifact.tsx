@@ -91,9 +91,12 @@ export default function Artifact({
         ></div>
       )}
       {data.usage !== undefined && typeof data.usage === "number" ? (
-        <div className="arti-usage">채용률 {data.usage.toFixed(1)}%</div>
+        <>
+          <div className="arti-usage">{`채용률 ${data.usage.toFixed(1)}%
+          ${data.win_rate && data.win_rate > 0 ? `/ 승률 ${data.win_rate.toFixed(1)}%` : ""}`}</div>
+        </>
       ) : (
-        <div className="arti-usage">채용률 정보 없음</div>
+        <div className="arti-usage"></div>
       )}
       <div className="arti-name">{artiData?.arti_nm_kr}</div>
       <CoImage
