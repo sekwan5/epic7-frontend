@@ -90,8 +90,10 @@ export default function Artifact({
           style={{ backgroundPosition: overlayPosition }}
         ></div>
       )}
-      {data.usage && (
+      {data.usage !== undefined && typeof data.usage === "number" ? (
         <div className="arti-usage">채용률 {data.usage.toFixed(1)}%</div>
+      ) : (
+        <div className="arti-usage">채용률 정보 없음</div>
       )}
       <div className="arti-name">{artiData?.arti_nm_kr}</div>
       <CoImage

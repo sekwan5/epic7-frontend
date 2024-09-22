@@ -48,7 +48,7 @@ export default function HomeContent() {
           <HeroDtlTab tabs={["NOTICE"]} activeTab={"NOTICE"} />
           <div className="notice d-flex justify-content-center align-items-center ">
             <div>
-              <p>Discord 서버가 개설되었습니다. </p>
+              <p>Epic7GG(에픽지지) Discord 서버가 개설되었습니다. </p>
               <p>
                 버그또는 오타제보, 새로은 기능이나 기존 기능에 대한 개선사항을
                 요청해주세요.
@@ -91,7 +91,7 @@ export default function HomeContent() {
             영웅 목록 페이지가 추가되었습니다.
           </p>
           <p>2024.09.17</p>
-          <p>OPEN</p>
+          <p>Epic7GG(에픽지지) OPEN</p>
         </div>
       </div>
     </>

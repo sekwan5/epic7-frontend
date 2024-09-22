@@ -1,19 +1,4 @@
-# 구글 크롤러 허용
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-Mobile
-Allow: /
-
-User-agent: Googlebot-News
-Allow: /
-
-User-agent: Googlebot-Video
-Allow: /
-
-# 다른 모든 크롤러 차단
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://epic7gg.com/sitemap.xml

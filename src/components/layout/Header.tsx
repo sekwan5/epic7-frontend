@@ -38,7 +38,8 @@ export function Header() {
             width={35} // 원하는 이미지의 너비
             height={35} // 원하는 이미지의 높이
           />
-          <span>Epic7.GG</span>
+          <span>EPIC7GG</span>
+          <div>에픽지지</div>
         </Link>
         <div className="smodGnb">
           <div className="spanWarp">
