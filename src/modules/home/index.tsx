@@ -22,7 +22,7 @@ export default function HomeContent() {
                   return (
                     <Link
                       to={`/hero/${item.id}`}
-                      className="col-6"
+                      className="col-6 "
                       key={item.id}
                     >
                       <div className="pick-box-wrap">

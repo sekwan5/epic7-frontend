@@ -329,6 +329,98 @@ $text-color: #fff;
     }
   }
 }
+
+.camping-tab-wrap {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px 20px 10px;
+  .camping-tab-wrap-item {
+    position: relative;
+    background-color: #36373d;
+    width: 75px;
+    height: 75px;
+    border-radius: 15px;
+    @include flex-center;
+    cursor: pointer;
+    &.active {
+      background-color: #399eee;
+    }
+    &:not(.active):hover {
+      background-color: lighten(#36373d, 10%);
+    }
+    .bookmark-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  i {
+    &.color-gray {
+      background-color: #fff;
+    }
+
+    &.ico {
+      display: flex;
+      width: 70px;
+      height: 70px;
+
+      &.ico-add_hero {
+        -webkit-mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-edit_hero {
+        -webkit-mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp {
+        -webkit-mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp-save {
+        -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+
+        mask-size: cover;
+      }
+    }
+  }
+}
+.star {
+  @include flex-center;
+  margin-right: 6px;
+  background-repeat: no-repeat;
+  position: relative;
+  top: -2px;
+}
+
+@media (min-width: 1200px) {
+  // xl 브레이크포인트
+  .custom-xl-20 {
+    width: 20% !important;
+    flex: 0 0 20% !important;
+    max-width: 20% !important;
+  }
+}
+
 .hero-grid {
   margin-top: 15px;
   display: flex;
@@ -424,97 +516,6 @@ $text-color: #fff;
   }
 }
 
-.camping-tab-wrap {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  justify-content: center;
-  padding: 0px 10px 20px 10px;
-  .camping-tab-wrap-item {
-    position: relative;
-    background-color: #36373d;
-    width: 75px;
-    height: 75px;
-    border-radius: 15px;
-    @include flex-center;
-    cursor: pointer;
-    &.active {
-      background-color: #399eee;
-    }
-    &:not(.active):hover {
-      background-color: lighten(#36373d, 10%);
-    }
-    .bookmark-count {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background-color: red;
-      color: white;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
-  i {
-    &.color-gray {
-      background-color: #fff;
-    }
-
-    &.ico {
-      display: flex;
-      width: 70px;
-      height: 70px;
-
-      &.ico-add_hero {
-        -webkit-mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
-        mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
-        -webkit-mask-size: cover;
-        mask-size: cover;
-      }
-      &.ico-edit_hero {
-        -webkit-mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
-        mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
-        -webkit-mask-size: cover;
-        mask-size: cover;
-      }
-      &.ico-camp {
-        -webkit-mask: url("/icons/camp.svg") no-repeat 50% 50%;
-        mask: url("/icons/camp.svg") no-repeat 50% 50%;
-        -webkit-mask-size: cover;
-        mask-size: cover;
-      }
-      &.ico-camp-save {
-        -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
-        mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
-        -webkit-mask-size: cover;
-
-        mask-size: cover;
-      }
-    }
-  }
-}
-.star {
-  @include flex-center;
-  margin-right: 6px;
-  background-repeat: no-repeat;
-  position: relative;
-  top: -2px;
-}
-
-@media (min-width: 1200px) {
-  // xl 브레이크포인트
-  .custom-xl-20 {
-    width: 20% !important;
-    flex: 0 0 20% !important;
-    max-width: 20% !important;
-  }
-}
-
 @media (max-width: 767px) {
   .hero-list-wrap {
     .hero-list {
@@ -536,39 +537,6 @@ $text-color: #fff;
         .reset-button {
           height: 30px;
           font-size: 12px;
-        }
-      }
-      .hero-grid {
-        .pick-box-wrap {
-          .pick-box-content-1 {
-            top: 16%;
-            .job-icon {
-              width: 20px;
-              height: 20px;
-            }
-            .pick-box-name {
-              font-size: 12px;
-            }
-          }
-          .pick-box-content-2 {
-            bottom: 18.5%;
-            .type-icon {
-              width: 22px;
-              height: 22px;
-            }
-            .zodiac-icon {
-              width: 19px;
-              height: 19px;
-            }
-
-            .star-icon {
-              width: 15px;
-              height: 15px;
-            }
-          }
-          span {
-            font-size: 14px;
-          }
         }
       }
     }
@@ -626,6 +594,39 @@ $text-color: #fff;
     .load-more-container {
       text-align: center;
       margin-bottom: 20px !important;
+    }
+  }
+
+  .hero-grid {
+    .pick-box-wrap {
+      .pick-box {
+        .pick-box-content-1 {
+          top: 16%;
+          .job-icon {
+            width: 20px;
+            height: 20px;
+          }
+          .pick-box-name {
+            font-size: 12px;
+          }
+        }
+        .pick-box-content-2 {
+          bottom: 18.5%;
+          .type-icon {
+            width: 22px;
+            height: 22px;
+          }
+          .zodiac-icon {
+            width: 19px;
+            height: 19px;
+          }
+
+          .star-icon {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
     }
   }
 }
