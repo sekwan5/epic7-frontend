@@ -61,6 +61,7 @@
     "sass": "^1.71.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.7",
-    "vite-plugin-remix-router": "^2.0.0"
+    "vite-plugin-remix-router": "^2.0.0",
+    "vite-plugin-sitemap": "^0.7.1"
   }
 }
