@@ -5,7 +5,6 @@ import CoImage from "@/components/common/CoImages";
 export default function HeroDtlHeader(props: { data: IHero }) {
   const { data } = props;
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
-  console.log("data", data);
 
   return (
     <div className="hero-dtl-header">
@@ -52,7 +51,7 @@ export default function HeroDtlHeader(props: { data: IHero }) {
           />
           <span>{data.job_nm_kr}</span>
         </div>
-        <div className="recently">최근 업데이트</div>
+        {/* <div className="recently">엠퍼러,레전드 등급</div> */}
       </div>
     </div>
   );

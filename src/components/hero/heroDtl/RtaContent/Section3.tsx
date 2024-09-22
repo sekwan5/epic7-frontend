@@ -15,7 +15,6 @@ export function Section3({
   );
 
   const parseSets = (setKey: any): string[] => {
-    console.log("parseSets input:", setKey, "type:", typeof setKey);
     if (Array.isArray(setKey)) {
       return setKey.filter(Boolean); // 빈 문자열 제거
     }
@@ -29,7 +28,6 @@ export function Section3({
       }
       return [setKey];
     }
-    console.warn("Unexpected setKey format:", setKey);
     return [];
   };
 

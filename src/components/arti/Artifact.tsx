@@ -16,17 +16,12 @@ export default function Artifact({
     "perspective(350px) rotateX(0deg) rotateY(0deg)",
   );
   const [overlayPosition, setOverlayPosition] = useState("0% 0%");
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+  const [isDesktop, setIsDesktop] = useState(false);
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
   const artiData = getArtifactByCode(data.code);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth > 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    setIsDesktop(window.innerWidth > 768);
   }, []);
 
   useEffect(() => {

@@ -68,6 +68,9 @@ export function Section1({
               {(rtaData.pick_count ?? 0) - (rtaData.wins ?? 0)} 패)
             </span>
           </p>
+          <p className="large">
+            <span className="sub-info">엠퍼러, 레전드등급</span>
+          </p>
         </div>
       </div>
       {dailyStats.length > 0 ? (

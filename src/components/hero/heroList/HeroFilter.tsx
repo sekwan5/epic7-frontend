@@ -98,8 +98,6 @@ export default function HeroFilter(props: IHeroFilterProps) {
     setFilterStatus: React.Dispatch<React.SetStateAction<filterStatus[]>>,
     value: string,
   ) => {
-    console.log("filterStatus", filterStatus);
-    console.log("value", value);
     const isAllFilter = value === "All";
     const updatedStatus = filterStatus.map((filter) => {
       if (isAllFilter) {
@@ -112,7 +110,6 @@ export default function HeroFilter(props: IHeroFilterProps) {
         return filter;
       }
     });
-    console.log("updatedStatus", updatedStatus);
 
     const anyFilterSelected = updatedStatus.some(
       (filter) => filter.isSelect && filter.value !== "All",

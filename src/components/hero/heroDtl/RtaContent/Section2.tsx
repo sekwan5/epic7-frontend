@@ -46,10 +46,30 @@ export function Section2(props: {
   };
 
   const isSetSelected = (sets: string[]) => {
-    return (
-      sets.length === selectedSet.length &&
-      sets.every((set) => selectedSet.includes(set))
-    );
+    // console.log("sets", sets);
+    // console.log("selectedSet", selectedSet);
+
+    // 길이가 다르면 false 반환
+    if (sets.length !== selectedSet.length) return false;
+
+    // 각 세트의 출현 횟수를 비교
+    const setCounts = new Map<string, number>();
+    const selectedSetCounts = new Map<string, number>();
+
+    sets.forEach((set) => {
+      setCounts.set(set, (setCounts.get(set) || 0) + 1);
+    });
+
+    selectedSet.forEach((set) => {
+      selectedSetCounts.set(set, (selectedSetCounts.get(set) || 0) + 1);
+    });
+
+    // 모든 세트의 출현 횟수가 일치하는지 확인
+    for (const [set, count] of setCounts) {
+      if (selectedSetCounts.get(set) !== count) return false;
+    }
+
+    return true;
   };
 
   const parseSets = (setKey: string): string[] => {
@@ -76,10 +96,10 @@ export function Section2(props: {
             <thead>
               <tr>
                 <th colSpan={2} className="text-center">
-                  아군 영웅
+                  같이 선택하면 좋은 영웅
                 </th>
                 <th colSpan={2} className="text-center">
-                  상대 영웅
+                  상대하기 힘든 영웅
                 </th>
               </tr>
               <tr>
