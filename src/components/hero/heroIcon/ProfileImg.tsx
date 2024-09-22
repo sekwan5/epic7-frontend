@@ -1,8 +1,7 @@
 import CoImage from "@/components/common/CoImages";
-import { IHero } from "@/modules/data/getHeroData";
 import { Fragment } from "react";
 
-export default function ProfileImg(props: { data: IHero }) {
+export default function ProfileImg(props: { id: string }) {
   const profileImage =
     "https://static.smilegatemegaport.com/event/live/epic7/guide/images/hero/c1159_s.png";
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
@@ -16,7 +15,7 @@ export default function ProfileImg(props: { data: IHero }) {
       />
       <CoImage
         className="profile-img"
-        src={`${imgUrl}/hero_images/${props.data.id}.png` || profileImage}
+        src={`${imgUrl}/hero_images/${props.id}.png` || profileImage}
         alt="profile"
       />
     </Fragment>

@@ -4,6 +4,7 @@ import { getHeroStats, IHero } from "../data/getHeroData";
 import PickBox from "@/components/hero/PickBox";
 import { getArtifactByStats } from "../data/getArtiData";
 import Artifact from "@/components/arti/Artifact";
+import { Link } from "react-router-dom";
 
 export default function HomeContent() {
   const heroList = getHeroStats();
@@ -19,11 +20,11 @@ export default function HomeContent() {
               <div className="hero-grid">
                 {heroList.map((item: IHero) => {
                   return (
-                    <div className="col-6 col-md-6 col-xl-4 ">
+                    <Link to={`/hero/${item.id}`} className="col-6  ">
                       <div className="pick-box-wrap">
                         <PickBox data={item} />
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -81,15 +82,16 @@ export default function HomeContent() {
             영웅상세 {`>`} BUILDS {`>`} 장비세트를 선택하면 세트에 맞는
             스탯,아티팩트 채용률을 확인하실 수 있습니다.
           </p>
-
+          <p> 2024.09.19</p>
           <p className="border-bottom pb-2">
-            2024.09.19 / 미궁 시뮬레이터 기능이 추가되었습니다.
+            미궁 시뮬레이터 기능이 추가되었습니다.
           </p>
+          <p>2024.09.18</p>
           <p className="border-bottom pb-2">
-            2024.09.17 / 영웅 목록 페이지가 추가되었습니다.
+            영웅 목록 페이지가 추가되었습니다.
           </p>
-          <p></p>
-          <p></p>
+          <p>2024.09.17</p>
+          <p>OPEN</p>
         </div>
       </div>
     </>

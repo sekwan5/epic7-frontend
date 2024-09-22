@@ -1,8 +1,8 @@
 import { IHero } from "@/modules/data/getHeroData";
 import CoImage from "../common/CoImages";
 
-export default function PickBox(props: { data: IHero }) {
-  const { data } = props;
+export default function PickBox(props: { data: IHero; useStatus?: boolean }) {
+  const { data, useStatus = true } = props;
 
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
   if (!data) return null;
@@ -59,10 +59,10 @@ export default function PickBox(props: { data: IHero }) {
               </div>
             ))}
         </div>
-        {data.status === "new" || data.status === "update" ? (
+        {useStatus && (data.status === "new" || data.status === "update") ? (
           <img
             className="status-icon"
-            src={`images/${data.status}.png`}
+            src={`${imgUrl}/icon/${data.status}.png`}
             alt="hero"
           />
         ) : null}

@@ -1,6 +1,6 @@
 // Copyright © Amazon.com and Affiliates: This deliverable is considered Developed Content as defined in the AWS Service Terms and the SOW between the parties dated 2024/02/07.
 
-import { api, IHeroBuild } from "@/modules/api";
+import { api, IHeroBuild, IRTAData } from "@/modules/api";
 import { getHeroById, IHero } from "@/modules/data/getHeroData";
 import HeroDtlWrap from "@/modules/heroDtl";
 import {
@@ -14,14 +14,16 @@ export const loader: LoaderFunction = async (args: LoaderFunctionArgs) => {
     throw new Error("ID가 제공되지 않았습니다.");
   }
   const builds = await api.hero.getHeroBuilds(args.params.id);
-  const hero = await getHeroById(args.params.id);
-  return { builds, hero };
+  const hero = getHeroById(args.params.id);
+  const rta = await api.hero.getHeroRtaData(args.params.id);
+  return { builds, hero, rta };
 };
 
 export function Component() {
-  const { builds, hero } = useLoaderData() as {
+  const { builds, hero, rta } = useLoaderData() as {
     builds: IHeroBuild[];
     hero: IHero;
+    rta: IRTAData;
   };
-  return <HeroDtlWrap data={hero} builds={builds} />;
+  return <HeroDtlWrap data={hero} builds={builds} rta={rta} />;
 }

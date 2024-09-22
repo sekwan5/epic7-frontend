@@ -10,7 +10,7 @@ export default function HeroDtlHeader(props: { data: IHero }) {
   return (
     <div className="hero-dtl-header">
       <div className="profile-img-wrap">
-        <ProfileImg data={data} />
+        <ProfileImg id={data.id} />
       </div>
       <div className="text-wrap">
         <div className="name-wrap">

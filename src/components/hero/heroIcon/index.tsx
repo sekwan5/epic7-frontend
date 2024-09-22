@@ -29,7 +29,7 @@ export default function HeroIcon(props: {
           height={30}
         />
       </div>
-      <ProfileImg data={data} />
+      <ProfileImg id={data.id} />
       {useOption && (
         <div className="option-wrap">
           {data.isLock ? <i className="ico-lock" /> : <div></div>}

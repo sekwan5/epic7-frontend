@@ -1,16 +1,17 @@
 import { IHero } from "../data/getHeroData";
-import { IHeroBuild } from "../api";
+import { IHeroBuild, IRTAData } from "../api";
 import HeroDtlHeader from "@/components/hero/heroDtl/HeroDtlHeader";
 import { useState } from "react";
 import HeroDtlTab from "@/components/hero/heroDtl/HeroDtlTab";
-import RTAContent from "@/components/hero/heroDtl/RtaContent";
 import BuildsContent from "@/components/hero/heroDtl/BuildsContent";
+import RTAContent from "@/components/hero/heroDtl/RtaContent";
 
 export default function HeroDtlWrap(props: {
   data: IHero;
   builds: IHeroBuild[];
+  rta: IRTAData;
 }) {
-  const { data, builds } = props;
+  const { data, builds, rta } = props;
   const tabs = ["BUILDS", "RTA"];
   const [activeTab1, setActiveTab1] = useState(tabs[0]);
   return (
@@ -27,7 +28,9 @@ export default function HeroDtlWrap(props: {
           />
           <div className="tab-content">
             {activeTab1 === "BUILDS" && <BuildsContent builds={builds} />}
-            {activeTab1 === "RTA" && <RTAContent />}
+            {activeTab1 === "RTA" && (
+              <RTAContent rtaData={rta} heroData={data} />
+            )}
           </div>
         </div>
       </div>

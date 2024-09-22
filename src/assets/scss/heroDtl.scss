@@ -115,8 +115,6 @@
       }
 
       .builds-content {
-        // ... (기존 스타일)
-
         .charts-container {
           display: flex;
           justify-content: space-between;
@@ -177,7 +175,7 @@
               .stat-bar-container {
                 flex-grow: 1;
                 height: 20px;
-                background-color: #555b64;
+                background-color: rgba(160, 164, 170, 0.3);
                 border-radius: 10px;
                 overflow: hidden;
               }
@@ -198,10 +196,216 @@
           }
         }
         .artifact-usage {
+          margin-top: 10px;
           .arti-wrap {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
+          }
+        }
+      }
+      .rta-content {
+        .rta-section1 {
+          display: flex;
+          margin-bottom: 20px;
+          .rta-stats {
+            width: 28%;
+            color: #ffffff;
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            .hero-grid {
+              min-height: auto;
+              margin-bottom: 10px;
+            }
+            p {
+              margin-bottom: 10px;
+              font-size: 16px;
+
+              &.large {
+                font-size: 18px;
+                font-weight: 600;
+              }
+
+              .value {
+                margin-left: 5px;
+                color: #399eee;
+                font-weight: 600;
+              }
+
+              .sub-info {
+                font-size: 14px;
+                color: #8a8f98;
+                margin-left: 5px;
+              }
+            }
+          }
+
+          .rta-chart {
+            height: 300px;
+            width: 68%;
+          }
+        }
+
+        .rta-section2 {
+          display: flex;
+          margin-bottom: 20px;
+
+          .rta-left {
+            width: 50%;
+            padding-right: 10px;
+
+            .rta-table {
+              width: 100%;
+              border-collapse: collapse;
+              color: #ffffff;
+              table-layout: fixed;
+
+              .hero-col {
+                width: 15%;
+              }
+
+              .winrate-col {
+                width: 35%;
+              }
+
+              th,
+              td {
+                padding: 8px;
+                border-bottom: 1px solid #393e46;
+              }
+
+              th {
+                font-weight: bold;
+
+                &.text-center {
+                  text-align: center;
+                }
+              }
+
+              thead {
+                tr:first-child {
+                  th {
+                    padding-top: 0;
+                  }
+                }
+              }
+
+              .hero-profile {
+                width: 45px;
+                height: 45px;
+                position: relative;
+
+                .profile-outline {
+                  position: absolute;
+                  top: -2px;
+                  left: -2px;
+                  width: 49px;
+                  height: 49px;
+                }
+
+                .profile-img {
+                  width: 45px;
+                  height: 45px;
+                  border-radius: 50%;
+                }
+              }
+
+              td {
+                vertical-align: middle;
+              }
+
+              // 승률 칸의 텍스트 스타일
+              td:nth-child(even) {
+                font-size: 14px;
+                white-space: nowrap;
+              }
+            }
+          }
+
+          .rta-right {
+            width: 50%;
+            padding-left: 10px;
+          }
+
+          h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ffffff;
+          }
+
+          ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+              margin-bottom: 5px;
+              font-size: 14px;
+              color: #8a8f98;
+
+              .value {
+                color: #399eee;
+                font-weight: 600;
+              }
+            }
+          }
+
+          .stats-chart {
+            width: 100%;
+
+            .chart-row {
+              display: flex;
+              align-items: center;
+              height: 40px;
+              padding: 10px 5px;
+              border-radius: 6px;
+
+              &:hover {
+                background-color: #333;
+              }
+              &.selected {
+                background-color: #444;
+              }
+
+              .set-icon {
+                position: relative;
+                top: 1px;
+                margin-right: 5px;
+                width: 28px;
+                height: 28px;
+              }
+
+              .stat-bar-container {
+                flex-grow: 1;
+                height: 20px;
+                background-color: rgba(160, 164, 170, 0.3);
+                border-radius: 10px;
+                overflow: hidden;
+              }
+
+              .stat-bar {
+                height: 100%;
+                transition:
+                  width 0.3s ease,
+                  opacity 0.3s ease;
+              }
+
+              .stat-value {
+                width: 80px;
+                text-align: left;
+                padding-left: 10px;
+              }
+            }
+          }
+        }
+        .rta-section3 {
+          .artifact-usage {
+            margin-top: 10px;
+            .arti-wrap {
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+            }
           }
         }
       }
@@ -228,7 +432,7 @@
         color 0.3s;
       font-size: 16px;
       font-weight: 500;
-
+      width: 100px;
       &:first-child {
         border-top-left-radius: 8px; // 첫 번째 탭의 왼쪽 상단 모서리만 둥글게
       }
@@ -245,76 +449,115 @@
   }
 }
 @media (max-width: 767px) {
-  .hero-dtl-header-wrap {
-    .hero-dtl-header {
-      height: 104px;
-      .profile-img-wrap {
-        width: 75px;
-        height: 75px;
-        .profile-img {
-          position: relative;
-          z-index: 1;
-          width: 75px;
-          height: 75px;
-        }
-        .profile-outline {
-          position: absolute;
-          top: -0.15em;
-          left: -0.15em;
-          z-index: 2;
-          width: 83px;
-          height: 83px;
-        }
-      }
-      .text-wrap {
-        .name-wrap {
-          margin-bottom: 5px;
-          span {
-            font-size: 18px;
+  .hero-dtl {
+    .hero-dtl-content {
+      .hero-dtl-header-wrap {
+        .hero-dtl-header {
+          height: 104px;
+          .profile-img-wrap {
+            width: 75px;
+            height: 75px;
+            .profile-img {
+              position: relative;
+              z-index: 1;
+              width: 75px;
+              height: 75px;
+            }
+            .profile-outline {
+              position: absolute;
+              top: -0.15em;
+              left: -0.15em;
+              z-index: 2;
+              width: 83px;
+              height: 83px;
+            }
           }
-          .star-wrap {
-            .star-icon {
-              width: 15px;
-              height: 15px;
+          .text-wrap {
+            .name-wrap {
+              margin-bottom: 5px;
+              span {
+                font-size: 18px;
+              }
+              .star-wrap {
+                .star-icon {
+                  width: 15px;
+                  height: 15px;
+                }
+              }
+            }
+            .info-wrap {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              .type-icon {
+                width: 22px;
+                height: 22px;
+              }
+              .zodiac-icon {
+                width: 20px;
+                height: 20px;
+              }
+              .job-icon {
+                width: 19px;
+                height: 19px;
+              }
+
+              span {
+                font-size: 14px;
+              }
+            }
+            .recently {
+              margin-top: 5px;
             }
           }
         }
-        .info-wrap {
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          .type-icon {
-            width: 22px;
-            height: 22px;
-          }
-          .zodiac-icon {
-            width: 20px;
-            height: 20px;
-          }
-          .job-icon {
-            width: 19px;
-            height: 19px;
-          }
+      }
 
-          span {
-            font-size: 14px;
+      .tab-content {
+        .builds-content {
+          .charts-container {
+            flex-direction: column;
+            .chart-wrapper {
+              width: 100% !important;
+            }
           }
         }
-        .recently {
-          margin-top: 5px;
+        .rta-content {
+          .rta-section1 {
+            flex-direction: column;
+            .rta-stats {
+              width: 100%;
+              flex-direction: row;
+              .hero-grid {
+                width: 50%;
+              }
+              .text {
+                width: 50%;
+              }
+            }
+            .rta-chart {
+              width: 100%;
+            }
+          }
+          .rta-section2 {
+            flex-direction: column;
+            .rta-left {
+              width: 100%;
+              margin-bottom: 20px;
+            }
+            .rta-right {
+              width: 100%;
+            }
+          }
         }
       }
     }
   }
+}
 
-  .tab-content {
-    .builds-content {
-      .charts-container {
-        flex-direction: column;
-        .chart-wrapper {
-          width: 100% !important;
-        }
-      }
-    }
-  }
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-style: italic;
 }

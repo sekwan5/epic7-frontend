@@ -2,7 +2,7 @@ import menus from "@/modules/menus.json";
 import CoImage from "../common/CoImages";
 import { useAppDispatch } from "@/store/hooks";
 import { toggleSidebar } from "@/store/appSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export function Header() {
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ export function Header() {
             onClick={() => dispatch(toggleSidebar())}
           />
         </div>
-        <div className="logo-left">
+        <Link to="/" className="logo-left">
           <CoImage
             className="pc-logo"
             src="/images/c2111_su.png" // public 폴더를 기준으로 한 경로
@@ -39,7 +39,7 @@ export function Header() {
             height={35} // 원하는 이미지의 높이
           />
           <span>Epic7.GG</span>
-        </div>
+        </Link>
         <div className="smodGnb">
           <div className="spanWarp">
             {menus.map((menu) => {

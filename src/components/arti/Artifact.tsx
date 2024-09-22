@@ -3,7 +3,13 @@ import { useRef, useEffect, useState } from "react";
 import CoImage from "../common/CoImages";
 import { getArtifactByCode } from "@/modules/data/getArtiData";
 
-export default function Artifact({ data }: { data: any }) {
+export default function Artifact({
+  data,
+  useStatus = true,
+}: {
+  data: any;
+  useStatus?: boolean;
+}) {
   const cardRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState(
@@ -108,10 +114,11 @@ export default function Artifact({ data }: { data: any }) {
           />
         ))}
       </div>
-      {artiData?.status === "new" || artiData?.status === "update" ? (
+      {useStatus &&
+      (artiData?.status === "new" || artiData?.status === "update") ? (
         <img
           className="status-icon"
-          src={`images/${artiData?.status}.png`}
+          src={`${imgUrl}/icon/${artiData?.status}.png`}
           alt="hero"
         />
       ) : null}

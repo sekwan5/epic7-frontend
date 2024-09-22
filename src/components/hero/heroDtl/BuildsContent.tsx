@@ -217,7 +217,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
     <div className="builds-content">
       <div className="charts-container">
         <div className="chart-wrapper">
-          <h3>평균 스탯 (상위2% 빌드)</h3>
+          <h3>평균 스탯 (상위2%)</h3>
           {hasNoBuilds ? (
             <p>데이터가 없습니다.</p>
           ) : (
@@ -294,9 +294,9 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
         </div>
       </div>
       <div className="artifact-usage">
-        <h3>아티팩트 사용률</h3>
+        <h3>아티팩트 채용률</h3>
         {hasNoBuilds ? (
-          <p>데이터가 없습니다.</p>
+          <p>아티팩트 채용률 데이터가 없습니다.</p>
         ) : (
           <div className="arti-wrap">
             {artifactUsage.map((item) => (
@@ -305,7 +305,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
                 style={{ marginBottom: "20px" }}
                 key={item.code}
               >
-                <Artifact data={item} />
+                <Artifact data={item} useStatus={false} />
               </div>
             ))}
           </div>

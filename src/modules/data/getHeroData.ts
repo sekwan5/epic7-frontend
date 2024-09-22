@@ -87,7 +87,35 @@ const heroes: HeroData = Object.fromEntries(
 );
 
 export function getAllHeroes(): IHero[] {
-  return Object.values(heroes);
+  return Object.values(heroes).sort((a, b) => {
+    // new와 update 상태의 영웅을 먼저 정렬
+    if (
+      (a.status === "new" || a.status === "update") &&
+      b.status !== "new" &&
+      b.status !== "update"
+    ) {
+      return -1;
+    }
+    if (
+      (b.status === "new" || b.status === "update") &&
+      a.status !== "new" &&
+      a.status !== "update"
+    ) {
+      return 1;
+    }
+
+    // new와 update 사이에서는 new가 먼저 오도록
+    if (a.status === "new" && b.status === "update") {
+      return -1;
+    }
+    if (b.status === "new" && a.status === "update") {
+      return 1;
+    }
+
+    // status가 같거나 둘 다 new/update가 아니라면 grade로 정렬
+    const gradeOrder: { [key: string]: number } = { "5": 3, "4": 2, "3": 1 };
+    return (gradeOrder[b.grade] || 0) - (gradeOrder[a.grade] || 0);
+  });
 }
 
 export function getHeroById(id: string): IHero | undefined {
