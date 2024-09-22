@@ -216,7 +216,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
     <div className="builds-content">
       <div className="charts-container">
         <div className="chart-wrapper">
-          <h3>평균 스탯 (상위2%)</h3>
+          <h3>평균 스탯</h3>
           {hasNoBuilds ? (
             <p>데이터가 없습니다.</p>
           ) : (

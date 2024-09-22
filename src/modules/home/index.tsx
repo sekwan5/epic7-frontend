@@ -20,7 +20,11 @@ export default function HomeContent() {
               <div className="hero-grid">
                 {heroList.map((item: IHero) => {
                   return (
-                    <Link to={`/hero/${item.id}`} className="col-6  ">
+                    <Link
+                      to={`/hero/${item.id}`}
+                      className="col-6"
+                      key={item.id}
+                    >
                       <div className="pick-box-wrap">
                         <PickBox data={item} />
                       </div>
