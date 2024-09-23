@@ -39,19 +39,21 @@ export default function CampingResult(props: ICampingResultRow) {
     }
   }, []);
 
-  const processCampingData = useCallback(() => {
+  const processCampingData = useCallback(async () => {
     if (campingHeroList.length >= 4) {
-      const tmpList = campingHeroList.map((item: IHero) => {
-        try {
-          return buildCampData(item);
-        } catch (error) {
-          console.error(
-            `Error processing camping data for hero: ${item.name}`,
-            error,
-          );
-          return item; // 에러 발생 시 원본 아이템 반환
-        }
-      });
+      const tmpList = await Promise.all(
+        campingHeroList.map(async (item: IHero) => {
+          try {
+            return buildCampData(item);
+          } catch (error) {
+            console.error(
+              `Error processing camping data for hero: ${item.name}`,
+              error,
+            );
+            return item; // 에러 발생 시 원본 아이템 반환
+          }
+        }),
+      );
 
       const combinations = getHeroCombinations(tmpList);
       const result = combinations.map((combination) => {
