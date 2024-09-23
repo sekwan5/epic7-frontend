@@ -70,7 +70,7 @@ export default function CampingResult(props: ICampingResultRow) {
     if (tab === 2) {
       processCampingData();
     }
-  }, [tab, processCampingData]);
+  }, []);
 
   return (
     <div className="camping-content-wrap">
