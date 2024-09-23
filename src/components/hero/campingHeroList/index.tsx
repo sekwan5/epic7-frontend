@@ -4,24 +4,14 @@ import { useEffect, useState } from "react";
 import HeroFilter from "../heroList/HeroFilter";
 import CampingTab from "../../camp/CampingTab";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import {
-  resetCampingHeroList,
-  setCampingResultList,
-  setHeroList,
-} from "@/store/campSlice";
+import { resetCampingHeroList, setHeroList } from "@/store/campSlice";
 import CampingResult from "@/components/camp/CampingResult";
-import {
-  CampDataBuilder,
-  getBestChatOptions,
-  getHeroCombinations,
-} from "@/components/camp/hook";
 import { getAllHeroes, IHero } from "@/modules/data/getHeroData";
 
 export default function CampingList() {
   const dispatch = useAppDispatch();
 
-  const { heroList, campingHeroList, campResultList, campBookMarkList } =
-    useAppSelector((state) => state.camp);
+  const { heroList } = useAppSelector((state) => state.camp);
   const [tab, setTab] = useState(0);
 
   useEffect(() => {
@@ -43,42 +33,6 @@ export default function CampingList() {
   const setData = (data: IHero[]) => {
     dispatch(setHeroList(data));
   };
-  useEffect(() => {
-    if (campingHeroList.length >= 4) {
-      const tmpList = campingHeroList.map((item: IHero) => {
-        try {
-          if (item.camping && item.camping.personalities) {
-            const campValue = CampDataBuilder(item.camping.personalities);
-            return {
-              ...item,
-              camping: {
-                ...item.camping,
-                campValue,
-              },
-            };
-          } else {
-            console.warn(`Missing camping data for hero: ${item.name}`);
-            return item; // 캠핑 데이터가 없는 경우 원본 아이템 반환
-          }
-        } catch (error) {
-          console.error(
-            `Error processing camping data for hero: ${item.name}`,
-            error,
-          );
-          return item; // 에러 발생 시 원본 아이템 반환
-        }
-      });
-
-      const combinations = getHeroCombinations(tmpList);
-      const result = combinations.map((combination) => {
-        return getBestChatOptions(combination);
-      });
-      result.sort((a, b) => b.score - a.score);
-      dispatch(setCampingResultList(result));
-    } else {
-      dispatch(setCampingResultList([]));
-    }
-  }, [campingHeroList]);
 
   return (
     <div className="hero-list">
@@ -97,12 +51,12 @@ export default function CampingList() {
       )}
       {tab === 2 && (
         <>
-          <CampingResult data={campResultList} useBookMark={true} />
+          <CampingResult tab={2} />
         </>
       )}
       {tab === 3 && (
         <>
-          <CampingResult data={campBookMarkList} useBookMark={false} />
+          <CampingResult tab={3} />
         </>
       )}
     </div>

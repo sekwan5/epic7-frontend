@@ -1,12 +1,16 @@
 import HeroIcon from "../hero/heroIcon";
 import { useState } from "react";
-import { ICampingResultRow } from "./CampingResult";
 import { useAppDispatch } from "@/store/hooks";
 import {
   delCampingBookMarkList,
   setCampingBookMarkList,
 } from "@/store/campSlice";
 import { CampingResult } from "@/modules/api/hero";
+
+export interface ICampingResultRow {
+  data: CampingResult[];
+  useBookMark: boolean;
+}
 
 export default function CampingResultRow(props: ICampingResultRow) {
   const { data = [], useBookMark = true } = props;
