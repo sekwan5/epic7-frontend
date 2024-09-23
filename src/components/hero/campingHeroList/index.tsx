@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import HeroIconGrid from "./HeroIconGrid";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import HeroFilter from "../heroList/HeroFilter";
 import CampingTab from "../../camp/CampingTab";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -18,9 +18,9 @@ export default function CampingList() {
     if (heroList.length < 1) {
       getHeroList();
     }
-  }, []);
+  }, [heroList.length]);
 
-  const getHeroList = () => {
+  const getHeroList = useCallback(() => {
     const heroList = getAllHeroes();
     const updatedHeroList = heroList.map((hero) => ({
       ...hero,
@@ -28,11 +28,14 @@ export default function CampingList() {
     }));
     dispatch(setHeroList(updatedHeroList));
     dispatch(resetCampingHeroList());
-  };
+  }, [dispatch]);
 
-  const setData = (data: IHero[]) => {
-    dispatch(setHeroList(data));
-  };
+  const setData = useCallback(
+    (data: IHero[]) => {
+      dispatch(setHeroList(data));
+    },
+    [dispatch],
+  );
 
   return (
     <div className="hero-list">
@@ -49,16 +52,7 @@ export default function CampingList() {
           <HeroIconGrid data={heroList} setData={setData} tab={1} />
         </>
       )}
-      {tab === 2 && (
-        <>
-          <CampingResult tab={2} />
-        </>
-      )}
-      {tab === 3 && (
-        <>
-          <CampingResult tab={3} />
-        </>
-      )}
+      {tab > 1 && <CampingResult tab={tab} />}
     </div>
   );
 }
