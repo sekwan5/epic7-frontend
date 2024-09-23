@@ -1,6 +1,5 @@
 import CoImage from "@/components/common/CoImages";
 import { Fragment } from "react";
-import LazyLoad from "react-lazyload";
 
 export default function ProfileImg(props: { id: string }) {
   const profileImage =
@@ -14,13 +13,11 @@ export default function ProfileImg(props: { id: string }) {
         src={"/images/img_profile_wrap.png"}
         alt="profile"
       />
-      <LazyLoad height={100} offset={100}>
-        <CoImage
-          className="profile-img"
-          src={`${imgUrl}/hero_images/${props.id}.png` || profileImage}
-          alt="profile"
-        />
-      </LazyLoad>
+      <CoImage
+        className="profile-img"
+        src={`${imgUrl}/hero_images/${props.id}.png` || profileImage}
+        alt="profile"
+      />{" "}
     </Fragment>
   );
 }
