@@ -1,31 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IHero } from "@/modules/data/getHeroData";
 
-const memoizedCampDataBuilder = new Map<string, Record<string, number>>();
-
-export function CampDataBuilder(
-  personalities: string[],
-): Record<string, number> {
-  const key = personalities.join(",");
-  if (memoizedCampDataBuilder.has(key)) {
-    return memoizedCampDataBuilder.get(key)!;
-  }
-
-  const res: Record<string, number> = {};
+export function CampDataBuilder(personalities: string[]) {
+  const res = {};
   const p = Array.isArray(personalities) ? personalities : [-1, -1];
 
   for (let i = 0; i < campData.topics.length; i++) {
     const topic = campData.topics[i];
-    res[topic.name] =
+    (res as Record<string, number>)[topic.name] =
       Math.max(topic.values[p[0] as number] || 0, 0) +
       Math.max(topic.values[p[1] as number] || 0, 0);
   }
-
-  memoizedCampDataBuilder.set(key, res);
   return res;
 }
 
-export function getHeroCombinations(heroList: IHero[]): IHero[][] {
+export function getHeroCombinations(heroList: any[]) {
   const getCombinations = (arr: IHero[], selectNumber: number): IHero[][] => {
     const results: IHero[][] = [];
     if (selectNumber === 1) return arr.map((value) => [value]);
@@ -47,6 +36,7 @@ export function getHeroCombinations(heroList: IHero[]): IHero[][] {
   const unlockedHeroes = heroList.filter((hero) => !hero.isLock);
 
   if (lockedHeroes.length >= 4) {
+    // lockedHeroes가 4개 이상인 경우, 첫 4개의 lockedHeroes만 반환
     return [lockedHeroes.slice(0, 4)];
   } else {
     const requiredCount = 4 - lockedHeroes.length;
@@ -61,19 +51,15 @@ export function getHeroCombinations(heroList: IHero[]): IHero[][] {
   }
 }
 
-export function getBestChatOptions(team: IHero[]): {
-  team: IHero[];
-  bestChatOption1: any;
-  bestChatOption2: any;
-  score: number;
-} {
+export function getBestChatOptions(team: any[]) {
   const arrOfScoreObj: Array<{
     option_en: string;
     option_kr: string;
-    hero: IHero;
+    hero: any;
     score: number;
   }> = [];
 
+  // 각 팀 멤버의 캠핑 옵션을 배열에 추가
   team.forEach((hero) => {
     arrOfScoreObj.push({
       option_en: hero.camping.topics_en[0],
@@ -89,23 +75,20 @@ export function getBestChatOptions(team: IHero[]): {
     });
   });
 
+  // 각 옵션의 점수를 계산
   arrOfScoreObj.forEach((optionObj) => {
     let score = 0;
-    team.forEach((hero: IHero) => {
-      score +=
-        hero.camping.common[
-          optionObj.option_en as keyof typeof hero.camping.common
-        ];
+    team.forEach((hero) => {
+      score += hero.camping.campValue[optionObj.option_en];
     });
-    score -=
-      optionObj.hero.camping.common[
-        optionObj.option_en as keyof typeof optionObj.hero.camping.common
-      ];
+    score -= optionObj.hero.camping.campValue[optionObj.option_en];
     optionObj.score = score;
   });
 
-  arrOfScoreObj.sort((a, b) => b.score - a.score);
+  // 점수 순으로 정렬
+  arrOfScoreObj.sort(compareScores);
 
+  // 중복된 옵션 제거
   const uniqueOptions = new Set();
   const uniqueArrOfScoreObj = arrOfScoreObj.filter((obj) => {
     if (uniqueOptions.has(obj.option_en)) {
@@ -126,6 +109,9 @@ export function getBestChatOptions(team: IHero[]): {
   return optimalCampForTeam;
 }
 
+function compareScores(a: any, b: any) {
+  return b.score - a.score;
+}
 export const campData = {
   personalities: [
     "Introvert",
@@ -807,6 +793,42 @@ export const campData = {
         0,
         4,
         0,
+      ],
+    },
+    {
+      name: "Advice",
+      values: [
+        3,
+        1,
+        1,
+        2,
+        3,
+        3,
+        1,
+        2,
+        -2,
+        2,
+        2,
+        0,
+        2,
+        5,
+        null,
+        3,
+        null,
+        null,
+        3,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2,
+        2,
+        2,
+        -2,
+        0,
+        1,
+        2,
       ],
     },
     {
