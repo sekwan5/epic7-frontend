@@ -108,6 +108,8 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
       const extractedText = result[0].fullTextAnnotation
         ? result[0].fullTextAnnotation.text
         : "No text found";
+      const list = extractedText.split("\n");
+      console.log("list", list);
       // const extractedText = result.responses[0].fullTextAnnotation
       //   ? result.responses[0].fullTextAnnotation.text
       //   : "No text found";
