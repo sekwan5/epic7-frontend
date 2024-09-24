@@ -1,0 +1,16 @@
+.gear-owner {
+  .gear-owner-content {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    .content-left {
+      width: 100%;
+    }
+    .content-right {
+      width: 20%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+}

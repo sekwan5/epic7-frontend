@@ -1,5 +1,3 @@
-// Copyright © Amazon.com and Affiliates: This deliverable is considered Developed Content as defined in the AWS Service Terms and the SOW between the parties dated 2024/02/07.
-
 import { getHeroById, IHero } from "@/modules/data/getHeroData";
 import HeroDtlWrap from "@/modules/heroDtl";
 import {
@@ -32,5 +30,9 @@ export function Component() {
     id: string;
     hero: IHero;
   };
-  return <HeroDtlWrap data={hero} id={id} />;
+  return (
+    <>
+      <HeroDtlWrap data={hero} id={id} />
+    </>
+  );
 }

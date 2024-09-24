@@ -1,11 +1,5 @@
-import CampingList from "@/components/hero/campingHeroList";
+import CampingWrap from "@/modules/camping";
 
 export function Component() {
-  return (
-    <div className="container">
-      <div className="hero-list-wrap">
-        <CampingList />
-      </div>
-    </div>
-  );
+  return <CampingWrap />;
 }

@@ -39,6 +39,13 @@
 .valign-bottom {
   align-items: flex-end !important;
 }
+.page-title {
+  padding: 20px 0;
+  color: #fff;
+  .page-path {
+    font-size: 21px;
+  }
+}
 .conArea {
   width: 100%;
   display: inline-grid;
