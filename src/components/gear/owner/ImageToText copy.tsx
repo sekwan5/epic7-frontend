@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import test from "@/modules/test.json";
 
 // Tesseract.js의 WorkerOptions 타입을 확장합니다.
 
@@ -67,50 +66,45 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
   const handleExtractText = async () => {
     if (!canvasRef.current) return;
 
-    // const canvas = canvasRef.current;
-    // const imageDataUrl = canvas.toDataURL("image/png");
-    // const base64Image = imageDataUrl.replace(
-    //   /^data:image\/(png|jpeg|jpg);base64,/,
-    //   "",
-    // );
+    const canvas = canvasRef.current;
+    const imageDataUrl = canvas.toDataURL("image/png");
+    const base64Image = imageDataUrl.replace(
+      /^data:image\/(png|jpeg|jpg);base64,/,
+      "",
+    );
 
     // Tesseract.js를 사용하여 선택된 영역의 텍스트만 추출
-    // const apiKey = "AIzaSyDapu8iTty2V_6E7Kk70KohQE0j2vcb0M8"; // 여기에 Google Vision API 키를 입력하세요
-    // const visionApiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
+    const apiKey = "AIzaSyDapu8iTty2V_6E7Kk70KohQE0j2vcb0M8"; // 여기에 Google Vision API 키를 입력하세요
+    const visionApiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
 
-    // const requestPayload = {
-    //   requests: [
-    //     {
-    //       image: {
-    //         content: base64Image,
-    //       },
-    //       features: [
-    //         {
-    //           type: "TEXT_DETECTION",
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // };
+    const requestPayload = {
+      requests: [
+        {
+          image: {
+            content: base64Image,
+          },
+          features: [
+            {
+              type: "TEXT_DETECTION",
+            },
+          ],
+        },
+      ],
+    };
 
     try {
-      // const response = await fetch(visionApiUrl, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(requestPayload),
-      // });
-      const response = test;
+      const response = await fetch(visionApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestPayload),
+      });
 
-      // const result = await response.json();
-      const result = response;
-      const extractedText = result[0].fullTextAnnotation
-        ? result[0].fullTextAnnotation.text
+      const result = await response.json();
+      const extractedText = result.responses[0].fullTextAnnotation
+        ? result.responses[0].fullTextAnnotation.text
         : "No text found";
-      // const extractedText = result.responses[0].fullTextAnnotation
-      //   ? result.responses[0].fullTextAnnotation.text
-      //   : "No text found";
 
       setResultText(extractedText);
     } catch (error) {
