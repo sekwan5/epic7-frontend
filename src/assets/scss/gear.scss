@@ -3,14 +3,25 @@
     color: #fff;
     display: flex;
     flex-direction: column;
-    .content-left {
-      width: 100%;
-    }
-    .content-right {
-      width: 20%;
+    .img-to-text {
+      .img-wrap {
+        position: relative;
+        width: 70%;
+        max-width: 1180px;
+        aspect-ratio: 16/9;
+      }
     }
   }
 }
 
 @media (max-width: 767px) {
+  .gear-owner {
+    .gear-owner-content {
+      .img-to-text {
+        .img-wrap {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
