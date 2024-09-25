@@ -17,6 +17,7 @@ $text-color: #fff;
 
 .hero-list {
   color: #fff;
+  min-height: calc(50vh);
   .hero-filter-wrap {
     display: flex;
     flex-direction: column;

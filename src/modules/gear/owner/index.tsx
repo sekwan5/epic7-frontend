@@ -10,10 +10,14 @@ import {
 import { ImageToText, IParseData } from "@/components/gear/owner/ImageToText";
 // import { GearRecommendation } from "@/modules/api/hero"; // 새로운 인터페이스 import
 import { api } from "@/modules/api";
+import HeroFilter from "@/components/hero/heroList/HeroFilter";
+import HeroGrid from "@/components/hero/heroList/HeroGrid";
+import { IHero } from "@/modules/data/getHeroData";
 
 export function GearOwnerWrap() {
   // const [recommendations, setRecommendations] =
   //   useState<GearRecommendation | null>(null);
+  const [data, setData] = useState<IHero[]>([]);
 
   const recommendHeroes = async (data: IParseData) => {
     try {
@@ -143,6 +147,10 @@ export function GearOwnerWrap() {
               </div>
             )} */}
           </div>
+        </div>
+        <div className="hero-list">
+          <HeroFilter data={data} setData={setData} />
+          <HeroGrid data={data} setData={setData} />
         </div>
       </div>
     </>

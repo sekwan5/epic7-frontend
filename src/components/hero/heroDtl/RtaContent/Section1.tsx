@@ -6,17 +6,23 @@ import {
   ResponsiveContainer,
   ComposedChart,
   Bar,
+  XAxis,
+  YAxis,
 } from "recharts";
 import PickBox from "../../PickBox";
 import { IHero } from "@/modules/data/getHeroData";
 import { IRTAData } from "@/modules/api";
-import CustomXAxis from "./CustomXAxis";
-import CustomYAxis from "./CustomYAxis";
+import moment from "moment";
 export interface DailyStats {
   date: string;
   games: number;
   win_rate: number;
 }
+
+const formatXAxis = (tickItem: string) => {
+  return moment(tickItem).format("MM/DD"); // 월/일 형식으로 변경
+};
+
 export function Section1({
   heroData,
   rtaData,
@@ -68,9 +74,9 @@ export function Section1({
               {(rtaData.pick_count ?? 0) - (rtaData.wins ?? 0)} 패)
             </span>
           </p>
-          <p className="large">
+          {/* <p className="large">
             <span className="sub-info">엠퍼러, 레전드등급</span>
-          </p>
+          </p> */}
         </div>
       </div>
       {dailyStats.length > 0 ? (
@@ -78,22 +84,16 @@ export function Section1({
           <ResponsiveContainer>
             <ComposedChart data={dailyStats}>
               <CartesianGrid strokeDasharray="3 3" />
-              <CustomXAxis
+              <XAxis
                 dataKey="date"
                 angle={-45}
                 textAnchor="end"
                 height={70}
                 interval={0}
-                allowDataOverflow={false}
-                allowDecimals={true}
-                allowDuplicatedCategory={true}
+                tickFormatter={formatXAxis}
               />
-              <CustomYAxis yAxisId="left" orientation="left" stroke="#FF4D6D" />
-              <CustomYAxis
-                yAxisId="right"
-                orientation="right"
-                stroke="#399eee"
-              />
+              <YAxis yAxisId="left" orientation="left" stroke="#FF4D6D" />
+              <YAxis yAxisId="right" orientation="right" stroke="#399eee" />
               <Tooltip />
               <Legend />
               <Bar
