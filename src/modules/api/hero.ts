@@ -3,6 +3,7 @@ import { AxiosInstance } from "axios";
 import { IndexSignatureType } from "../types";
 import { ApiBase } from "./base";
 import { IHero } from "../data/getHeroData";
+import { IParseData } from "@/components/gear/owner/ImageToText";
 export interface IHeroBuild {
   hero_id: string;
   artifactCode: string;
@@ -85,6 +86,15 @@ export interface IRTAData {
   };
 }
 
+export interface GearRecommendation {
+  recommendations: Array<{
+    hero_id: string;
+    score: number;
+    // 필요한 다른 필드들...
+  }>;
+  total_recommendations: number;
+}
+
 export class ApiHero extends ApiBase<IndexSignatureType> {
   client: AxiosInstance;
 
@@ -102,5 +112,11 @@ export class ApiHero extends ApiBase<IndexSignatureType> {
     return this.client.get(`/builds/statistics/${hero_id}`).then((res) => {
       return res.data;
     });
+  }
+
+  async recommendHeroes(gearData: IParseData): Promise<GearRecommendation> {
+    return this.client
+      .post("/heroes/recommend", gearData)
+      .then((res) => res.data);
   }
 }

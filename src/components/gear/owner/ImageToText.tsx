@@ -173,6 +173,31 @@ export function ImageToText({ setParseData }: ImageToTextProps) {
     };
   }
   const handleExtractText = async () => {
+    //     setParseData({
+    //     "parsedData": [
+    //       {
+    //           "key": "hp",
+    //           "value": "65%"
+    //       },
+    //       {
+    //           "key": "def",
+    //           "value": "17%"
+    //       },
+    //       {
+    //           "key": "spd",
+    //           "value": "12"
+    //       },
+    //       {
+    //           "key": "efr",
+    //           "value": "20%"
+    //       },
+    //       {
+    //           "key": "eff",
+    //           "value": "8%"
+    //       }
+    //   ],
+    //   "set": "속도44"
+    // });
     if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
@@ -213,17 +238,19 @@ export function ImageToText({ setParseData }: ImageToTextProps) {
       const result = await response.json();
       // const result = response;
       console.log("result", result);
-      const extractedText = result.responses[0].fullTextAnnotation
-        ? result.responses[0].fullTextAnnotation.text
-        : "No text found";
-      const list = extractedText.split("\n");
-      const data = parseEquipmentData(list);
-      setParseData(data);
-      // const extractedText = result.responses[0].fullTextAnnotation
-      //   ? result.responses[0].fullTextAnnotation.text
-      //   : "No text found";
+      if (!result.responses[0].fullTextAnnotation) {
+        alert("옵션 추출에 실패했습니다.");
+        return;
+      } else {
+        const extractedText = result.responses[0].fullTextAnnotation
+          ? result.responses[0].fullTextAnnotation.text
+          : "No text found";
+        const list = extractedText.split("\n");
+        const data = parseEquipmentData(list);
+        console.log(data);
 
-      // setText(extractedText);
+        setParseData(data);
+      }
     } catch (error) {
       console.error("Error fetching Vision API:", error);
       // setText("텍스트 추출 실패");
@@ -232,6 +259,17 @@ export function ImageToText({ setParseData }: ImageToTextProps) {
 
   return (
     <div className="img-to-text">
+      <div className="d-flex">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+        />
+        <button onClick={handleFileButtonClick}>이미지 선택</button>
+        <button onClick={handleExtractText}>텍스트 추출</button>
+      </div>
       <div className="canvas-wrap">
         {selectedImage && (
           <>
@@ -243,17 +281,6 @@ export function ImageToText({ setParseData }: ImageToTextProps) {
             />
           </>
         )}
-      </div>
-      <div className="d-flex">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageUpload}
-          ref={fileInputRef}
-          style={{ display: "none" }}
-        />
-        <button onClick={handleFileButtonClick}>이미지 선택</button>
-        <button onClick={handleExtractText}>텍스트 추출</button>
       </div>
     </div>
   );

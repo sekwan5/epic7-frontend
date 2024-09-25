@@ -4,8 +4,8 @@ export const geOptionValueToName = (value: string) => {
     생명력: "hp",
     방어력: "def",
     속도: "spd",
-    치명피해: "chc",
-    치명피해율: "chd",
+    치명확률: "chc",
+    치명피해: "chd",
     효과적중: "eff",
     효과저항: "efr",
   };
@@ -16,26 +16,58 @@ export const geSetValueToName = (value: string) => {
   if (value.includes("속도")) {
     return "set_speed";
   }
-
+  if (value.includes("분노")) {
+    return "set_rage";
+  }
+  if (value.includes("흡혈")) {
+    return "set_vampire";
+  }
+  if (value.includes("복수")) {
+    return "set_revenge";
+  }
+  if (value.includes("치명")) {
+    return "set_cri";
+  }
+  if (value.includes("협공")) {
+    return "set_coop";
+  }
+  if (value.includes("상처")) {
+    return "set_scar";
+  }
+  if (value.includes("저항")) {
+    return "set_res";
+  }
+  if (value.includes("적중")) {
+    return "set_acc";
+  }
+  if (value.includes("반격")) {
+    return "set_counter";
+  }
   if (value.includes("면역")) {
     return "set_immune";
   }
-
   if (value.includes("수호")) {
     return "set_shield";
   }
-
-  if (value.includes("파멸")) {
-    return "set_destruction";
-  }
-
-  if (value.includes("격류")) {
-    return "set_torrent";
-  }
-
   if (value.includes("공격")) {
     return "set_att";
   }
+  if (value.includes("격류")) {
+    return "set_torrent";
+  }
+  if (value.includes("파멸")) {
+    return "set_cri_dmg";
+  }
+  if (value.includes("방어")) {
+    return "set_def";
+  }
+  if (value.includes("체력")) {
+    return "set_max_hp";
+  }
+  if (value.includes("관통")) {
+    return "set_penetrate";
+  }
+  return "";
 };
 
 export const options1 = [
@@ -81,6 +113,7 @@ export const options1 = [
     set_qty: 2,
     set_desc: "협공 확률이 8% 증가합니다.",
   },
+
   {
     name: "상처의 세트",
     value: "set_scar",
@@ -206,3 +239,189 @@ export const options2 = [
     name: "효과저항",
   },
 ];
+
+export const mock = {
+  recommendations: [
+    {
+      hero_id: "c2106",
+      name: "용의 반려 셰나",
+      score: 34.8,
+      grade: "5",
+    },
+    {
+      hero_id: "c2012",
+      name: "어둠의 코르부스",
+      score: 33.2,
+      grade: "5",
+    },
+    {
+      hero_id: "c1131",
+      name: "율하",
+      score: 31.2,
+      grade: "5",
+    },
+    {
+      hero_id: "c2002",
+      name: "나락의 세실리아",
+      score: 29.9,
+      grade: "5",
+    },
+    {
+      hero_id: "c1156",
+      name: "알베도",
+      score: 28.5,
+      grade: "5",
+    },
+    {
+      hero_id: "c2070",
+      name: "라스트 라이더 크라우",
+      score: 28.2,
+      grade: "5",
+    },
+    {
+      hero_id: "c1070",
+      name: "크라우",
+      score: 27.6,
+      grade: "5",
+    },
+    {
+      hero_id: "c1159",
+      name: "라이아",
+      score: 27.4,
+      grade: "5",
+    },
+    {
+      hero_id: "c2042",
+      name: "야심가 타이윈",
+      score: 26.5,
+      grade: "5",
+    },
+    {
+      hero_id: "c5149",
+      name: "레테",
+      score: 26.4,
+      grade: "5",
+    },
+    {
+      hero_id: "c1042",
+      name: "타이윈",
+      score: 25.6,
+      grade: "5",
+    },
+    {
+      hero_id: "c2073",
+      name: "조율자 카웨릭",
+      score: 25.6,
+      grade: "5",
+    },
+    {
+      hero_id: "c1102",
+      name: "로앤나",
+      score: 25.3,
+      grade: "5",
+    },
+    {
+      hero_id: "c1022",
+      name: "빛의 루엘",
+      score: 24.2,
+      grade: "5",
+    },
+    {
+      hero_id: "c2022",
+      name: "데스티나",
+      score: 24,
+      grade: "5",
+    },
+    {
+      hero_id: "c2019",
+      name: "화란의 라비",
+      score: 23.7,
+      grade: "5",
+    },
+    {
+      hero_id: "c1100",
+      name: "알렌시아",
+      score: 23.4,
+      grade: "5",
+    },
+    {
+      hero_id: "c1036",
+      name: "크로제",
+      score: 27.7,
+      grade: "4",
+    },
+    {
+      hero_id: "c2036",
+      name: "무법자 크로제",
+      score: 27.3,
+      grade: "4",
+    },
+    {
+      hero_id: "c2035",
+      name: "대장 퍼지스",
+      score: 26.9,
+      grade: "4",
+    },
+    {
+      hero_id: "c1062",
+      name: "안젤리카",
+      score: 26.3,
+      grade: "4",
+    },
+    {
+      hero_id: "c1107",
+      name: "키즈나 아이",
+      score: 24.1,
+      grade: "4",
+    },
+    {
+      hero_id: "c1017",
+      name: "아카테스",
+      score: 23.4,
+      grade: "4",
+    },
+    {
+      hero_id: "c3002",
+      name: "타라노르 왕궁병사",
+      score: 30.5,
+      grade: "3",
+    },
+    {
+      hero_id: "c4004",
+      name: "자유기사 아로웰",
+      score: 29.9,
+      grade: "3",
+    },
+    {
+      hero_id: "c5001",
+      name: "모험가 라스",
+      score: 26.2,
+      grade: "3",
+    },
+    {
+      hero_id: "c3004",
+      name: "아로웰",
+      score: 25.9,
+      grade: "3",
+    },
+    {
+      hero_id: "c4044",
+      name: "마법학자 도리스",
+      score: 25.4,
+      grade: "3",
+    },
+    {
+      hero_id: "c1001",
+      name: "라스",
+      score: 24.8,
+      grade: "3",
+    },
+    {
+      hero_id: "c3104",
+      name: "소니아",
+      score: 23.5,
+      grade: "3",
+    },
+  ],
+  total_recommendations: 30,
+};

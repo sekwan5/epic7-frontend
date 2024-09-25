@@ -1,45 +1,61 @@
 import { PageTitle } from "@/components/common/PageTitle";
 import { SelectBox } from "@/components/common/SelectBox";
 import { useState } from "react";
-import { geOptionValueToName, options1, options2 } from "./hook";
+import {
+  geOptionValueToName,
+  geSetValueToName,
+  options1,
+  options2,
+} from "./hook";
 import { ImageToText, IParseData } from "@/components/gear/owner/ImageToText";
+// import { GearRecommendation } from "@/modules/api/hero"; // 새로운 인터페이스 import
+import { api } from "@/modules/api";
 
 export function GearOwnerWrap() {
-  // const [parsData, setParseData] = useState<string>("텍스트가 여기에 표시됩니다.");
-  // const [searchMethod, setSearchMethod] = useState<number>(0); // 기본값을 "장비 찾기"로 설정
+  // const [recommendations, setRecommendations] =
+  //   useState<GearRecommendation | null>(null);
 
-  const setParseData = (data: IParseData) => {
-    setValue({
-      set: { key: "", value: "" },
-      main: {
-        key: geOptionValueToName(data.parsedData[0].key),
-        value: data.parsedData[0].value,
-      },
-      sub1: {
-        key: geOptionValueToName(data.parsedData[1].key),
-        value: data.parsedData[1].value,
-      },
-      sub2: {
-        key: geOptionValueToName(data.parsedData[2].key),
-        value: data.parsedData[2].value,
-      },
-      sub3: {
-        key: geOptionValueToName(data.parsedData[3].key),
-        value: data.parsedData[3].value,
-      },
-      sub4: {
-        key: geOptionValueToName(data.parsedData[4].key),
-        value: data.parsedData[4].value,
-      },
-    });
+  const recommendHeroes = async (data: IParseData) => {
+    try {
+      const result = await api.hero.recommendHeroes(data);
+      console.log(result);
+      // setRecommendations(result);
+    } catch (error) {
+      console.error("Error recommending heroes:", error);
+    }
   };
-  const [value, setValue] = useState({
-    set: { key: "", value: "" },
-    main: { key: "", value: "" },
-    sub1: { key: "", value: "" },
-    sub2: { key: "", value: "" },
-    sub3: { key: "", value: "" },
-    sub4: { key: "", value: "" },
+
+  const setParseData = async (data: IParseData) => {
+    // parsedData의 각 항목에 대해 key를 변환
+    console.log(data);
+    data.parsedData = data.parsedData.map((item) => ({
+      ...item,
+      key: geOptionValueToName(item.key as string),
+    }));
+
+    // parsedData의 길이가 5개 미만이면 빈 객체 추가
+    // while (data.parsedData.length < 5) {
+    //   data.parsedData.push({ key: "", value: "" });
+    // }
+
+    setValue({
+      set: geSetValueToName(data.set as string),
+      parsedData: data.parsedData,
+    });
+
+    // 데이터 설정 후 영웅 추천 실행
+    // await recommendHeroes(data);
+  };
+
+  const [value, setValue] = useState<IParseData>({
+    parsedData: [
+      { key: "", value: "" },
+      { key: "", value: "" },
+      { key: "", value: "" },
+      { key: "", value: "" },
+      { key: "", value: "" },
+    ],
+    set: "",
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -67,51 +83,65 @@ export function GearOwnerWrap() {
               <SelectBox
                 options={options1}
                 label="세트"
-                value={value.set.key}
+                value={value.set ?? ""}
                 onChange={handleChange}
                 useInput={false}
               />
               <SelectBox
                 options={options2}
                 label="주옵션"
-                value={value.main.key}
-                inputValue={value.main.value}
+                value={value.parsedData[0].key ?? ""}
+                inputValue={value.parsedData[0].value ?? ""}
                 onChange={handleChange}
                 handleInputChange={handleInputChange}
               />
               <SelectBox
                 options={options2}
                 label="부옵션"
-                value={value.sub1.key}
-                inputValue={value.sub1.value}
+                value={value.parsedData[1].key ?? ""}
+                inputValue={value.parsedData[1].value ?? ""}
                 onChange={handleChange}
                 handleInputChange={handleInputChange}
               />
               <SelectBox
                 options={options2}
                 label="부옵션"
-                value={value.sub2.key}
-                inputValue={value.sub2.value}
+                value={value.parsedData[2].key ?? ""}
+                inputValue={value.parsedData[2].value ?? ""}
                 onChange={handleChange}
                 handleInputChange={handleInputChange}
               />
               <SelectBox
                 options={options2}
                 label="부옵션"
-                value={value.sub3.key}
-                inputValue={value.sub3.value}
+                value={value.parsedData[3].key ?? ""}
+                inputValue={value.parsedData[3].value ?? ""}
                 onChange={handleChange}
                 handleInputChange={handleInputChange}
               />
               <SelectBox
                 options={options2}
                 label="부옵션"
-                value={value.sub4.key}
-                inputValue={value.sub4.value}
+                value={value.parsedData[4].key ?? ""}
+                inputValue={value.parsedData[4].value ?? ""}
                 onChange={handleChange}
                 handleInputChange={handleInputChange}
               />
+              <button onClick={() => recommendHeroes(value)}>찾기</button>
             </div>
+            {/* {recommendations && (
+              <div className="recommendations">
+                <h3>추천 영웅</h3>
+                <ul>
+                  {recommendations.recommendations.map((rec, index) => (
+                    <li key={index}>
+                      영웅 ID: {rec.hero_id}, 점수: {rec.score}
+                    </li>
+                  ))}
+                </ul>
+                <p>총 추천 수: {recommendations.total_recommendations}</p>
+              </div>
+            )} */}
           </div>
         </div>
       </div>
