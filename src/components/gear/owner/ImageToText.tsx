@@ -1,17 +1,22 @@
 import React, { useState, useRef } from "react";
 
 // Tesseract.js의 WorkerOptions 타입을 확장합니다.
-
+export interface IParseData {
+  parsedData: {
+    key: string;
+    value: string;
+  }[];
+  set: string | null;
+}
 interface ImageToTextProps {
-  setText: (text: string) => void;
+  setParseData: (item: IParseData) => void;
 }
 
-const ImageToText = ({ setText }: ImageToTextProps) => {
+export function ImageToText({ setParseData }: ImageToTextProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [resultText, setResultText] = useState<string>("");
-  const [processedImage, setProcessedImage] = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const visionApiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   // 이미지 전처리 함수
   const processImage = (image: HTMLImageElement) => {
     const canvas = canvasRef.current;
@@ -41,9 +46,6 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
     }
 
     ctx.putImageData(imageData, 0, 0);
-
-    const processedImageUrl = canvas.toDataURL("image/png");
-    setProcessedImage(processedImageUrl);
   };
 
   // 이미지 업로드 핸들러
@@ -62,6 +64,10 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleFileButtonClick = () => {
+    fileInputRef.current?.click();
   };
 
   type ParsedData = {
@@ -151,10 +157,12 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
       }
 
       if (currentKey.includes("세트")) {
-        const setParts = currentKey.match(/([가-힣]+)의세트/);
-        if (setParts && setParts[1]) {
-          setInfo = setParts[1];
-        }
+        setInfo = currentKey
+          .replace(/[^가-힣a-zA-Z0-9%]/g, "")
+          .replace("의", "")
+          .replace("세트", "")
+          .trim();
+
         continue;
       }
     }
@@ -209,28 +217,22 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
         ? result.responses[0].fullTextAnnotation.text
         : "No text found";
       const list = extractedText.split("\n");
-      console.log("list", list);
       const data = parseEquipmentData(list);
-      console.log("data", data);
+      setParseData(data);
       // const extractedText = result.responses[0].fullTextAnnotation
       //   ? result.responses[0].fullTextAnnotation.text
       //   : "No text found";
 
-      setResultText(extractedText);
+      // setText(extractedText);
     } catch (error) {
       console.error("Error fetching Vision API:", error);
-      setText("텍스트 추출 실패");
+      // setText("텍스트 추출 실패");
     }
   };
 
   return (
     <div className="img-to-text">
-      <div className="d-flex">
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        <button onClick={handleExtractText}>텍스트 추출</button>
-      </div>
-
-      <div className="d-flex flex-column">
+      <div className="canvas-wrap">
         {selectedImage && (
           <>
             <canvas ref={canvasRef} style={{ display: "none" }}></canvas>
@@ -241,31 +243,18 @@ const ImageToText = ({ setText }: ImageToTextProps) => {
             />
           </>
         )}
-
-        {processedImage && (
-          <div>
-            <h4>전처리된 이미지 미리보기</h4>
-            <img
-              src={processedImage}
-              alt="Processed"
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-                border: "1px solid red",
-              }}
-            />
-          </div>
-        )}
-
-        <textarea
-          value={resultText}
-          readOnly
-          style={{ width: "100%", height: "200px", marginTop: "20px" }}
-        />
       </div>
-      {/* 전처리된 이미지 미리보기 */}
+      <div className="d-flex">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          ref={fileInputRef}
+          style={{ display: "none" }}
+        />
+        <button onClick={handleFileButtonClick}>이미지 선택</button>
+        <button onClick={handleExtractText}>텍스트 추출</button>
+      </div>
     </div>
   );
-};
-
-export default ImageToText;
+}

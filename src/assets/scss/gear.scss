@@ -2,14 +2,26 @@
   .gear-owner-content {
     color: #fff;
     display: flex;
-    flex-direction: column;
-    .img-to-text {
-      .img-wrap {
-        position: relative;
-        width: 70%;
-        max-width: 1180px;
-        aspect-ratio: 16/9;
+    justify-content: space-between;
+    min-height: 300px;
+    .img-to-text-wrap {
+      width: 49%;
+      .img-to-text {
+        .canvas-wrap {
+          position: relative;
+          min-height: 300px;
+          aspect-ratio: 16/9;
+        }
       }
+    }
+    .select-box-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 49%;
     }
   }
 }
