@@ -38,6 +38,7 @@ function generateRoutes(): string[] {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/epic7-frontend/",
   define: {
     global: {},
   },

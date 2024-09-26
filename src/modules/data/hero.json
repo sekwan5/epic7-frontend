@@ -11282,7 +11282,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "사자왕 체르미아",
     "camping": {
       "id": "c2079",
@@ -13486,7 +13486,7 @@
     "job_nm_en": "Weaver",
     "zodiac_nm_kr": "거해궁",
     "grade": "4",
-    "status": "update",
+    "status": "",
     "name": "슈팅스타 아카테스",
     "camping": {
       "id": "c2017",
@@ -14337,7 +14337,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "처녀궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "심판자 키세",
     "camping": {
       "id": "c2006",
@@ -15224,7 +15224,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "백양궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "아비게일",
     "camping": {
       "id": "c1144",
@@ -15980,7 +15980,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "거해궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "알렌시아",
     "camping": {
       "id": "c1100",

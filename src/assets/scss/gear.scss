@@ -1,40 +1,107 @@
+@mixin button-base {
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #fff;
+  border: 1px solid rgb(118, 118, 118);
+
+  cursor: pointer;
+}
+
 .gear-owner {
   .gear-owner-content {
     color: #fff;
     display: flex;
     justify-content: space-between;
-    min-height: 300px;
     .img-to-text-wrap {
-      width: 49%;
+      width: 59%;
       .img-to-text {
         .canvas-wrap {
-          position: relative;
-          min-height: 300px;
-          aspect-ratio: 16/9;
+          height: 350px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .thumbnail {
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+          }
         }
       }
     }
     .select-box-wrap {
+      padding: 0px 10px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      justify-content: space-between;
+      width: 39%;
 
-      width: 49%;
+      .select-box {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+        label {
+          text-align: left;
+          width: 60px;
+          margin-right: 10px;
+          position: relative;
+          top: 6px;
+        }
+        .option-select {
+          width: 50%;
+          margin-right: 10px;
+        }
+        .option-input {
+          padding: 8px 12px;
+          font-size: 13px;
+          height: 38px;
+          width: 60px;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          color: #fff;
+          background-color: #36373d;
+          border: 1px solid rgb(118, 118, 118);
+        }
+      }
+      .select-image-button {
+        @include button-base;
+        max-width: 150px;
+        background-color: #399eee;
+      }
+      .hero-search-button {
+        @include button-base;
+        max-width: 150px;
+        background-color: #ff6b6b;
+      }
     }
   }
   .hero-list {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 }
 
 @media (max-width: 767px) {
   .gear-owner {
     .gear-owner-content {
-      .img-to-text {
-        .img-wrap {
-          width: 100%;
+      flex-direction: column;
+      .img-to-text-wrap {
+        width: 100%;
+        .img-to-text {
+          .canvas-wrap {
+            display: none;
+          }
+          .img-wrap {
+            width: 100%;
+          }
+        }
+      }
+      .select-box-wrap {
+        width: 100%;
+        .select-image-button {
+          font-size: 12px;
+        }
+        .hero-search-button {
+          font-size: 12px;
         }
       }
     }

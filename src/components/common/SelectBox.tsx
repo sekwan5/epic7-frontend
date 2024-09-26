@@ -1,16 +1,22 @@
-interface Option {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
+import Select from "react-select";
+
+export interface Option {
   value: string;
-  name: string;
+  label: string;
 }
+
 interface SelectBoxProps {
   options: Option[];
   label: string;
   value: string;
   inputValue?: string;
   useInput?: boolean;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (selectedOption: Option | null) => void;
   handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
 export function SelectBox({
   options,
   label,
@@ -20,18 +26,68 @@ export function SelectBox({
   handleInputChange,
   useInput = true,
 }: SelectBoxProps) {
+  const selectedOption = options.find((option) => option.value === value);
+
+  const handleChange = (newValue: Option | null) => {
+    onChange(newValue);
+  };
+
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      backgroundColor: "#36373d",
+      borderColor: "rgb(118, 118, 118)",
+      color: "#fff",
+    }),
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "#ccc",
+      fontSize: "13px",
+    }),
+    input: (provided: any) => ({
+      ...provided,
+      color: "#fff",
+      fontSize: "13px",
+    }),
+    option: (provided: any, state: { isSelected: any }) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#007bff" : "#36373d",
+      color: "#fff",
+      "&:hover": {
+        backgroundColor: "#007bff",
+      },
+    }),
+    menu: (provided: any) => ({
+      ...provided,
+      backgroundColor: "#36373d",
+      color: "#fff",
+      fontSize: "13px",
+    }),
+  };
+
   return (
-    <div className="d-flex">
+    <div className="select-box">
       <label>{label}</label>
-      <select value={value} onChange={onChange}>
-        {options.map((item: Option, index: number) => (
-          <option key={index} value={item.value}>
-            {item.name}
-          </option>
-        ))}
-      </select>
+      <Select
+        className="option-select"
+        options={options}
+        value={selectedOption}
+        onChange={handleChange}
+        isSearchable={true}
+        placeholder="선택하세요..."
+        styles={customStyles}
+        components={{ IndicatorSeparator: () => null }}
+      />
       {useInput && (
-        <input type="text" value={inputValue} onChange={handleInputChange} />
+        <input
+          className="option-input"
+          type="text"
+          value={inputValue}
+          onChange={handleInputChange}
+          maxLength={10}
+          pattern="[0-9%]*"
+          inputMode="numeric"
+        />
       )}
     </div>
   );
