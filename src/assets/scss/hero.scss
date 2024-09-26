@@ -178,7 +178,12 @@ $text-color: #fff;
             .ico-hero-delete {
               width: 24px;
               height: 24px;
+              -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+              mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+              -webkit-mask-size: cover;
+              mask-size: cover;
               cursor: pointer;
+              background-color: #fff;
               &:hover {
                 background-color: #ff6b6b;
               }
@@ -216,14 +221,26 @@ $text-color: #fff;
         .ico-camp-save {
           cursor: pointer;
           display: flex;
+          background-color: #fff;
           width: 30px;
           height: 30px;
+          -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+          mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+          -webkit-mask-size: cover;
+
+          mask-size: cover;
         }
         .ico-trash {
           cursor: pointer;
           display: flex;
+          background-color: #fff;
           width: 25px;
           height: 25px;
+          -webkit-mask: url("/icons/trash-icon.svg") no-repeat 50% 50%;
+          mask: url("/icons/trash-icon.svg") no-repeat 50% 50%;
+          -webkit-mask-size: cover;
+
+          mask-size: cover;
         }
       }
 
@@ -334,12 +351,6 @@ $text-color: #fff;
     &:not(.active):hover {
       background-color: lighten(#36373d, 10%);
     }
-    .camp-tab-icon {
-      display: flex;
-      width: 70px;
-      height: 70px;
-      color: #fff;
-    }
     .bookmark-count {
       position: absolute;
       top: -5px;
@@ -354,6 +365,43 @@ $text-color: #fff;
       justify-content: center;
       font-size: 12px;
       font-weight: bold;
+    }
+  }
+  i {
+    &.color-gray {
+      background-color: #fff;
+    }
+
+    &.ico {
+      display: flex;
+      width: 70px;
+      height: 70px;
+
+      &.ico-add_hero {
+        -webkit-mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/add_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-edit_hero {
+        -webkit-mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        mask: url("/icons/edit_hero.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp {
+        -webkit-mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
+      }
+      &.ico-camp-save {
+        -webkit-mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        mask: url("/icons/camp_save.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+
+        mask-size: cover;
+      }
     }
   }
 }
