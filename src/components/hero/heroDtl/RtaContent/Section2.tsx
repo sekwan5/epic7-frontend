@@ -8,7 +8,25 @@ export function Section2(props: {
   selectedSet: string[];
 }) {
   const { rtaData, onEquipSelect, selectedSet } = props;
-  const top8Equips = rtaData.top_8_equips || {};
+  console.log(rtaData.top_8_equips);
+  //  const top8Equips = rtaData.top_8_equips
+  const top8Equips = rtaData.top_8_equips
+    ? Object.entries(rtaData.top_8_equips)
+        .sort((a, b) => b[1].usage_rate - a[1].usage_rate)
+        .reduce(
+          (
+            acc: Record<string, { usage_rate: number; win_rate: number }>,
+            [key, value],
+          ) => {
+            acc[key] = value as {
+              usage_rate: number;
+              win_rate: number;
+            };
+            return acc;
+          },
+          {},
+        )
+    : {};
 
   // 팀메이트와 카운터 데이터가 있을 경우에만 정렬
   const sortedTeammates = rtaData.top_5_teammates
@@ -86,7 +104,7 @@ export function Section2(props: {
             <thead>
               <tr>
                 <th colSpan={2} className="text-center">
-                  같이 선택하면 좋은 영웅
+                  같 선택하면 좋은 영웅
                 </th>
                 <th colSpan={2} className="text-center">
                   상대하기 힘든 영웅
@@ -117,7 +135,9 @@ export function Section2(props: {
                             </div>
                           </td>
                           <td className="text-center">
-                            {sortedTeammates[index][1].win_rate.toFixed(2)}%
+                            {sortedTeammates[index][1].win_rate?.toFixed(2) ??
+                              "N/A"}
+                            %
                             <span className="sub-info">
                               ({sortedTeammates[index][1].count} 게임)
                             </span>
@@ -134,7 +154,9 @@ export function Section2(props: {
                             </div>
                           </td>
                           <td className="text-center">
-                            {sortedCounters[index][1].win_rate.toFixed(2)}%
+                            {sortedCounters[index][1].win_rate?.toFixed(2) ??
+                              "N/A"}
+                            %
                             <span className="sub-info">
                               ({sortedCounters[index][1].count} 게임)
                             </span>
@@ -190,11 +212,11 @@ export function Section2(props: {
                         }}
                       />
                       <div className="stat-value">
-                        {data.usage_rate.toFixed(2)}%
+                        {data.usage_rate?.toFixed(2) ?? ""}%
                       </div>
                     </div>
                     <div className="stat-winrate">
-                      승률: {data.win_rate.toFixed(2)}%
+                      승률: {data.win_rate?.toFixed(2) ?? ""}%
                     </div>
                   </div>
                 );
