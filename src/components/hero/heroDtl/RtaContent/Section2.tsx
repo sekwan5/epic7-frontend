@@ -8,7 +8,6 @@ export function Section2(props: {
   selectedSet: string[];
 }) {
   const { rtaData, onEquipSelect, selectedSet } = props;
-  console.log(rtaData.top_8_equips);
   //  const top8Equips = rtaData.top_8_equips
   const top8Equips = rtaData.top_8_equips
     ? Object.entries(rtaData.top_8_equips)

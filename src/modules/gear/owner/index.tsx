@@ -34,7 +34,6 @@ export function GearOwnerWrap() {
           isShow: true,
         };
       });
-      console.log(tmp);
       setData(tmp);
     } catch (error) {
       console.error("영웅 추천 중 오류 발생:", error);
@@ -42,7 +41,6 @@ export function GearOwnerWrap() {
   };
 
   const setParseData = async (data: IParseData) => {
-    console.log(data);
     data.parsedData = data.parsedData.map((item) => ({
       ...item,
       key: geOptionValueToName(item.key as string) || "", // 기본값 제공

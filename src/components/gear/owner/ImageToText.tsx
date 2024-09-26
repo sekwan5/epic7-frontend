@@ -96,7 +96,6 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
       const tmpData: string[] = dataList.map((item) =>
         item.replace(/[^가-힣a-zA-Z0-9%]/g, "").trim(),
       );
-      console.log(tmpData);
 
       let setInfo: string | null = null;
       const validKeys = [
