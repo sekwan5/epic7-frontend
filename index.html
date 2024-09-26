@@ -49,6 +49,21 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-5THZJ3K2");
     </script>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          var cleanPath = decoded.split("?")[0];
+          window.history.replaceState(null, null, cleanPath + (l.hash || ""));
+        }
+      })(window.location);
+    </script>
     <!-- End Google Tag Manager -->
   </head>
   <body>

@@ -7,6 +7,8 @@ import HeroListWrap from "./modules/hero";
 import CampingWrap from "./modules/camping";
 import HeroDtlWrap from "./modules/heroDtl";
 import { loadHeroData } from "./loaders/heroLoader";
+import NotFound from "./modules/NotFound"; // 새로 추가
+
 // import Hero from './routes/Hero';
 // import Camping from './routes/Camping';
 // import Gear from './routes/Gear';
@@ -34,13 +36,12 @@ export const router = createBrowserRouter(
           path: "camping",
           element: <CampingWrap />,
         },
-
-        // {
-        //   path: "gear",
-        //   element: <Gear />,
-        // },
+        {
+          path: "*", // 모든 알 수 없는 경로에 대해 NotFound 컴포넌트를 렌더링
+          element: <NotFound />,
+        },
       ],
     },
   ],
-  // { basename: "/epic7-frontend" },
+  { basename: "/" },
 );
