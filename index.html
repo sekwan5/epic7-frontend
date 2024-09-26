@@ -59,10 +59,11 @@
               return s.replace(/~and~/g, "&");
             })
             .join("?");
+          var cleanPath = decoded.split("?")[0];
           window.history.replaceState(
             null,
             null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
+            cleanPath + (decoded.slice(cleanPath.length) || ""),
           );
         }
       })(window.location);
