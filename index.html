@@ -63,7 +63,7 @@
           window.history.replaceState(
             null,
             null,
-            cleanPath + (decoded.slice(cleanPath.length) || ""),
+            l.pathname.slice(0, -1) + cleanPath + (l.hash || ""),
           );
         }
       })(window.location);
