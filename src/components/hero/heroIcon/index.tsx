@@ -1,6 +1,7 @@
 import { IHero } from "@/modules/data/getHeroData";
 import ProfileImg from "./ProfileImg";
 import CoImage from "@/components/common/CoImages";
+import CloseIcon from "@/components/common/CloseIcon";
 
 export default function HeroIcon(props: {
   data: IHero;
@@ -33,13 +34,16 @@ export default function HeroIcon(props: {
       {useOption && (
         <div className="option-wrap">
           {data.isLock ? <i className="ico-lock" /> : <div></div>}
-          <i
+
+          <div
             className="ico-hero-delete"
             onClick={(e) => {
               e.stopPropagation();
               handleDelete && handleDelete(data);
             }}
-          />
+          >
+            <CloseIcon />
+          </div>
         </div>
       )}
       {usename && <span className="hero-name">{data.name}</span>}

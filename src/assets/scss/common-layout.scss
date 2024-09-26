@@ -70,7 +70,7 @@
       width: 100%;
       // padding: 10px;
       max-width: 1280px;
-      .menu {
+      .ico-menu-wrap {
         display: none;
       }
       .logo-left {
@@ -151,6 +151,7 @@
           }
         }
         .ico-menu-wrap {
+          display: block;
           width: 15%;
           display: flex;
           align-items: center;

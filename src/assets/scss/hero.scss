@@ -178,12 +178,7 @@ $text-color: #fff;
             .ico-hero-delete {
               width: 24px;
               height: 24px;
-              -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
-              mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
-              -webkit-mask-size: cover;
-              mask-size: cover;
               cursor: pointer;
-              background-color: #fff;
               &:hover {
                 background-color: #ff6b6b;
               }

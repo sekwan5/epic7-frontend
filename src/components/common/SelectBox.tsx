@@ -85,8 +85,6 @@ export function SelectBox({
           value={inputValue}
           onChange={handleInputChange}
           maxLength={10}
-          pattern="[0-9%]*"
-          inputMode="numeric"
         />
       )}
     </div>

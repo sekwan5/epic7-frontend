@@ -1,10 +1,10 @@
 import HeroDtlTab from "@/components/hero/heroDtl/HeroDtlTab";
-import CoImage from "@/components/common/CoImages";
 import { getHeroStats, IHero } from "../data/getHeroData";
 import PickBox from "@/components/hero/PickBox";
 import { getArtifactByStats } from "../data/getArtiData";
 import Artifact from "@/components/arti/Artifact";
 import { Link } from "react-router-dom";
+import DiscordIcon from "@/components/common/AddHeroIcon copy";
 
 export default function HomeContent() {
   const heroList = getHeroStats();
@@ -65,7 +65,7 @@ export default function HomeContent() {
               className="discord-link"
             >
               <div className="discord-btn">
-                <CoImage src="/images/discord.svg" alt="discord" />
+                <DiscordIcon />
               </div>
             </a>
           </div>

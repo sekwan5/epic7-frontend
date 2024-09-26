@@ -8,6 +8,7 @@ import CampingWrap from "./modules/camping";
 import HeroDtlWrap from "./modules/heroDtl";
 import { loadHeroData } from "./loaders/heroLoader";
 import NotFound from "./modules/NotFound"; // 새로 추가
+import { GearOwnerWrap } from "./modules/gear/owner";
 
 // import Hero from './routes/Hero';
 // import Camping from './routes/Camping';
@@ -31,6 +32,10 @@ export const router = createBrowserRouter(
           path: "/hero/:id",
           element: <HeroDtlWrap />,
           loader: loadHeroData,
+        },
+        {
+          path: "gear/owner",
+          element: <GearOwnerWrap />,
         },
         {
           path: "camping",

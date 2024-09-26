@@ -12,9 +12,9 @@
     "sidebar": true
   },
   {
-    "id": "arti",
-    "title": "아티팩트",
-    "to": "#",
+    "id": "gear",
+    "title": "장비",
+    "to": "/gear/owner",
     "sidebar": true
   },
 

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 export default function HeroGrid(props: IHeroFilterProps) {
   const { data = [] } = props;
-
   if (data.length < 1) return null;
   return (
     <div className="hero-grid">

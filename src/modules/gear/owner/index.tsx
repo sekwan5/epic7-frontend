@@ -16,7 +16,7 @@ import {
 import { api } from "@/modules/api";
 import HeroFilter from "@/components/hero/heroList/HeroFilter";
 import HeroGrid from "@/components/hero/heroList/HeroGrid";
-import { IHero } from "@/modules/data/getHeroData";
+import { getHeroesByIds, IHero } from "@/modules/data/getHeroData";
 
 export function GearOwnerWrap() {
   // const [recommendations, setRecommendations] =
@@ -26,10 +26,18 @@ export function GearOwnerWrap() {
   const recommendHeroes = async (data: IParseData) => {
     try {
       const result = await api.hero.recommendHeroes(data);
-      console.log(result);
-      // setRecommendations(result);
+      const heroIds = result.recommendations.map((hero) => hero.hero_id);
+      const heroes = getHeroesByIds(heroIds);
+      const tmp = heroes.map((hero) => {
+        return {
+          ...hero,
+          isShow: true,
+        };
+      });
+      console.log(tmp);
+      setData(tmp);
     } catch (error) {
-      console.error("Error recommending heroes:", error);
+      console.error("영웅 추천 중 오류 발생:", error);
     }
   };
 
@@ -38,6 +46,7 @@ export function GearOwnerWrap() {
     data.parsedData = data.parsedData.map((item) => ({
       ...item,
       key: geOptionValueToName(item.key as string) || "", // 기본값 제공
+      value: item.value.replace(/[^가-힣a-zA-Z0-9%]/g, "").trim(),
     }));
 
     while (data.parsedData.length < 5) {
@@ -54,16 +63,18 @@ export function GearOwnerWrap() {
       handleChange({ value: item.key || "", label: item.key || "" }, index); // 기본값 제공
       handleInputChange(
         {
-          target: { value: item.value },
+          target: {
+            value: item.value.replace(/[^가-힣a-zA-Z0-9%]/g, "").trim(),
+          },
         } as React.ChangeEvent<HTMLInputElement>,
         index,
       );
     });
 
-    // setValue({
-    //   set: newSet,
-    //   parsedData: data.parsedData,
-    // });
+    setValue({
+      set: newSet,
+      parsedData: data.parsedData,
+    });
 
     // await recommendHeroes(data);
   };
@@ -112,7 +123,7 @@ export function GearOwnerWrap() {
       <div className="container gear-owner">
         <div className="gear-owner-wrap">
           <PageTitle>
-            <h2>장비 주인찾기</h2>
+            <h2>장비 주인찾기 (BETA)</h2>
           </PageTitle>
           <div className="gear-owner-content">
             <div className="select-box-wrap">

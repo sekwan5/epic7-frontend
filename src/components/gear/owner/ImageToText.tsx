@@ -93,6 +93,11 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
 
     function parseEquipmentData(dataList: string[]): Result {
       const parsedData: ParsedData[] = [];
+      const tmpData: string[] = dataList.map((item) =>
+        item.replace(/[^가-힣a-zA-Z0-9%]/g, "").trim(),
+      );
+      console.log(tmpData);
+
       let setInfo: string | null = null;
       const validKeys = [
         "생명력",
@@ -107,10 +112,9 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
         "속도",
       ];
 
-      for (let i = 0; i < dataList.length; i++) {
-        const currentKey = dataList[i]
-          .replace(/[^가-힣a-zA-Z0-9%]/g, "")
-          .trim();
+      for (let i = 0; i < tmpData.length; i++) {
+        const currentKey = tmpData[i];
+
         // 세트 정보 추출
 
         // 유효한 키인지 확인
@@ -118,8 +122,9 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
           let j = i + 1;
           let value = "";
 
-          while (j < dataList.length) {
-            const potentialValue = dataList[j].replace(/[^0-9.%]/g, "").trim();
+          while (j < tmpData.length) {
+            const potentialValue = `${tmpData[j]}`;
+
             if (validKeys.includes(dataList[i - 1])) {
               value = dataList[j + 1];
               break;
@@ -130,9 +135,7 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
               !isNaN(parseFloat(potentialValue))
             ) {
               if (currentKey === "속도" && potentialValue.endsWith("%")) {
-                const nextValue = dataList[j + 1]
-                  ?.replace(/[^0-9.%]/g, "")
-                  .trim();
+                const nextValue = `${dataList[j + 1]}`;
                 value = nextValue || potentialValue;
                 break;
               }
@@ -145,9 +148,7 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
                   potentialValue === "15")
               ) {
                 // 다음 값을 확인
-                const nextValue = dataList[j + 1]
-                  ?.replace(/[^0-9.%]/g, "")
-                  .trim();
+                const nextValue = dataList[j + 1];
                 if (
                   nextValue === "6" ||
                   nextValue === "3" ||
@@ -257,7 +258,6 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
 
         const result = await response.json();
         // const result = response;
-        console.log("result", result);
         if (!result.responses[0].fullTextAnnotation) {
           alert("옵션 추출에 실패했습니다.");
           return;
@@ -265,11 +265,8 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
           const extractedText = result.responses[0].fullTextAnnotation
             ? result.responses[0].fullTextAnnotation.text
             : "No text found";
-          const list = extractedText.split("\n");
-          console.log(list);
+          const list = [...extractedText.split("\n")];
           const data = parseEquipmentData(list);
-          console.log(data);
-
           setParseData(data);
         }
       } catch (error) {
