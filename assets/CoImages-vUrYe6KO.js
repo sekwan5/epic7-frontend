@@ -1,1 +1,0 @@
-import{j as a}from"./index-DHxJYTwT.js";const j=({src:o,alt:r,width:s=100,height:t=100,className:m="",onLoad:e,...x})=>a.jsx("img",{src:o,alt:r,width:s,height:t,className:m,onLoad:e,...x});export{j as C};
