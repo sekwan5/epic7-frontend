@@ -65,10 +65,7 @@ export default function HomeContent() {
               className="discord-link"
             >
               <div className="discord-btn">
-                <CoImage
-                  src="/epic7-frontend/images/discord.svg"
-                  alt="discord"
-                />
+                <CoImage src="/images/discord.svg" alt="discord" />
               </div>
             </a>
           </div>

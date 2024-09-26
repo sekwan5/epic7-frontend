@@ -42,5 +42,5 @@ export const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: "/epic7-frontend" },
+  // { basename: "/epic7-frontend" },
 );
