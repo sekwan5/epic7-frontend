@@ -1,4 +1,8 @@
 import { useAppSelector } from "@/store/hooks";
+import AddHeroIcon from "../common/AddHeroIcon";
+import EditHeroIcon from "../common/EditHeroIcon";
+import CampIcon from "../common/CampIcon";
+import CampSaveIcon from "../common/CampSaveIcon";
 
 export default function CampingTab(props: {
   setTab: (tab: number) => void;
@@ -16,28 +20,28 @@ export default function CampingTab(props: {
         className={`camping-tab-wrap-item ${tab === 0 ? "active" : ""}`}
         onClick={() => setTab(0)}
       >
-        <i className={`ico ico-add_hero color-gray }`} />
+        <AddHeroIcon></AddHeroIcon>
       </div>
 
       <div
         className={`camping-tab-wrap-item ${tab === 1 ? "active" : ""}`}
         onClick={() => setTab(1)}
       >
-        <i className={`ico ico-edit_hero color-gray `} />
+        <EditHeroIcon />
       </div>
 
       <div
         className={`camping-tab-wrap-item ${tab === 2 ? "active" : ""}`}
         onClick={() => setTab(2)}
       >
-        <i className={`ico ico-camp color-gray`} />
+        <CampIcon />
       </div>
 
       <div
         className={`camping-tab-wrap-item ${tab === 3 ? "active" : ""}`}
         onClick={() => setTab(3)}
       >
-        <i className={`ico ico-camp-save color-gray`}></i>
+        <CampSaveIcon />
         {bookmarkCount > 0 && (
           <span className="bookmark-count">{bookmarkCount}</span>
         )}

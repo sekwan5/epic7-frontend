@@ -158,17 +158,12 @@
             display: flex;
             width: 24px;
             height: 24px;
-            -webkit-mask: url("/icons/menu.svg") no-repeat 50% 50%;
-            mask: url("/icons/menu.svg") no-repeat 50% 50%;
-            -webkit-mask-size: cover;
-            mask-size: cover;
-            background-color: black;
             margin-left: 16px;
           }
         }
 
-        .logo-left {
-        }
+        // .logo-left {
+        // }
       }
       .smodGnb {
         display: none;
@@ -201,15 +196,10 @@
       .ico-close {
         width: 24px;
         height: 24px;
-        -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
-        mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
-        -webkit-mask-size: cover;
-        mask-size: cover;
         position: absolute;
         top: 20px;
         right: 20px;
         cursor: pointer;
-        background-color: black;
       }
     }
 

@@ -94,7 +94,7 @@ export interface GearRecommendation {
   }>;
   total_recommendations: number;
 }
-const apiUrl = import.meta.env.VITE_API_URL;
+// const apiUrl = import.meta.env.VITE_API_URL;
 
 export class ApiHero extends ApiBase<IndexSignatureType> {
   client: AxiosInstance;
@@ -104,7 +104,7 @@ export class ApiHero extends ApiBase<IndexSignatureType> {
     this.client = client;
   }
   async getHeroBuilds(hero_id: string): Promise<IHeroBuild[]> {
-    return this.client.get(`${apiUrl}/builds/${hero_id}`).then((res) => {
+    return this.client.get(`/builds/${hero_id}`).then((res) => {
       return res.data;
     });
   }
