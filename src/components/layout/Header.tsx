@@ -103,7 +103,14 @@ export function Header() {
             })}
           </div>
         </div>
-        <div className="ico-menu-wrap align-right">
+        <div className="bmc-button-wrap ">
+          <a href="https://buymeacoffee.com/dbzorim" target="_blank">
+            <CoImage
+              src="/images/bmc-button.png"
+              alt="Buy me a coffee"
+              className="bmc-button"
+            />
+          </a>
           {/* <i
             className="ico ico-menu"
             // onClick={() => dispatch(toggleSidebar())}
