@@ -53,7 +53,7 @@ export default function PickBox(props: { data: IHero; useStatus?: boolean }) {
               >
                 <CoImage
                   className="star-icon"
-                  src="/icons/star.png"
+                  src="/epic7-frontend/icons/star.png"
                   alt="star"
                 />
               </div>

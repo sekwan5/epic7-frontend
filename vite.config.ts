@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import RemixRouter from "vite-plugin-remix-router";
+// import RemixRouter from "vite-plugin-remix-router";
 import VitePluginSitemap from "vite-plugin-sitemap";
 import path from "path";
 import fs from "fs";
@@ -44,9 +44,9 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    RemixRouter({
-      // configuration options
-    }),
+    // RemixRouter({
+    //   // configuration options
+    // }),
     VitePluginSitemap({
       hostname: "https://epic7gg.com", // 여기에 실제 웹사이트 주소를 입력하세요
       exclude: ["/admin"], // 제외할 경로가 있다면 여기에 추가하세요

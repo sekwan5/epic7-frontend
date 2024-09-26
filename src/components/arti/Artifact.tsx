@@ -108,7 +108,7 @@ export default function Artifact({
         {[...Array(artiData?.grade)].map((_, index) => (
           <img
             key={index}
-            src="/icons/star.png"
+            src="/epic7-frontend/icons/star.png"
             alt="Star"
             className="grade-star"
           />

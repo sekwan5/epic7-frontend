@@ -10,7 +10,7 @@ export default function ProfileImg(props: { id: string }) {
     <Fragment>
       <CoImage
         className="profile-outline"
-        src={"/images/img_profile_wrap.png"}
+        src={"/epic7-frontend/images/img_profile_wrap.png"}
         alt="profile"
       />
       <CoImage

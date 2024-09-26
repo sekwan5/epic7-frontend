@@ -26,14 +26,14 @@ export function Header() {
         <Link to="/" className="logo-left">
           <CoImage
             className="pc-logo"
-            src="/images/c2111_su.png" // public 폴더를 기준으로 한 경로
+            src="/epic7-frontend/images/c2111_su.png" // public 폴더를 기준으로 한 경로
             alt="Example Image"
             width={130} // 원하는 이미지의 너비
             height={77} // 원하는 이미지의 높이
           />
           <CoImage
             className="mo-logo"
-            src="/images/c2111_s.png" // public 폴더를 기준으로 한 경로
+            src="/epic7-frontend/images/c2111_s.png" // public 폴더를 기준으로 한 경로
             alt="Example Image"
             width={35} // 원하는 이미지의 너비
             height={35} // 원하는 이미지의 높이

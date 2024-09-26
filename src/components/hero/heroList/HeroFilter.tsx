@@ -192,7 +192,7 @@ export default function HeroFilter(props: IHeroFilterProps) {
                       }}
                     >
                       <CoImage
-                        src="/icons/star.png"
+                        src="/epic7-frontend/icons/star.png"
                         alt="star"
                         width={18}
                         height={18}

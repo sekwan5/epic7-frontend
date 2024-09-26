@@ -22,7 +22,7 @@ export default function HeroDtlHeader(props: { data: IHero }) {
                 <CoImage
                   key={i}
                   className="star-icon"
-                  src="/icons/star.png"
+                  src="/epic7-frontend/icons/star.png"
                   alt="star"
                 />
               ))}
