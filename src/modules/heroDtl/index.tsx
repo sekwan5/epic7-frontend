@@ -10,7 +10,7 @@ import { useLoaderData } from "react-router-dom";
 
 export default function HeroDtlWrap() {
   const { id, hero } = useLoaderData() as { id: string; hero: IHero };
-  const tabs = ["BUILDS", "RTA"];
+  const tabs = ["RTA", "BUILDS"];
   const [activeTab1, setActiveTab1] = useState(tabs[0]);
   const [builds, setBuilds] = useState<IHeroBuild[]>([]);
   const [rta, setRta] = useState<IRTAData>({} as IRTAData);
