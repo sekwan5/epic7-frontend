@@ -29074,9 +29074,9 @@
     }
   },
   {
-    "id": "ctemp1",
+    "id": "c4158",
     "nm_kr": "전승의 아미키",
-    "nm_en": "Shadow Knight Pyllis",
+    "nm_en": "Inheritor Amiki",
     "keyword": "흑필",
     "zodiac_id": "z11",
     "zodiac_nm_en": "Scorpio",
@@ -29091,9 +29091,63 @@
     "status": "new",
     "name": "전승의 아미키",
     "camping": {},
-    "self_devotion": {},
+    "self_devotion": {
+      "type": "att",
+      "grades": {
+        "D": 36,
+        "C": 54,
+        "B": 72,
+        "A": 90,
+        "S": 108,
+        "SS": 126,
+        "SSS": 144
+      }
+    },
     "ex_equip": [],
-    "skills": {},
-    "lv60SixStarFullyAwakened": {}
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.6,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "70% penetration",
+        "rate": 1.1,
+        "pow": 0.95,
+        "targets": 1,
+        "penetration": 0.7,
+        "options": []
+      }
+    },
+    "lv60SixStarFullyAwakened": {
+      "cp": 15162,
+      "atk": 1019,
+      "hp": 5738,
+      "spd": 98,
+      "def": 571,
+      "chc": 0.15,
+      "chd": 1.5,
+      "dac": 0.03,
+      "eff": 0,
+      "efr": 0,
+      "bonusMaxAtkPercent": 0,
+      "bonusMaxDefPercent": 0,
+      "bonusMaxHpPercent": 0,
+      "overrideAtk": 1144,
+      "overrideHp": 4570,
+      "overrideDef": 0,
+      "overrideAdditionalCr": 0,
+      "overrideAdditionalCd": 0,
+      "overrideAdditionalSpd": 8,
+      "overrideAdditionalEff": 0,
+      "overrideAdditionalRes": 0
+    }
   }
 ]

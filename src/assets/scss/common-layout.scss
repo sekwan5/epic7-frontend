@@ -216,10 +216,15 @@
       .ico-close {
         width: 24px;
         height: 24px;
+        -webkit-mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+        mask: url("/icons/close_icon.svg") no-repeat 50% 50%;
+        -webkit-mask-size: cover;
+        mask-size: cover;
         position: absolute;
         top: 20px;
         right: 20px;
         cursor: pointer;
+        background-color: black;
       }
     }
 

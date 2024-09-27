@@ -1,58 +1,80 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-// import RemixRouter from "vite-plugin-remix-router";
-import VitePluginSitemap from "vite-plugin-sitemap";
+import { writeFileSync } from "fs";
 import path from "path";
-import fs from "fs";
+import heroIds from "./src/modules/data/heroIds.json";
 
-// 라우트 파일 찾기 함수
-function findRouteFiles(dir: string): string[] {
-  let results: string[] = [];
-  const list = fs.readdirSync(dir);
+// 사이트맵을 생성하는 함수
+function generateSitemap(routes: string[], filename: string) {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${routes
+    .map(
+      (route) => `
+  <url>
+    <loc>https://epic7gg.com${route}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  `,
+    )
+    .join("")}
+</urlset>`;
 
-  list.forEach((file) => {
-    file = path.join(dir, file);
-    const stat = fs.statSync(file);
-    if (stat && stat.isDirectory()) {
-      results = results.concat(findRouteFiles(file));
-    } else {
-      if (file.endsWith(".tsx") || file.endsWith(".jsx")) {
-        results.push(file);
-      }
-    }
-  });
-
-  return results;
+  writeFileSync(path.resolve(__dirname, "dist", filename), sitemap);
 }
 
-// 라우트 경로 생성 함수
-function generateRoutes(): string[] {
-  const routeFiles = findRouteFiles(path.join(__dirname, "src/routes"));
-  return routeFiles.map((file) => {
-    let route = file.replace(path.join(__dirname, "src/routes"), "");
-    route = route.replace(/\.(tsx|jsx)$/, "");
-    route = route.replace(/\/index$/, "");
-    return route || "/";
-  });
+// 사이트맵 인덱스를 생성하는 함수
+function generateSitemapIndex(sitemapFiles: string[]) {
+  const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${sitemapFiles
+    .map(
+      (file) => `
+  <sitemap>
+    <loc>https://epic7gg.com/${file}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+  `,
+    )
+    .join("")}
+</sitemapindex>`;
+
+  writeFileSync(
+    path.resolve(__dirname, "dist", "sitemap-index.xml"),
+    sitemapIndex,
+  );
 }
+
+const baseRoutes = ["/", "/hero", "/gear/owner", "/camping"];
+
+const heroRoutes = heroIds.map((id) => `/hero/${id}`);
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // base: "/epic7-frontend/",
   base: "/",
   define: {
     global: {},
   },
   plugins: [
     react(),
-    // RemixRouter({
-    //   // configuration options
-    // }),
-    VitePluginSitemap({
-      hostname: "https://epic7gg.com", // 여기에 실제 웹사이트 주소를 입력하세요
-      exclude: ["/admin"], // 제외할 경로가 있다면 여기에 추가하세요
-      dynamicRoutes: generateRoutes(), // 함수 자체를 전달
-    }),
+    {
+      name: "generate-sitemap",
+      closeBundle() {
+        generateSitemap(baseRoutes, "sitemap-base.xml");
+
+        const heroChunks = [];
+        for (let i = 0; i < heroRoutes.length; i += 100) {
+          const chunk = heroRoutes.slice(i, i + 100);
+          const filename = `sitemap-heroes-${Math.floor(i / 100) + 1}.xml`;
+          generateSitemap(chunk, filename);
+          heroChunks.push(filename);
+        }
+
+        generateSitemapIndex(["sitemap-base.xml", ...heroChunks]);
+      },
+    },
   ],
   server: {
     port: 3000,
