@@ -4,7 +4,6 @@ import { setSidebar } from "@/store/appSlice";
 import { useAppDispatch, useSelectorTyped } from "@/store/hooks";
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import CloseIcon from "../common/CloseIcon";
 
 export function Sidebar() {
   const dispatch = useAppDispatch();
@@ -19,12 +18,10 @@ export function Sidebar() {
     <>
       <aside className={`sidebar ${sidebar ? "show" : ""}`}>
         <div className="sidebar-header">
-          <div
+          <i
             className="ico-close"
             onClick={() => dispatch(setSidebar(false))}
-          >
-            <CloseIcon />
-          </div>
+          />
         </div>
         <div className="nav-wrapper">
           <ul className="nav flex-column">

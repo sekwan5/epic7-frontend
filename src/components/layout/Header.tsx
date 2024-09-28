@@ -79,7 +79,7 @@ export function Header() {
             height={35} // 원하는 이미지의 높이
           />
           <span>EPIC7GG</span>
-          <div>에픽지지</div>
+          <div style={{ display: "none" }}>에픽지지</div>
         </Link>
         <div className="smodGnb">
           <div className="spanWarp">

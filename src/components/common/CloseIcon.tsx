@@ -4,20 +4,17 @@ export default function CloseIcon() {
       data-name="vuesax/linear/add"
       xmlns="https://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      style={{
-        fill: "#fff",
-      }}
     >
       <g data-name="Group 33824">
         <path
           d="M0 0h19.8"
           transform="rotate(45 -3.535 8.537)"
           style={{
-            stroke: "#fff",
+            stroke: "#101010",
             strokeLinecap: "round",
             strokeLinejoin: "round",
             strokeWidth: "1.5px",
-            fill: "#fff",
+            fill: "none",
           }}
         />
         <path
@@ -25,11 +22,11 @@ export default function CloseIcon() {
           d="M0 19.8V0"
           transform="rotate(45 3.464 25.434)"
           style={{
-            stroke: "#fff",
+            stroke: "#101010",
             strokeLinecap: "round",
             strokeLinejoin: "round",
             strokeWidth: "1.5px",
-            fill: "#fff",
+            fill: "none",
           }}
         />
       </g>
