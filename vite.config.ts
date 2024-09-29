@@ -47,7 +47,14 @@ function generateSitemapIndex(sitemapFiles: string[]) {
   );
 }
 
-const baseRoutes = ["/", "/hero", "/gear/owner", "/camping"];
+const baseRoutes = [
+  "/",
+  "/hero",
+  "/gear/owner",
+  "/camping",
+  "/gear/enhance",
+  "/favicon.ico",
+];
 
 const heroRoutes = heroIds.map((id) => `/hero/${id}`);
 

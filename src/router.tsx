@@ -9,6 +9,7 @@ import HeroDtlWrap from "./modules/heroDtl";
 import { loadHeroData } from "./loaders/heroLoader";
 import NotFound from "./modules/NotFound"; // 새로 추가
 import { GearOwnerWrap } from "./modules/gear/owner";
+import GearEnhanceWrap from "./modules/gear/gearEnhance";
 
 // import Hero from './routes/Hero';
 // import Camping from './routes/Camping';
@@ -36,6 +37,10 @@ export const router = createBrowserRouter(
         {
           path: "gear/owner",
           element: <GearOwnerWrap />,
+        },
+        {
+          path: "gear/enhance",
+          element: <GearEnhanceWrap />,
         },
         {
           path: "camping",

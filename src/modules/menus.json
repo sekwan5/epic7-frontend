@@ -14,10 +14,21 @@
   {
     "id": "gear",
     "title": "장비",
-    "to": "/gear/owner",
-    "sidebar": true
+    "to": "/gear",
+    "sidebar": true,
+    "submenus": [
+      {
+        "id": "gearOwner",
+        "title": "장비 주인찾기",
+        "to": "/gear/owner"
+      },
+      {
+        "id": "gearEnhance",
+        "title": "장비 강화",
+        "to": "/gear/enhance"
+      }
+    ]
   },
-
   {
     "id": "camp",
     "title": "미궁시뮬레이터",

@@ -1,17 +1,26 @@
-import { useState } from "react";
-import { IRTAData } from "@/modules/api";
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
+import { api, IRTAData } from "@/modules/api";
 import { IHero } from "@/modules/data/getHeroData";
 import { Section1 } from "./Section1";
 import { Section2 } from "./Section2";
 import { Section3 } from "./Section3";
 
-export default function RTAContent({
-  rtaData,
-  heroData,
-}: {
-  rtaData: IRTAData;
-  heroData: IHero;
-}) {
+import Select from "react-select";
+
+export default function RTAContent({ heroData }: { heroData: IHero }) {
+  const [rta, setRta] = useState<IRTAData>({} as IRTAData);
+
+  useEffect(() => {
+    getData(selectedSeason.value);
+  }, []);
+
+  const getData = async (season: string) => {
+    const rta = await api.hero.getHeroRtaData(heroData.id, season);
+    setRta(rta);
+  };
+
   const [selectedSet, setSelectedSet] = useState<string[]>([]);
 
   const handleEquipSelect = (key: string[]) => {
@@ -21,16 +30,35 @@ export default function RTAContent({
         : key,
     );
   };
-
+  const handleSeasonChange = (option: any) => {
+    console.log(option);
+    getData(option.value);
+    setSelectedSeason(option);
+  };
+  const seasonOptions = [
+    { value: "s1", label: "추격의 시즌 " },
+    { value: "s0", label: "프리 시즌 " },
+  ];
+  const [selectedSeason, setSelectedSeason] = useState(seasonOptions[0]);
   return (
     <div className="rta-content">
-      <Section1 heroData={heroData} rtaData={rtaData} />
+      <div className="season-select">
+        <Select
+          options={seasonOptions}
+          value={selectedSeason}
+          onChange={handleSeasonChange}
+          className="season-select-container"
+          classNamePrefix="season-select"
+          components={{ IndicatorSeparator: () => null }}
+        />
+      </div>
+      <Section1 heroData={heroData} rtaData={rta} />
       <Section2
-        rtaData={rtaData}
+        rtaData={rta}
         onEquipSelect={handleEquipSelect}
         selectedSet={selectedSet}
       />
-      <Section3 rtaData={rtaData} selectedSet={selectedSet} />
+      <Section3 rtaData={rta} selectedSet={selectedSet} />
     </div>
   );
 }

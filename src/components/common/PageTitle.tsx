@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 export interface PageTitleProps extends PropsWithChildren {
   className?: string;
   border?: boolean;
+  depth?: string;
 }
-export function PageTitle({ children }: PageTitleProps) {
+export function PageTitle({ children, depth }: PageTitleProps) {
   return (
     <div className="page-title">
       <div className="text">
         <div className="page-path">
           <span>
             <Link to="/">Home / </Link>
+            {depth && depth}
           </span>
         </div>
         {children}

@@ -108,10 +108,14 @@ export class ApiHero extends ApiBase<IndexSignatureType> {
       return res.data;
     });
   }
-  async getHeroRtaData(hero_id: string): Promise<IRTAData> {
-    return this.client.get(`/builds/statistics/${hero_id}`).then((res) => {
-      return res.data;
-    });
+  async getHeroRtaData(hero_id: string, season: string): Promise<IRTAData> {
+    return this.client
+      .get(`/builds/statistics/${hero_id}`, {
+        params: { season },
+      })
+      .then((res) => {
+        return res.data;
+      });
   }
 
   async recommendHeroes(gearData: IParseData): Promise<GearRecommendation> {

@@ -120,7 +120,7 @@ export function GearOwnerWrap() {
     <>
       <div className="container gear-owner">
         <div className="gear-owner-wrap">
-          <PageTitle>
+          <PageTitle depth="gear">
             <h2>장비 주인찾기 (BETA)</h2>
           </PageTitle>
           <div className="gear-owner-content">

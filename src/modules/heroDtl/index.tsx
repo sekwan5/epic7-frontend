@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { IHero } from "../data/getHeroData";
-import { api, IHeroBuild, IRTAData } from "../api";
+import { api, IHeroBuild } from "../api";
 import HeroDtlHeader from "@/components/hero/heroDtl/HeroDtlHeader";
 import { useEffect, useState } from "react";
 import HeroDtlTab from "@/components/hero/heroDtl/HeroDtlTab";
@@ -13,7 +13,6 @@ export default function HeroDtlWrap() {
   const tabs = ["RTA", "BUILDS"];
   const [activeTab1, setActiveTab1] = useState(tabs[0]);
   const [builds, setBuilds] = useState<IHeroBuild[]>([]);
-  const [rta, setRta] = useState<IRTAData>({} as IRTAData);
 
   useEffect(() => {
     getData();
@@ -22,8 +21,6 @@ export default function HeroDtlWrap() {
   const getData = async () => {
     const builds = await api.hero.getHeroBuilds(id);
     setBuilds(builds);
-    const rta = await api.hero.getHeroRtaData(id);
-    setRta(rta);
   };
 
   return (
@@ -40,9 +37,7 @@ export default function HeroDtlWrap() {
           />
           <div className="tab-content">
             {activeTab1 === "BUILDS" && <BuildsContent builds={builds} />}
-            {activeTab1 === "RTA" && (
-              <RTAContent rtaData={rta} heroData={hero} />
-            )}
+            {activeTab1 === "RTA" && <RTAContent heroData={hero} />}
           </div>
         </div>
       </div>

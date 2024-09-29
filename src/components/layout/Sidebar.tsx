@@ -13,35 +13,51 @@ export function Sidebar() {
     sidebar: state.app.sidebar,
   }));
 
+  const closeSidebar = () => {
+    dispatch(setSidebar(false));
+  };
+
   return (
-    // <div className={`sidebar-wrapper ${sidebar ? "show" : ""}`}>
     <>
       <aside className={`sidebar ${sidebar ? "show" : ""}`}>
         <div className="sidebar-header">
-          <i
-            className="ico-close"
-            onClick={() => dispatch(setSidebar(false))}
-          />
+          <i className="ico-close" onClick={closeSidebar} />
         </div>
         <div className="nav-wrapper">
           <ul className="nav flex-column">
             {menus
               .filter((e) => e.sidebar === true)
               .map((menu) => {
+                const isActive =
+                  pathname.split("/")[1] === menu.to.split("/")[1];
                 return (
                   <Fragment key={`sidebar-menu-${menu.id}`}>
                     <li className="nav-item">
                       <Link
                         to={menu.to}
-                        className={`nav-link ${
-                          pathname.split("/")[1] === menu.to.split("/")[1]
-                            ? "active"
-                            : ""
-                        }`}
-                        onClick={() => dispatch(setSidebar(false))}
+                        className={`nav-link ${isActive ? "active" : ""}`}
+                        onClick={closeSidebar}
                       >
                         {menu.title}
                       </Link>
+                      {menu.submenus && menu.submenus.length > 0 && (
+                        <ul className="nav flex-column submenu">
+                          {menu.submenus.map((submenu) => (
+                            <li
+                              className="nav-item"
+                              key={`sidebar-submenu-${submenu.id}`}
+                            >
+                              <Link
+                                to={submenu.to}
+                                className={`nav-link ${pathname === submenu.to ? "active" : ""}`}
+                                onClick={closeSidebar}
+                              >
+                                {submenu.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </li>
                   </Fragment>
                 );
@@ -49,8 +65,10 @@ export function Sidebar() {
           </ul>
         </div>
       </aside>
-      <div className={`sidebar-backdrop fade ${sidebar ? "show" : ""}`}></div>
+      <div
+        className={`sidebar-backdrop fade ${sidebar ? "show" : ""}`}
+        onClick={closeSidebar}
+      ></div>
     </>
-    // </div>
   );
 }

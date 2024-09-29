@@ -103,7 +103,7 @@ export function Section2(props: {
             <thead>
               <tr>
                 <th colSpan={2} className="text-center">
-                  같 선택하면 좋은 영웅
+                  같이 선택하기 좋은 영웅
                 </th>
                 <th colSpan={2} className="text-center">
                   상대하기 힘든 영웅

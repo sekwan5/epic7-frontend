@@ -205,6 +205,16 @@
         }
       }
       .rta-content {
+        .season-select {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 20px;
+          padding-right: 20px;
+          .season-select-container {
+            width: 200px;
+            color: #000;
+          }
+        }
         .rta-section1 {
           display: flex;
           margin-bottom: 20px;

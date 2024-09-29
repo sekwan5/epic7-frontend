@@ -3,16 +3,15 @@ import CoImage from "../common/CoImages";
 import { useAppDispatch } from "@/store/hooks";
 import { toggleSidebar } from "@/store/appSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 export function Header() {
   const navigate = useNavigate();
-
   const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
 
   const handleClick = (to: string) => {
     navigate(to);
   };
-
-  const dispatch = useAppDispatch();
 
   return (
     <div className="fixArea">
@@ -84,21 +83,31 @@ export function Header() {
         <div className="smodGnb">
           <div className="spanWarp">
             {menus.map((menu) => {
+              const isActive = pathname.split("/")[1] === menu.to.split("/")[1];
+              const hasSubmenus = menu.submenus && menu.submenus.length > 0;
+
               return (
-                <span
-                  key={`top-menu-${menu.id}`}
-                  className={`${
-                    pathname.split("/")[1] === menu.to.split("/")[1]
-                      ? "active"
-                      : ""
-                  } `}
-                  onClick={() => {
-                    handleClick(menu.to);
-                  }}
-                  // to={menu.to}
-                >
-                  {menu.title}
-                </span>
+                <div key={`top-menu-${menu.id}`} className="menu-item">
+                  <span
+                    className={`${isActive ? "active" : ""}`}
+                    onClick={() => !hasSubmenus && handleClick(menu.to)}
+                  >
+                    {menu.title}
+                  </span>
+                  {hasSubmenus && (
+                    <div className="submenu">
+                      {menu.submenus.map((submenu) => (
+                        <span
+                          key={`submenu-${submenu.id}`}
+                          className={`${pathname === submenu.to ? "active" : ""}`}
+                          onClick={() => handleClick(submenu.to)}
+                        >
+                          {submenu.title}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
