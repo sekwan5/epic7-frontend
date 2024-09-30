@@ -40,27 +40,32 @@
         display: flex;
         width: 100%;
         margin-bottom: 10px;
+        justify-content: space-between;
+
         label {
           text-align: left;
           width: 60px;
-          margin-right: 10px;
           position: relative;
           top: 6px;
+          width: 20%;
         }
         .option-select {
-          width: 50%;
-          margin-right: 10px;
+          width: 58%;
         }
         .option-input {
           padding: 8px 12px;
           font-size: 13px;
           height: 38px;
-          width: 60px;
+          width: 20%;
           border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
           color: #fff;
           background-color: #36373d;
           border: 1px solid rgb(118, 118, 118);
+        }
+        .option-input-placeholder {
+          height: 30px; // 입력 필드의 높이와 동일하게 설정
+          width: 20%; // 너비를 100%로 설정
         }
       }
       .select-image-button {
@@ -82,6 +87,267 @@
 .gear-enhance {
   .gear-enhance-content {
     display: flex;
+    .gear-enhance-box {
+      position: relative;
+      .box_equip {
+        width: 350px;
+        height: 545px;
+      }
+      // .set-icon {
+      //   width: 40px;
+      // }
+      .gear-enhance-header {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 10%;
+        left: 12%;
+        .item-wrap {
+          display: flex;
+          .item-bg {
+            width: 90px;
+            height: 90px;
+            margin-right: 10px;
+          }
+          .item-icon {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            top: 5%;
+            left: 3%;
+          }
+          .item-text-wrap {
+            white-space: pre-line;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .item-grade {
+              color: red;
+              font-size: 15px;
+              font-weight: 500;
+            }
+            .item-name {
+              color: #fff;
+              font-size: 18px;
+              font-weight: 500;
+            }
+          }
+        }
+        .item-desc {
+          white-space: pre-line;
+          color: #685540;
+          font-size: 18px;
+          font-weight: 600;
+          padding: 0px 10px;
+        }
+        .set-icon {
+          width: 38px;
+          position: absolute;
+          top: 39%;
+          left: 24%;
+        }
+      }
+      .gear-enhance-option {
+        position: absolute;
+        top: 36.5%;
+        left: 14%;
+        .bar_1,
+        .bar_2 {
+          width: 122px;
+          height: 15px;
+          filter: sepia(100%) saturate(400%) brightness(45%) hue-rotate(0deg);
+        }
+        .bar_2 {
+          transform: scaleX(-1); // bar_2만 좌우 반전 유지
+        }
+        .main-option,
+        .sub-option,
+        .gear-score {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .main-option {
+          color: #fff;
+          font-size: 18px;
+          font-weight: 500;
+          border-bottom: 1px solid #685540;
+          margin-bottom: 10px;
+          padding: 0 10px 10px 10px;
+          min-height: 37px;
+        }
+        .sub-option {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 0 10px;
+          color: #888;
+          min-height: 23.2px;
+        }
+        .gear-score {
+          margin-top: 10px;
+          border-top: 1px solid #685540;
+          color: #ddce86;
+          font-size: 18px;
+          font-weight: 500;
+          padding: 5px 10px;
+        }
+      }
+      .gear-enhance-desc {
+        position: absolute;
+        top: 76%;
+        left: 15%;
+        .set-icon-wrap {
+          display: flex;
+          align-items: center;
+
+          span {
+            color: #fff;
+            font-size: 18px;
+          }
+          .set-icon {
+            width: 40px;
+            margin-right: 5px;
+          }
+        }
+        .set-desc {
+          margin-left: 5px;
+          color: #888;
+          font-size: 17px;
+        }
+      }
+    }
+    .select-box-wrap {
+      padding: 0px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      color: #fff;
+      .select-box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 15px;
+        label {
+          text-align: left;
+          width: 60px;
+          position: relative;
+          top: 6px;
+          width: 20%;
+          // color: #fff;
+        }
+        .option-select {
+          width: 48%;
+          // margin-right: 10px;
+        }
+        .option-input {
+          padding: 8px 12px;
+          font-size: 13px;
+          height: 38px;
+          width: 30%;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          color: #fff;
+          background-color: #36373d;
+          border: 1px solid rgb(118, 118, 118);
+        }
+        .option-input-placeholder {
+          height: 30px; // 입력 필드의 높이와 동일하게 설정
+          width: 30%; // 너비를 100%로 설정
+        }
+      }
+      .enhance-button-wrap {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      .enhance-button-1,
+      .enhance-button-2,
+      .enhance-button-3 {
+        border: none;
+        border-radius: 15px;
+        color: #ffffff;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        box-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2); // 외부 및 내부 그림자 추가
+        width: 32.5%;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+
+      .enhance-button-1 {
+        background: linear-gradient(
+          to bottom,
+          #0c1c2f 0%,
+          #1e3c64 40%,
+          #2a4d7a 60%,
+          #3a5d8c 100%
+        );
+        &:hover {
+          background: linear-gradient(
+            to bottom,
+            #102338 0%,
+            #254b7a 40%,
+            #305c8f 60%,
+            #4a6d9c 100%
+          );
+          // border-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .enhance-button-2 {
+        background: linear-gradient(
+          to bottom,
+          #2c5419 0%,
+          #4a8f29 40%,
+          #569f35 60%,
+          #62af41 100%
+        );
+        &:hover {
+          background: linear-gradient(
+            to bottom,
+            #37691f 0%,
+            #5aab32 40%,
+            #66bb3e 60%,
+            #72cf4a 100%
+          );
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .enhance-button-3 {
+        background: linear-gradient(
+          to bottom,
+          #6e1b1b 0%,
+          #a82828 40%,
+          #b83838 60%,
+          #c84848 100%
+        );
+        &:hover {
+          background: linear-gradient(
+            to bottom,
+            #8a2222 0%,
+            #c13030 40%,
+            #d14040 60%,
+            #e15050 100%
+          );
+          border-color: rgba(255, 255, 255, 0.5);
+        }
+      }
+    }
   }
 }
 
@@ -100,14 +366,14 @@
           }
         }
       }
-      .select-box-wrap {
-        width: 100%;
-        .select-image-button {
-          font-size: 12px;
-        }
-        .hero-search-button {
-          font-size: 12px;
-        }
+    }
+    .select-box-wrap {
+      width: 100%;
+      .select-image-button {
+        font-size: 12px;
+      }
+      .hero-search-button {
+        font-size: 12px;
       }
     }
   }

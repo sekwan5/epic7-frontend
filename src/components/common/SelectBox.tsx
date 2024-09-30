@@ -78,7 +78,7 @@ export function SelectBox({
         styles={customStyles}
         components={{ IndicatorSeparator: () => null }}
       />
-      {useInput && (
+      {useInput ? (
         <input
           className="option-input"
           type="text"
@@ -86,6 +86,8 @@ export function SelectBox({
           onChange={handleInputChange}
           maxLength={10}
         />
+      ) : (
+        <div className="option-input-placeholder"></div>
       )}
     </div>
   );
