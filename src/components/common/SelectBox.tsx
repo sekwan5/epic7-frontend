@@ -13,6 +13,7 @@ interface SelectBoxProps {
   value: string;
   inputValue?: string;
   useInput?: boolean;
+  disabled?: boolean;
   onChange: (selectedOption: Option | null) => void;
   handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -25,6 +26,7 @@ export function SelectBox({
   onChange,
   handleInputChange,
   useInput = true,
+  disabled = false,
 }: SelectBoxProps) {
   const selectedOption = options.find((option) => option.value === value);
 
@@ -73,6 +75,7 @@ export function SelectBox({
         options={options}
         value={selectedOption}
         onChange={handleChange}
+        isDisabled={disabled}
         isSearchable={true}
         placeholder="선택하세요..."
         styles={customStyles}
@@ -85,6 +88,7 @@ export function SelectBox({
           value={inputValue}
           onChange={handleInputChange}
           maxLength={10}
+          disabled={disabled}
         />
       ) : (
         <div className="option-input-placeholder"></div>

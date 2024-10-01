@@ -271,6 +271,70 @@ export const options2 = [
   },
 ];
 
+export const options3 = [
+  {
+    value: "",
+    name_en: "select",
+    label: "선택",
+  },
+  {
+    value: "atk",
+    name_en: "attack_valid ",
+    label: "공격력",
+  },
+  {
+    value: "atkPercentage",
+    name_en: "attack_valid ",
+    label: "공격력%",
+  },
+  {
+    value: "hp",
+    name_en: "health_valid",
+    label: "생명력",
+  },
+  {
+    value: "hpPercentage",
+    name_en: "health_valid",
+    label: "생명력%",
+  },
+  {
+    value: "def",
+    name_en: "defense_valid",
+    label: "방어력",
+  },
+  {
+    value: "defPercentage",
+    name_en: "defense_valid",
+    label: "방어력%",
+  },
+  {
+    value: "spd",
+    name_en: "speed_valid",
+    label: "속도",
+  },
+  {
+    value: "chd",
+    name_en: "critical_damage_valid",
+    label: "치명피해",
+  },
+  {
+    value: "chc",
+    name_en: "critical_chance_valid",
+    label: "치명확률",
+  },
+  {
+    value: "eff",
+
+    name_en: "effectiveness_valid",
+    label: "효과적중",
+  },
+  {
+    value: "efr",
+    name_en: "effect_registance_valid",
+    label: "효과저항",
+  },
+];
+
 export const mock = {
   recommendations: [
     {
