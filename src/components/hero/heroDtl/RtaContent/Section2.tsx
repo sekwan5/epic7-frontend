@@ -129,7 +129,13 @@ export function Section2(props: {
                       {hasTeammate ? (
                         <>
                           <td className="d-flex align-items-center justify-content-center">
-                            <div className="hero-profile">
+                            <div
+                              className="hero-profile"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                window.location.href = `/hero/${sortedTeammates[index][0]}`;
+                              }}
+                            >
                               <ProfileImg id={sortedTeammates[index][0]} />
                             </div>
                           </td>
@@ -148,7 +154,13 @@ export function Section2(props: {
                       {hasCounter ? (
                         <>
                           <td className="d-flex align-items-center justify-content-center">
-                            <div className="hero-profile">
+                            <div
+                              className="hero-profile"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => {
+                                window.location.href = `/hero/${sortedCounters[index][0]}`;
+                              }}
+                            >
                               <ProfileImg id={sortedCounters[index][0]} />
                             </div>
                           </td>

@@ -813,8 +813,6 @@ export function enhanceGear(gear: ISelectedOption): ISelectedOption {
       break;
   }
 
-  console.log("강화된 부옵션:", updatedGear);
-
   return updatedGear;
 }
 const atkValues = {

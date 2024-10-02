@@ -78,11 +78,14 @@ export default function GearEnhanceWrap() {
   const handlePartsChange = (event: Option | null) => {
     const partValue = event?.value ?? "";
     const newMainOption = getMainOptionForPart(partValue);
-
     const updateOption = (prevValue: ISelectedOption) => ({
       ...prevValue,
       parts: partValue,
       mainOption: newMainOption,
+      subOption1: initialOption,
+      subOption2: initialOption,
+      subOption3: initialOption,
+      subOption4: initialOption,
     });
 
     setSelectedOption(updateOption);
