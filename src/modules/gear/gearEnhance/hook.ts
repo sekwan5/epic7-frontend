@@ -681,6 +681,142 @@ export const generateAutoOption = (part: string): ISelectedOption => {
   }
 };
 
+function getRandomEnhanceValueWithProbability(
+  values: number[],
+  probabilities: number[],
+): number {
+  const totalProbability = probabilities.reduce((sum, prob) => sum + prob, 0);
+  const randomValue = Math.random() * totalProbability;
+  let cumulativeProbability = 0;
+
+  for (let i = 0; i < values.length; i++) {
+    cumulativeProbability += probabilities[i];
+    if (randomValue <= cumulativeProbability) {
+      return values[i];
+    }
+  }
+
+  return values[values.length - 1];
+}
+
+function enhanceOption(option: IOption): IOption {
+  const optionType = option.key as OptionType;
+  let enhanceValue: number;
+
+  switch (optionType) {
+    case "atk":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        atkValues.values,
+        atkValues.probabilities,
+      );
+      break;
+    case "atkPercentage":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        atkPercentageValues.values,
+        atkPercentageValues.probabilities,
+      );
+      break;
+    case "def":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        defValues.values,
+        defValues.probabilities,
+      );
+      break;
+    case "defPercentage":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        defPercentageValues.values,
+        defPercentageValues.probabilities,
+      );
+      break;
+    case "hp":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        hpValues.values,
+        hpValues.probabilities,
+      );
+      break;
+    case "hpPercentage":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        hpPercentageValues.values,
+        hpPercentageValues.probabilities,
+      );
+      break;
+    case "spd":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        spdValues.values,
+        spdValues.probabilities,
+      );
+      break;
+    case "eff":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        effValues.values,
+        effValues.probabilities,
+      );
+      break;
+    case "efr":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        efrValues.values,
+        efrValues.probabilities,
+      );
+      break;
+    case "chc":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        chcValues.values,
+        chcValues.probabilities,
+      );
+      break;
+    case "chd":
+      enhanceValue = getRandomEnhanceValueWithProbability(
+        chdValues.values,
+        chdValues.probabilities,
+      );
+      break;
+    default:
+      throw new Error("알 수 없는 옵션 타입");
+  }
+
+  // const newValue = currentValue + enhanceValue;
+  return { ...option, value: enhanceValue.toString() };
+}
+
+export function enhanceGear(gear: ISelectedOption): ISelectedOption {
+  const subOptions = [
+    gear.subOption1,
+    gear.subOption2,
+    gear.subOption3,
+    gear.subOption4,
+  ];
+
+  const randomIndex = Math.floor(Math.random() * subOptions.length);
+  const selectedOption = subOptions[randomIndex];
+
+  const enhancedOption = enhanceOption(selectedOption);
+
+  const updatedGear = { ...gear };
+  const updateSubOption = (subOption: IOption) => ({
+    ...subOption,
+    count: (subOption.count || 0) + 1,
+    addValue: (subOption.addValue || 0) + parseFloat(enhancedOption.value),
+  });
+
+  switch (randomIndex) {
+    case 0:
+      updatedGear.subOption1 = updateSubOption(gear.subOption1);
+      break;
+    case 1:
+      updatedGear.subOption2 = updateSubOption(gear.subOption2);
+      break;
+    case 2:
+      updatedGear.subOption3 = updateSubOption(gear.subOption3);
+      break;
+    case 3:
+      updatedGear.subOption4 = updateSubOption(gear.subOption4);
+      break;
+  }
+
+  console.log("강화된 부옵션:", updatedGear);
+
+  return updatedGear;
+}
 const atkValues = {
   values: [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
   probabilities: [
@@ -718,7 +854,7 @@ const hpValues = {
     2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221,
     2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221,
     2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221, 2.221,
-    2.221, 1.133,
+    2.221, 2.221, 2.221, 2.221, 1.133,
   ],
 };
 
