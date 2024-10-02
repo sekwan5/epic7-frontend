@@ -51,7 +51,13 @@ const getSetKey = (sets: Record<string, number>): string => {
     .join("/");
 };
 
-export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
+export default function BuildsContent({
+  builds,
+  tab,
+}: {
+  builds: IHeroBuild[];
+  tab: string;
+}) {
   const [selectedSet, setSelectedSet] = useState<string | null>(null);
   const imgUrl = import.meta.env.VITE_ASSETS_URL;
   //{set_acc: 2, set_speed: 4}
@@ -211,7 +217,7 @@ export default function BuildsContent({ builds }: { builds: IHeroBuild[] }) {
 
   // builds 길이가 0인 경우를 확인하는 변수 추가
   const hasNoBuilds = builds.length === 0;
-
+  if (tab === "RTA") return null;
   return (
     <div className="builds-content">
       <div className="charts-container">

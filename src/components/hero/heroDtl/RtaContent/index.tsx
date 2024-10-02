@@ -9,7 +9,13 @@ import { Section3 } from "./Section3";
 
 import Select from "react-select";
 
-export default function RTAContent({ heroData }: { heroData: IHero }) {
+export default function RTAContent({
+  heroData,
+  tab,
+}: {
+  heroData: IHero;
+  tab: string;
+}) {
   const [rta, setRta] = useState<IRTAData>({} as IRTAData);
 
   useEffect(() => {
@@ -40,6 +46,8 @@ export default function RTAContent({ heroData }: { heroData: IHero }) {
     { value: "s0", label: "프리 시즌 " },
   ];
   const [selectedSeason, setSelectedSeason] = useState(seasonOptions[0]);
+
+  if (tab === "BUILDS") return null;
   return (
     <div className="rta-content">
       <div className="season-select">

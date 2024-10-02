@@ -357,6 +357,7 @@
       flex-direction: column;
       .img-to-text-wrap {
         width: 100%;
+
         .img-to-text {
           .canvas-wrap {
             display: none;
@@ -366,14 +367,14 @@
           }
         }
       }
-    }
-    .select-box-wrap {
-      width: 100%;
-      .select-image-button {
-        font-size: 12px;
-      }
-      .hero-search-button {
-        font-size: 12px;
+      .select-box-wrap {
+        width: 100%;
+        .select-image-button {
+          font-size: 12px;
+        }
+        .hero-search-button {
+          font-size: 12px;
+        }
       }
     }
   }

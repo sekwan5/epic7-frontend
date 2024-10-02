@@ -36,8 +36,8 @@ export default function HeroDtlWrap() {
             onTabChange={setActiveTab1}
           />
           <div className="tab-content">
-            {activeTab1 === "BUILDS" && <BuildsContent builds={builds} />}
-            {activeTab1 === "RTA" && <RTAContent heroData={hero} />}
+            <BuildsContent builds={builds} tab={activeTab1} />
+            <RTAContent heroData={hero} tab={activeTab1} />
           </div>
         </div>
       </div>
