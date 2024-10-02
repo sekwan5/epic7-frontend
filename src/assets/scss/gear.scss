@@ -429,4 +429,46 @@
       }
     }
   }
+
+  .gear-enhance {
+    .gear-enhance-content {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .gear-enhance-box {
+        width: 100%;
+        position: relative;
+      }
+      .select-box-wrap {
+        width: 100%;
+        margin-bottom: 20px;
+        .select-box {
+          display: none;
+
+          &.parts-select {
+            display: block;
+          }
+        }
+        .enhance-button-wrap {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-top: 10px;
+        }
+        .enhance-button-1,
+        .enhance-button-2,
+        .enhance-button-3 {
+          border: none;
+        }
+      }
+      .result-option-wrap {
+        width: 100%;
+
+        .result-title {
+          text-align: center;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
 }

@@ -341,6 +341,7 @@ export default function GearEnhanceWrap() {
           <EqBox selectedOption={selectedOption} enhanceCount={enhanceCount} />
           <div className="select-box-wrap">
             <SelectBox
+              className="parts-select"
               options={partsOptions}
               label="부위"
               value={selectedOption.parts}
@@ -388,7 +389,7 @@ export default function GearEnhanceWrap() {
             </div>
           </div>
           <div className="result-option-wrap">
-            <div className="mb-3">
+            <div className="mb-3 text-center">
               <h3>강화 결과 통계</h3>
               <p>총 강화 아이템 수: {stats.totalItems}</p>
               <p>
