@@ -14,7 +14,7 @@ interface SelectBoxProps {
   inputValue?: string;
   useInput?: boolean;
   disabled?: boolean;
-  className?: string;
+  classNm?: string;
   onChange: (selectedOption: Option | null) => void;
   handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -24,7 +24,7 @@ export function SelectBox({
   label,
   value,
   inputValue,
-  className,
+  classNm,
   onChange,
   handleInputChange,
   useInput = true,
@@ -70,10 +70,10 @@ export function SelectBox({
   };
 
   return (
-    <div className="select-box">
+    <div className={`select-box ${classNm}`}>
       <label>{label}</label>
       <Select
-        className={`option-select ${className}`}
+        className={`option-select `}
         options={options}
         value={selectedOption}
         onChange={handleChange}

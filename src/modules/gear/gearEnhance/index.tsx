@@ -341,7 +341,7 @@ export default function GearEnhanceWrap() {
           <EqBox selectedOption={selectedOption} enhanceCount={enhanceCount} />
           <div className="select-box-wrap">
             <SelectBox
-              className="parts-select"
+              classNm="parts-select"
               options={partsOptions}
               label="부위"
               value={selectedOption.parts}
