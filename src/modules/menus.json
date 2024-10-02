@@ -25,7 +25,7 @@
       {
         "id": "gearEnhance",
         "title": "장비 강화",
-        "to": "/"
+        "to": "/gear/enhance"
       }
     ]
   },

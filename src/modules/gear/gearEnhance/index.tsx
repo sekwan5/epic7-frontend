@@ -376,11 +376,11 @@ export default function GearEnhanceWrap() {
               <button className="enhance-button-1" onClick={handleEnhance}>
                 강화
               </button>
-              <button className="enhance-button-2" onClick={handleAutoGenerate}>
-                자동생성
-              </button>
               <button className="enhance-button-3" onClick={handleReset}>
                 초기화
+              </button>
+              <button className="enhance-button-2" onClick={handleAutoGenerate}>
+                자동생성
               </button>
             </div>
           </div>
