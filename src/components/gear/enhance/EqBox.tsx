@@ -107,6 +107,74 @@ export default function EqBox({
     );
   };
 
+  const renderEnhaceHeader = () => {
+    let partNm,
+      eqDesc,
+      epNm = "";
+    if (parts === "weapon") {
+      partNm = "무기";
+      epNm = `어비스 드레이크\n뼈날검`;
+      eqDesc = `희귀한 어비스 드레이크의 뼈로\n벼렸다는 검`;
+    } else if (parts === "helm") {
+      partNm = "투구";
+      epNm = "어비스 드레이크\n페이스";
+      eqDesc = `희귀한 늪마물의 정수로 만든 투구`;
+    } else if (parts === "armor") {
+      partNm = "갑옷";
+      epNm = "어비스 드레이크\n가죽갑옷";
+      eqDesc = `희귀한 어비스 드레이크의 정수를\n바른 가죽갑옷`;
+    } else if (parts === "ring") {
+      partNm = "반지";
+      epNm = "자각룡의 홍옥";
+      eqDesc = `자각룡의 숨결을 가두고 있는\n진귀한 홍옥`;
+    } else if (parts === "neck") {
+      partNm = "목걸이";
+      epNm = "심연의 칼날 목걸이";
+      eqDesc = `지저의 나락에서 채굴한 칼날로\n만든 목걸이`;
+    } else if (parts === "boot") {
+      partNm = "신발";
+      epNm = "어비스 드레이크\n부츠";
+      eqDesc = `희귀한 늪마물의 정수로 만든 부츠`;
+    }
+    return (
+      <div className="gear-enhance-header">
+        <div className="item-wrap">
+          <CoImage
+            className="item-bg"
+            src="/images/gear/item_bg.png"
+            alt="box"
+          />
+          <CoImage
+            className="item-icon"
+            src={`/images/gear/eq_${parts}.png`}
+            alt="box"
+          />
+          <div className="enhance-count">
+            {enhanceCount > 0 && enhanceCount < 5 && (
+              <em
+                className="flag flag-orange"
+                style={{ marginLeft: enhanceCount < 4 ? "5px" : "" }}
+              >{`+${enhanceCount * 3}`}</em>
+            )}
+            {enhanceCount === 5 && (
+              <em className="flag flag-red">{`+${enhanceCount * 3}`}</em>
+            )}
+          </div>
+          <div className="item-text-wrap">
+            <span className="item-grade">전설{partNm}</span>
+            <span className="item-name">{epNm}</span>
+          </div>{" "}
+          <img
+            className="set-icon"
+            src={`${imgUrl}/set/set_speed.png`}
+            alt="set_speed"
+          />
+        </div>
+        <div className="item-desc">{eqDesc}</div>
+      </div>
+    );
+  };
+
   return (
     <>
       <div className="gear-enhance-box">
@@ -115,41 +183,7 @@ export default function EqBox({
           src="/images/gear/box_equip_1.png"
           alt="box"
         />
-        <div className="gear-enhance-header">
-          <div className="item-wrap">
-            <CoImage
-              className="item-bg"
-              src="/images/gear/item_bg.png"
-              alt="box"
-            />
-            <CoImage
-              className="item-icon"
-              src={`/images/gear/eq_${parts}.png`}
-              alt="box"
-            />
-            <div className="enhance-count">
-              {enhanceCount > 0 && enhanceCount < 5 && (
-                <em
-                  className="flag flag-orange"
-                  style={{ marginLeft: enhanceCount < 4 ? "5px" : "" }}
-                >{`+${enhanceCount * 3}`}</em>
-              )}
-              {enhanceCount === 5 && (
-                <em className="flag flag-red">{`+${enhanceCount * 3}`}</em>
-              )}
-            </div>
-            <div className="item-text-wrap">
-              <span className="item-grade">전설무기</span>
-              <span className="item-name">{`어비스 드레이크 \n 뼈날검`}</span>
-            </div>
-            <img
-              className="set-icon"
-              src={`${imgUrl}/set/set_speed.png`}
-              alt="set_speed"
-            />
-          </div>
-          <div className="item-desc">{`희귀한 어비스 드레이크의 뼈로\n벼렸다는 검`}</div>
-        </div>
+        {renderEnhaceHeader()}
         <div className="gear-enhance-option">
           <div className="bar-wrap">
             <CoImage className="bar_1" src="/images/gear/bar.png" alt="bar" />

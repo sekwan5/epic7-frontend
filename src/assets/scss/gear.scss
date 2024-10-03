@@ -104,6 +104,8 @@
         position: absolute;
         top: 10%;
         left: 12%;
+        height: 145px;
+        width: 260px;
         .item-wrap {
           display: flex;
           .item-bg {
@@ -148,7 +150,9 @@
             white-space: pre-line;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: start;
+            position: relative;
+            top: 5px;
             .item-grade {
               color: red;
               font-size: 15px;
@@ -172,7 +176,7 @@
           width: 38px;
           position: absolute;
           top: 39%;
-          left: 24%;
+          left: 22%;
         }
       }
       .gear-enhance-option {
@@ -390,7 +394,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 35%;
+      width: 37%;
       color: #fff;
       .result-title {
         font-size: 18px;

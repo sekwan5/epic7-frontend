@@ -87,7 +87,7 @@ export default function GearEnhanceWrap() {
       subOption3: initialOption,
       subOption4: initialOption,
     });
-
+    setEnhanceCount(0);
     setSelectedOption(updateOption);
     // setEnhanceOptions(updateOption);
   };
@@ -399,19 +399,19 @@ export default function GearEnhanceWrap() {
             </div>
             <div className="d-flex justify-content-between gap-3">
               <div className="">
-                <h4 className="result-title">재련 전</h4>
+                <h4 className="result-title">재련 전 속도</h4>
                 {Object.entries(stats.before).map(([key, value]) => (
                   <p key={key}>
-                    속도 {key.replace("speedAbove", "")} 이상 갯수:{" "}
-                    {value.count} (확률: {value.probability}%)
+                    {key.replace("speedAbove", "")} 이상 : {value.count} 개
+                    (확률: {value.probability}%)
                   </p>
                 ))}
               </div>
               <div>
-                <h4 className="result-title">재련 후</h4>
+                <h4 className="result-title">재련 후 속도</h4>
                 {Object.entries(stats.after).map(([key, value]) => (
                   <p key={key}>
-                    속도 {key.replace("speedAbove", "")} 이상 : {value.count}{" "}
+                    {key.replace("speedAbove", "")} 이상 : {value.count} 개
                     (확률: {value.probability}%)
                   </p>
                 ))}
