@@ -51,7 +51,7 @@ export function GearOwnerWrap() {
 
   const setParseData = async (data: IParseData) => {
     console.log(data);
-    data.parsedData = data.parsedData.map((item) => ({
+    const newData = data.parsedData.map((item) => ({
       ...item,
       key: geOptionValueToName(item.key as string) || "", // 기본값 제공
       value: item.value.replace(/[^가-힣a-zA-Z0-9%]/g, "").trim(),
@@ -68,7 +68,7 @@ export function GearOwnerWrap() {
     handleChange({ value: newPart, label: data.part || "" }, undefined, "part");
 
     // 각 옵션 값 업데이트
-    data.parsedData.forEach((item, index) => {
+    newData.forEach((item, index) => {
       handleChange({ value: item.key || "", label: item.key || "" }, index); // 기본값 제공
       handleInputChange(
         {

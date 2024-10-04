@@ -122,18 +122,21 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
         "생명력",
         "방어력",
         "방어",
+        "방어려",
         "속도",
         "치명확률",
         "치명피해",
+        "치영피해",
         "공격력",
         "효과저항",
         "효과적중",
         "속도",
       ];
+      console.log(tmpData);
 
       for (let i = 0; i < tmpData.length; i++) {
         const currentKey = tmpData[i];
-
+        console.log(currentKey);
         // 세트 정보 추출
 
         // 유효한 키인지 확인
@@ -205,7 +208,15 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
 
           continue;
         }
-        const parts = ["투구", "무기", "갑옷", "목걸이", "반지", "신발"];
+        const parts = [
+          "투구",
+          "무기",
+          "갑옷",
+          "목걸이",
+          "반지",
+          "신발",
+          "신입",
+        ];
 
         if (partInfo === null) {
           for (const part of parts) {

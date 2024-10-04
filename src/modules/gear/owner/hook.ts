@@ -21,14 +21,14 @@ export const geOptionValueToName = (value: string) => {
   if (value.includes("속도")) return "spd";
   if (
     value.includes("치명확률") ||
-    value.includes("치명") ||
+    value.includes("치영확률") ||
     value.includes("명확") ||
     value.includes("확률")
   )
     return "chc";
   if (
     value.includes("치명피해") ||
-    value.includes("치명") ||
+    value.includes("치영피해") ||
     value.includes("명피") ||
     value.includes("피해")
   )
@@ -67,7 +67,7 @@ export const gePartValueToName = (value: string) => {
   if (value.includes("갑옷")) return "armor";
   if (value.includes("목걸이")) return "neck";
   if (value.includes("반지")) return "ring";
-  if (value.includes("신발")) return "boot";
+  if (value.includes("신발" || "신입")) return "boot";
 
   return "";
 };
