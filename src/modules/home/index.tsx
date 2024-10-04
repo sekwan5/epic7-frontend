@@ -69,7 +69,7 @@ export default function HomeContent() {
               </div>
             </a>
           </div>
-          <h2 className="text-center mt-5">업데이트 노트</h2>
+          {/* <h2 className="text-center mt-5">업데이트 노트</h2>
           <p>2024.09.26 </p>
           <p>22,773건의 실시간 아레나 데이터가 추가되었습니다.</p>
           <p className="border-bottom pb-2">
@@ -106,7 +106,7 @@ export default function HomeContent() {
             영웅 목록 페이지가 추가되었습니다.
           </p>
           <p>2024.09.17</p>
-          <p>Epic7GG(에픽지지) OPEN</p>
+          <p>Epic7GG(에픽지지) OPEN</p> */}
         </div>
       </div>
     </>

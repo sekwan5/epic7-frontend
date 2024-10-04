@@ -60,6 +60,17 @@ export const geOptionValueToName = (value: string) => {
 
   // return optionName[value as keyof typeof optionName] || "";
 };
+export const gePartValueToName = (value: string) => {
+  if (!value) return "";
+  if (value.includes("무기")) return "weapon";
+  if (value.includes("투구")) return "helm";
+  if (value.includes("갑옷")) return "armor";
+  if (value.includes("목걸이")) return "neck";
+  if (value.includes("반지")) return "ring";
+  if (value.includes("신발")) return "boot";
+
+  return "";
+};
 export const geSetValueToName = (value: string) => {
   if (!value) return "";
   if (value.includes("속도")) return "set_speed";

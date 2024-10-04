@@ -122,37 +122,45 @@ export function getHeroById(id: string): IHero | undefined {
   return heroes[id];
 }
 
-export function getHeroesByIds(ids: string[]): IHero[] {
-  return ids
+export function getHeroesByIds(
+  ids: string[],
+  applyFilter: boolean = true,
+): IHero[] {
+  const heroList = ids
     .map((id) => heroes[id])
-    .filter((hero): hero is IHero => hero !== undefined)
-    .sort((a, b) => {
-      // 정렬 로직은 getAllHeroes 함수와 동일하게 유지
-      if (
-        (a.status === "new" || a.status === "update") &&
-        b.status !== "new" &&
-        b.status !== "update"
-      ) {
-        return -1;
-      }
-      if (
-        (b.status === "new" || b.status === "update") &&
-        a.status !== "new" &&
-        a.status !== "update"
-      ) {
-        return 1;
-      }
+    .filter((hero): hero is IHero => hero !== undefined);
 
-      if (a.status === "new" && b.status === "update") {
-        return -1;
-      }
-      if (b.status === "new" && a.status === "update") {
-        return 1;
-      }
+  if (!applyFilter) {
+    return heroList;
+  }
 
-      const gradeOrder: { [key: string]: number } = { "5": 3, "4": 2, "3": 1 };
-      return (gradeOrder[b.grade] || 0) - (gradeOrder[a.grade] || 0);
-    });
+  return heroList.sort((a, b) => {
+    // 정렬 로직은 getAllHeroes 함수와 동일하게 유지
+    if (
+      (a.status === "new" || a.status === "update") &&
+      b.status !== "new" &&
+      b.status !== "update"
+    ) {
+      return -1;
+    }
+    if (
+      (b.status === "new" || b.status === "update") &&
+      a.status !== "new" &&
+      a.status !== "update"
+    ) {
+      return 1;
+    }
+
+    if (a.status === "new" && b.status === "update") {
+      return -1;
+    }
+    if (b.status === "new" && a.status === "update") {
+      return 1;
+    }
+
+    const gradeOrder: { [key: string]: number } = { "5": 3, "4": 2, "3": 1 };
+    return (gradeOrder[b.grade] || 0) - (gradeOrder[a.grade] || 0);
+  });
 }
 
 export function getHeroStats(): IHero[] {

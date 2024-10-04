@@ -48,7 +48,7 @@ const baseOption = {
   boot: { key: "spd", label: "속도", value: "8" },
 };
 
-const partsOptions = [
+export const partsOptions = [
   { value: "weapon", label: "무기" },
   { value: "helm", label: "투구" },
   { value: "armor", label: "갑옷" },

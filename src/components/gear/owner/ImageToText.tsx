@@ -10,8 +10,10 @@ export interface IParseData {
   parsedData: {
     key: string;
     value: string;
+    flag?: string;
   }[];
   set: string | null;
+  part: string | null;
 }
 interface ImageToTextProps {
   setParseData: (item: IParseData) => void;
@@ -28,34 +30,50 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
     const visionApiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     // 이미지 전처리 함수
-    const processImage = (image: HTMLImageElement) => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
+    const processImage = (image: HTMLImageElement): Promise<string> => {
+      return new Promise((resolve) => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return resolve("");
 
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+        canvas.width = image.width;
+        canvas.height = image.height;
 
-      canvas.width = image.width;
-      canvas.height = image.height;
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
+        const brightnessThreshold = 95;
 
-      const brightnessThreshold = 95; // 이 값 이하의 밝기는 제거
-
-      for (let i = 0; i < data.length; i += 4) {
-        // RGB 값을 평균하여 밝기 계산
-        const avg = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
-
-        // 밝기가 threshold 이하인 경우 픽셀을 완전히 투명하게 설정
-        if (avg < brightnessThreshold) {
-          data[i + 3] = 0; // Alpha 값을 0으로 설정하여 픽셀을 투명하게 만듦
+        for (let i = 0; i < data.length; i += 4) {
+          const avg =
+            0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+          if (avg < brightnessThreshold) {
+            data[i + 3] = 0;
+          }
         }
-      }
 
-      ctx.putImageData(imageData, 0, 0);
+        ctx.putImageData(imageData, 0, 0);
+
+        // 고품질 이미지로 변환
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                const base64data = reader.result as string;
+                resolve(base64data.split(",")[1]);
+              };
+              reader.readAsDataURL(blob);
+            } else {
+              resolve("");
+            }
+          },
+          "image/png",
+          1.0,
+        );
+      });
     };
 
     // 이미지 업로드 핸들러
@@ -67,11 +85,11 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
           setSelectedImage(reader.result as string);
 
           const img = new Image();
-          img.src = reader.result as string;
-          img.onload = () => {
-            processImage(img);
-            handleExtractText();
+          img.onload = async () => {
+            const processedImageBase64 = await processImage(img);
+            handleExtractText(processedImageBase64);
           };
+          img.src = reader.result as string;
         };
         reader.readAsDataURL(file);
       }
@@ -89,6 +107,7 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
     type Result = {
       parsedData: ParsedData[];
       set: string | null;
+      part: string | null;
     };
 
     function parseEquipmentData(dataList: string[]): Result {
@@ -98,6 +117,7 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
       );
 
       let setInfo: string | null = null;
+      let partInfo: string | null = null;
       const validKeys = [
         "생명력",
         "방어력",
@@ -185,48 +205,28 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
 
           continue;
         }
+        const parts = ["투구", "무기", "갑옷", "목걸이", "반지", "신발"];
+
+        if (partInfo === null) {
+          for (const part of parts) {
+            if (currentKey.includes(part)) {
+              partInfo = part;
+              break;
+            }
+          }
+          if (partInfo !== null) {
+            continue;
+          }
+        }
       }
 
       return {
         parsedData,
         set: setInfo,
+        part: partInfo,
       };
     }
-    const handleExtractText = async () => {
-      // setParseData({
-      //   parsedData: [
-      //     {
-      //       key: "생명력",
-      //       value: "65%",
-      //     },
-      //     {
-      //       key: "방어력",
-      //       value: "17%",
-      //     },
-      //     {
-      //       key: "속도",
-      //       value: "12",
-      //     },
-      //     {
-      //       key: "효과저항",
-      //       value: "20%",
-      //     },
-      //     {
-      //       key: "효과적중",
-      //       value: "8%",
-      //     },
-      //   ],
-      //   set: "속도44",
-      // });
-      if (!canvasRef.current) return;
-
-      const canvas = canvasRef.current;
-      const imageDataUrl = canvas.toDataURL("image/png");
-      const base64Image = imageDataUrl.replace(
-        /^data:image\/(png|jpeg|jpg);base64,/,
-        "",
-      );
-
+    const handleExtractText = async (base64Image: string) => {
       const apiKey = visionApiKey;
       const visionApiUrl = `https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`;
 
@@ -253,24 +253,20 @@ export const ImageToText = forwardRef<ImageToTextRef, ImageToTextProps>(
           },
           body: JSON.stringify(requestPayload),
         });
-        // const response = test;
 
         const result = await response.json();
-        // const result = response;
         if (!result.responses[0].fullTextAnnotation) {
           alert("옵션 추출에 실패했습니다.");
           return;
         } else {
-          const extractedText = result.responses[0].fullTextAnnotation
-            ? result.responses[0].fullTextAnnotation.text
-            : "No text found";
+          const extractedText = result.responses[0].fullTextAnnotation.text;
           const list = [...extractedText.split("\n")];
           const data = parseEquipmentData(list);
           setParseData(data);
         }
       } catch (error) {
         console.error("Error fetching Vision API:", error);
-        // setText("텍스트 추출 실패");
+        alert("텍스트 추출 실패");
       }
     };
 

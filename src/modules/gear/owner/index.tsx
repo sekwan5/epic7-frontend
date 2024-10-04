@@ -3,6 +3,7 @@ import { Option, SelectBox } from "@/components/common/SelectBox";
 import { useRef, useState } from "react";
 import {
   geOptionValueToName,
+  gePartValueToName,
   geSetValueToName,
   options1,
   options2,
@@ -17,17 +18,25 @@ import { api } from "@/modules/api";
 import HeroFilter from "@/components/hero/heroList/HeroFilter";
 import HeroGrid from "@/components/hero/heroList/HeroGrid";
 import { getHeroesByIds, IHero } from "@/modules/data/getHeroData";
+import { partsOptions } from "../gearEnhance";
 
 export function GearOwnerWrap() {
   // const [recommendations, setRecommendations] =
   //   useState<GearRecommendation | null>(null);
   const [data, setData] = useState<IHero[]>([]);
   const imageToTextRef = useRef<ImageToTextRef>(null);
-  const recommendHeroes = async (data: IParseData) => {
+  const recommendHeroes = async (value: IParseData) => {
+    console.log(data);
+
+    if (value.set === "" || value.part === "") {
+      alert("세트와 부위를 선택해주세요.");
+      return;
+    }
+
     try {
-      const result = await api.hero.recommendHeroes(data);
+      const result = await api.hero.recommendHeroes(value);
       const heroIds = result.recommendations.map((hero) => hero.hero_id);
-      const heroes = getHeroesByIds(heroIds);
+      const heroes = getHeroesByIds(heroIds, false);
       const tmp = heroes.map((hero) => {
         return {
           ...hero,
@@ -41,6 +50,7 @@ export function GearOwnerWrap() {
   };
 
   const setParseData = async (data: IParseData) => {
+    console.log(data);
     data.parsedData = data.parsedData.map((item) => ({
       ...item,
       key: geOptionValueToName(item.key as string) || "", // 기본값 제공
@@ -52,9 +62,10 @@ export function GearOwnerWrap() {
     }
 
     const newSet = geSetValueToName(data.set || "") || ""; // 기본값 제공
-
+    const newPart = gePartValueToName(data.part || "") || ""; // 기본값 제공
     // 세트 값 업데이트
-    handleChange({ value: newSet, label: newSet });
+    handleChange({ value: newSet, label: data.set || "" }, undefined, "set");
+    handleChange({ value: newPart, label: data.part || "" }, undefined, "part");
 
     // 각 옵션 값 업데이트
     data.parsedData.forEach((item, index) => {
@@ -69,30 +80,41 @@ export function GearOwnerWrap() {
       );
     });
 
-    setValue({
-      set: newSet,
-      parsedData: data.parsedData,
-    });
+    // setValue({
+    //   set: newSet,
+    //   part: newPart,
+    //   parsedData: data.parsedData,
+    // });
 
     // await recommendHeroes(data);
   };
 
   const [value, setValue] = useState<IParseData>({
     parsedData: [
-      { key: "", value: "" },
-      { key: "", value: "" },
-      { key: "", value: "" },
-      { key: "", value: "" },
-      { key: "", value: "" },
+      { key: "", value: "", flag: "main" },
+      { key: "", value: "", flag: "sub1" },
+      { key: "", value: "", flag: "sub2" },
+      { key: "", value: "", flag: "sub3" },
+      { key: "", value: "", flag: "sub4" },
     ],
     set: "",
+    part: "",
   });
   const handleImageSelectClick = () => {
     imageToTextRef.current?.handleFileButtonClick();
   };
-  const handleChange = (event: Option | null, index?: number) => {
+  const handleChange = (
+    event: Option | null,
+    index?: number,
+    flag?: string,
+  ) => {
     if (index === undefined) {
-      setValue((prevValue) => ({ ...prevValue, set: event?.value ?? "" }));
+      if (flag === "set") {
+        setValue((prevValue) => ({ ...prevValue, set: event?.value ?? "" }));
+      }
+      if (flag === "part") {
+        setValue((prevValue) => ({ ...prevValue, part: event?.value ?? "" }));
+      }
     } else {
       setValue((prevValue) => ({
         ...prevValue,
@@ -121,7 +143,7 @@ export function GearOwnerWrap() {
       <div className="container gear-owner">
         <div className="gear-owner-wrap">
           <PageTitle depth="gear">
-            <h2>장비 주인찾기 (BETA)</h2>
+            <h2>장비 주인찾기</h2>
           </PageTitle>
           <div className="gear-owner-content">
             <div className="select-box-wrap">
@@ -129,7 +151,14 @@ export function GearOwnerWrap() {
                 options={options1}
                 label="세트"
                 value={value.set ?? ""}
-                onChange={(e) => handleChange(e)}
+                onChange={(e) => handleChange(e, undefined, "set")}
+                useInput={false}
+              />
+              <SelectBox
+                options={partsOptions}
+                label="부위"
+                value={value.part ?? ""}
+                onChange={(e) => handleChange(e, undefined, "part")}
                 useInput={false}
               />
               <SelectBox
