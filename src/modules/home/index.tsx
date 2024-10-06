@@ -5,6 +5,7 @@ import PickBox from "@/components/hero/PickBox";
 import { getArtifactByStats } from "../data/getArtiData";
 import Artifact from "@/components/arti/Artifact";
 import { Link } from "react-router-dom";
+import KakaoAdFit from "../KakaoAdFit";
 
 export default function HomeContent() {
   const heroList = getHeroStats();
@@ -47,6 +48,21 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="adfit-wrap d-flex justify-content-center">
+          <KakaoAdFit unit="DAN-cQE3qaOuRjlL4sWo" width="728" height="90" />
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
+            data-ad-width="728"
+            data-ad-height="90"
+          ></ins>
+          <script
+            type="text/javascript"
+            src="//t1.daumcdn.net/kas/static/ba.min.js"
+            async
+          ></script>
         </div>
         <div className="notice-wrap">
           <HeroDtlTab tabs={["NOTICE"]} activeTab={"NOTICE"} />
