@@ -22,7 +22,7 @@ const KakaoAdFit: React.FC<KakaoAdFitProps> = ({ unit, width, height }) => {
 
       script.async = true;
       script.type = "text/javascript";
-      script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+      script.src = "https://t1.daumcdn.net/kas/static/ba.min.js";
 
       containerRef.current.appendChild(ins);
       containerRef.current.appendChild(script);

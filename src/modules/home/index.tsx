@@ -14,6 +14,21 @@ export default function HomeContent() {
   return (
     <>
       <div className="container home">
+        <div className="adfit-wrap d-flex justify-content-center">
+          <KakaoAdFit unit="DAN-cQE3qaOuRjlL4sWo" width="728" height="90" />
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
+            data-ad-width="728"
+            data-ad-height="90"
+          ></ins>
+          <script
+            type="text/javascript"
+            src="https://t1.daumcdn.net/kas/static/ba.min.js"
+            async
+          ></script>
+        </div>
         <div className="update-info">
           <HeroDtlTab tabs={["UPDATE"]} activeTab={"UPDATE"} />
           <div className="update-content">
@@ -38,7 +53,8 @@ export default function HomeContent() {
               <div className="arti-wrap d-flex justify-content-center flex-wrap">
                 {artiList.map((item) => (
                   <div
-                    className="col-6 d-flex justify-content-center"
+                    // className="col-6 d-flex justify-content-center"
+                    className="col-12 col-sm-6  d-flex justify-content-center"
                     style={{ marginBottom: "20px" }}
                     key={item.identifier}
                   >
@@ -49,21 +65,7 @@ export default function HomeContent() {
             </div>
           </div>
         </div>
-        <div className="adfit-wrap d-flex justify-content-center">
-          <KakaoAdFit unit="DAN-cQE3qaOuRjlL4sWo" width="728" height="90" />
-          <ins
-            className="kakao_ad_area"
-            style={{ display: "none" }}
-            data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
-            data-ad-width="728"
-            data-ad-height="90"
-          ></ins>
-          <script
-            type="text/javascript"
-            src="//t1.daumcdn.net/kas/static/ba.min.js"
-            async
-          ></script>
-        </div>
+
         <div className="notice-wrap">
           <HeroDtlTab tabs={["NOTICE"]} activeTab={"NOTICE"} />
           <div className="notice d-flex justify-content-center align-items-center ">

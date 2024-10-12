@@ -7,6 +7,7 @@ import HeroDtlTab from "@/components/hero/heroDtl/HeroDtlTab";
 import BuildsContent from "@/components/hero/heroDtl/BuildsContent";
 import RTAContent from "@/components/hero/heroDtl/RtaContent";
 import { useLoaderData } from "react-router-dom";
+import GoogleAdsense from "@/components/common/GoogleAdsense";
 
 export default function HeroDtlWrap() {
   const { id, hero } = useLoaderData() as { id: string; hero: IHero };
@@ -27,6 +28,9 @@ export default function HeroDtlWrap() {
     <>
       <div className="hero-dtl-header-wrap">
         <HeroDtlHeader data={hero} />
+      </div>
+      <div className="hero-dtl-ad">
+        <GoogleAdsense client="ca-pub-2070133047683758" slot="5465225537" />
       </div>
       <div className="container hero-dtl">
         <div className="hero-dtl-content">
