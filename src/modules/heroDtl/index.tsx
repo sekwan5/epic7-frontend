@@ -29,7 +29,7 @@ export default function HeroDtlWrap() {
       <div className="hero-dtl-header-wrap">
         <HeroDtlHeader data={hero} />
       </div>
-      <div className="hero-dtl-ad">
+      <div className="hero-dtl-ad d-flex justify-content-center">
         <GoogleAdsense client="ca-pub-2070133047683758" slot="5465225537" />
       </div>
       <div className="container hero-dtl">

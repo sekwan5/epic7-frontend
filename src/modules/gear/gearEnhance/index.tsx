@@ -337,6 +337,20 @@ export default function GearEnhanceWrap() {
         <PageTitle depth="gear">
           <h2>장비 강화 시뮬레이터</h2>
         </PageTitle>
+        <div className="adfit-wrap d-flex justify-content-center">
+          <ins
+            className="kakao_ad_area"
+            style={{ display: "none" }}
+            data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
+            data-ad-width="728"
+            data-ad-height="90"
+          ></ins>
+          <script
+            type="text/javascript"
+            src="https://t1.daumcdn.net/kas/static/ba.min.js"
+            async
+          ></script>
+        </div>
         <div className="gear-enhance-content">
           <EqBox selectedOption={selectedOption} enhanceCount={enhanceCount} />
           <div className="select-box-wrap">

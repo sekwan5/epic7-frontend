@@ -145,18 +145,20 @@ export function GearOwnerWrap() {
           <PageTitle depth="gear">
             <h2>장비 주인찾기</h2>
           </PageTitle>
-          <ins
-            className="kakao_ad_area"
-            style={{ display: "none" }}
-            data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
-            data-ad-width="728"
-            data-ad-height="90"
-          ></ins>
-          <script
-            type="text/javascript"
-            src="https://t1.daumcdn.net/kas/static/ba.min.js"
-            async
-          ></script>
+          <div className="adfit-wrap d-flex justify-content-center">
+            <ins
+              className="kakao_ad_area"
+              style={{ display: "none" }}
+              data-ad-unit="DAN-cQE3qaOuRjlL4sWo"
+              data-ad-width="728"
+              data-ad-height="90"
+            ></ins>
+            <script
+              type="text/javascript"
+              src="https://t1.daumcdn.net/kas/static/ba.min.js"
+              async
+            ></script>
+          </div>
           <div className="gear-owner-content">
             <div className="select-box-wrap">
               <SelectBox
