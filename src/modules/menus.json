@@ -34,11 +34,5 @@
     "title": "미궁시뮬레이터",
     "to": "/camping",
     "sidebar": true
-  },
-  {
-    "id": "tearMaker",
-    "title": "티어메이커",
-    "to": "#",
-    "sidebar": true
   }
 ]

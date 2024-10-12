@@ -35,7 +35,7 @@ export default function HomeContent() {
               </div>
             </div>
             <div className="update-arti">
-              <div className="arti-wrap d-flex justify-content-center">
+              <div className="arti-wrap d-flex justify-content-center flex-wrap">
                 {artiList.map((item) => (
                   <div
                     className="col-6 d-flex justify-content-center"

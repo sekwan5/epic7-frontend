@@ -308,16 +308,16 @@
     "id": "c3101",
     "nm_kr": "갓마더",
     "type_nm_en": "Fire",
-    "job_nm_kr": "사수",
     "zodiac_id": "z12",
     "zodiac_nm_en": "Gemini",
+    "zodiac_nm_kr": "쌍아궁",
     "keyword": null,
     "type_id": "t01",
     "type_nm_kr": "화염속성",
     "nm_en": "Godmother",
     "job_id": "j04",
+    "job_nm_kr": "사수",
     "job_nm_en": "Ranger",
-    "zodiac_nm_kr": "쌍아궁",
     "grade": "3",
     "status": null,
     "name": "갓마더",
@@ -920,7 +920,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "천갈궁",
     "grade": "4",
-    "status": null,
+    "status": "update",
     "name": "균형의 퓨리우스",
     "camping": {
       "id": "c2087",
@@ -2451,7 +2451,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "천갈궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "뒤틀린 망령 카일론",
     "camping": {
       "id": "c2023",
@@ -2721,7 +2721,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "거해궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "디자이너 릴리벳",
     "camping": {
       "id": "c2095",
@@ -3208,7 +3208,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "라스트 라이더 크라우",
     "camping": {
       "id": "c2070",
@@ -3931,7 +3931,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "천갈궁",
     "grade": "3",
-    "status": "new",
+    "status": "",
     "name": "레브나",
     "camping": {
       "id": "c3160",
@@ -7254,7 +7254,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "사자궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "멜리사",
     "camping": {
       "id": "c1096",
@@ -7344,7 +7344,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "모르트",
     "camping": {
       "id": "c1104",
@@ -9559,7 +9559,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "백은칼날의 아라민타",
     "camping": {
       "id": "c2048",
@@ -9780,7 +9780,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "처녀궁",
     "grade": "4",
-    "status": null,
+    "status": "update",
     "name": "베로니카",
     "camping": {
       "id": "c1150",
@@ -10122,7 +10122,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "4",
-    "status": null,
+    "status": "update",
     "name": "보조형 랏츠",
     "camping": {
       "id": "c2031",
@@ -10983,7 +10983,7 @@
     "job_nm_en": "Weaver",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "빛의 루엘",
     "camping": {
       "id": "c1022",
@@ -11134,7 +11134,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "금우궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "사령관 파벨",
     "camping": {
       "id": "c2080",
@@ -12264,7 +12264,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "천갈궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "세즈",
     "camping": {
       "id": "c1038",
@@ -15102,7 +15102,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "마갈궁",
     "grade": "4",
-    "status": null,
+    "status": "update",
     "name": "아밍",
     "camping": {
       "id": "c1008",
@@ -17250,7 +17250,7 @@
     "job_nm_en": "Weaver",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "엘레나",
     "camping": {
       "id": "c1091",
@@ -19165,7 +19165,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "인마궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "율하",
     "camping": {
       "id": "c1131",
@@ -26776,7 +26776,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "금우궁",
     "grade": "5",
-    "status": "new",
+    "status": "",
     "name": "펜리스",
     "camping": {
       "id": "c1158",
@@ -27418,7 +27418,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "천칭궁",
     "grade": "5",
-    "status": "new",
+    "status": "",
     "name": "하르세티",
     "camping": {
       "id": "c1153",
@@ -28566,13 +28566,13 @@
   {
     "id": "c1128",
     "nm_kr": "화영",
+    "type_id": "t01",
+    "type_nm_kr": "화염속성",
     "type_nm_en": "Fire",
     "job_nm_kr": "전사",
     "zodiac_id": "z02",
     "zodiac_nm_en": "Libra",
     "keyword": null,
-    "type_id": "t01",
-    "type_nm_kr": "화염속성",
     "nm_en": "Hwayoung",
     "job_id": "j01",
     "job_nm_en": "Warrior",
@@ -28673,7 +28673,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "마갈궁",
     "grade": "5",
-    "status": null,
+    "status": "update",
     "name": "화원의 리디카",
     "camping": {
       "id": "c5046",
@@ -29088,9 +29088,13 @@
     "job_nm_kr": "전사",
     "job_nm_en": "Warrior",
     "grade": "3",
-    "status": "new",
+    "status": "",
     "name": "전승의 아미키",
-    "camping": {},
+    "camping": {
+      "personalities": [25, 13],
+      "topics": ["Sad Memory", "Advice"],
+      "topics_kr": ["슬픈 추억", "고민 상담"]
+    },
     "self_devotion": {
       "type": "att",
       "grades": {
@@ -29148,6 +29152,74 @@
       "overrideAdditionalSpd": 8,
       "overrideAdditionalEff": 0,
       "overrideAdditionalRes": 0
+    }
+  },
+  {
+    "id": "c5110",
+    "nm_kr": "한낮의 유영 플랑",
+    "nm_en": "Afternoon Soak Flan",
+    "keyword": "",
+    "zodiac_id": "z12",
+    "zodiac_nm_en": "Gemini",
+    "zodiac_nm_kr": "쌍아궁",
+    "type_id": "t01",
+    "type_nm_kr": "화염속성",
+    "type_nm_en": "Fire",
+    "job_id": "j04",
+    "job_nm_kr": "사수",
+    "job_nm_en": "Ranger",
+    "grade": "3",
+    "status": "new",
+    "name": "한낮의 유영 플랑",
+    "camping": {
+      "personalities": [26, 10],
+      "topics": ["Joyful Memory", "Advice"],
+      "topics_kr": ["즐거운 추억", "고민 상담"]
+    },
+    "self_devotion": {
+      "type": "att_rate",
+      "grades": {
+        "B": 0.06,
+        "A": 0.09,
+        "S": 0.12,
+        "SS": 0.15,
+        "SSS": 0.18
+      }
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "rate": 0.6,
+        "pow": 1,
+        "targets": 1,
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": ["crit", "crushing", "normal", "miss"],
+        "note": "70% penetration",
+        "rate": 1.1,
+        "pow": 0.95,
+        "targets": 1,
+        "penetration": 0.7,
+        "options": []
+      }
+    },
+    "lv60SixStarFullyAwakened": {
+      "cp": 16848,
+      "atk": 1182,
+      "hp": 5299,
+      "spd": 114,
+      "def": 571,
+      "chc": 0.15,
+      "chd": 1.5,
+      "dac": 0.03,
+      "eff": 0.18,
+      "efr": 0
     }
   }
 ]

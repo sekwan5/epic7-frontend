@@ -2283,7 +2283,8 @@
     "health_base": 54.0,
     "health_max": 702.0,
     "job": "j01",
-    "identifier": "efw24"
+    "identifier": "efw24",
+    "status": "update"
   },
   {
     "id": "art0147",
@@ -3003,7 +3004,8 @@
     "health_base": 32.0,
     "health_max": 416.0,
     "job": "j03",
-    "identifier": "efa22"
+    "identifier": "efa22",
+    "status": "update"
   },
   {
     "id": "art0187",
@@ -3364,7 +3366,7 @@
     "health_max": null,
     "job": "j04",
     "identifier": "efr28",
-    "status": "new"
+    "status": ""
   },
   {
     "id": "art3_1",
@@ -4031,7 +4033,8 @@
     "health_base": 32.0,
     "health_max": 416.0,
     "job": "j03",
-    "identifier": "efa01"
+    "identifier": "efa01",
+    "status": "update"
   },
   {
     "id": "art5_12",
@@ -4085,7 +4088,8 @@
     "health_base": 32.0,
     "health_max": 416.0,
     "job": null,
-    "identifier": "ef503"
+    "identifier": "ef503",
+    "status": "update"
   },
   {
     "id": "art5_18",
@@ -4266,5 +4270,24 @@
     "health_max": 559.0,
     "job": "j05",
     "identifier": "efm02"
+  },
+  {
+    "id": "art0207",
+    "arti_nm_kr": "꿈결 같은 휴일",
+    "arti_nm_en": "Dreamlike Holiday",
+    "grade": 5,
+    "arti_desc_kr": null,
+    "arti_desc_en": "",
+    "arti_max_kr": "치명피해가 30% 증가합니다. 자신의 턴이 아닐때 공격시 100%확률로 공격 전에 자신에게 1턴간 공격력 증가를 발생시킵니다.1턴에 1번만 발생합니다.",
+    "arti_max_en": "Increases Critical Damage by 30%. When attacking when it is not your turn, there is a 100% chance to increase Attack by 1 turn before attacking. This effect can only be activated once per turn.",
+    "arti_base_kr": "치명피해가 15% 증가합니다. 자신의 턴이 아닐때 공격시 50%확률로 공격 전에 자신에게 1턴간 공격력 증가를 발생시킵니다.1턴에 1번만 발생합니다.",
+    "arti_base_en": "Increases Critical Damage by 15%. When attacking when it is not your turn, there is a 50% chance to increase Attack by 1 turn before attacking. This effect can only be activated once per turn.",
+    "atk_base": 21.0,
+    "atk_max": 273.0,
+    "health_base": 32.0,
+    "health_max": 416.0,
+    "job": "j04",
+    "identifier": "efr27",
+    "status": "new"
   }
 ]
