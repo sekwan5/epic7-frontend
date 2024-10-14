@@ -517,6 +517,49 @@ $text-color: #fff;
   }
 }
 
+.rtaInfo-list-wrap {
+  .grid-container {
+    .rta-info-grid {
+      background-color: transparent !important;
+      color: white;
+      border: none;
+
+      .hero-profile {
+        width: 50px;
+        height: 50px;
+        position: relative;
+
+        .profile-outline {
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          width: 55px;
+          height: 55px;
+        }
+
+        .profile-img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+
+      .sorted-asc {
+        background-color: #d1e7dd; /* 정렬된 열의 배경색 (오름차순) */
+      }
+
+      .sorted-desc {
+        background-color: #f8d7da; /* 정렬된 열의 배경색 (내림차순) */
+      }
+      th,
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #393e46;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   // .hero-list-wrap {
   //   .hero-list {

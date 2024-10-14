@@ -43,7 +43,10 @@
   padding: 20px 0;
   color: #fff;
   .page-path {
-    font-size: 21px;
+    a {
+      color: #999 !important;
+      font-size: 21px;
+    }
   }
 }
 .conArea {

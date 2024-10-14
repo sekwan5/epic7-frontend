@@ -36,6 +36,8 @@ interface ChatOption {
 }
 
 export interface IRTAData {
+  id?: string;
+  name?: string;
   total_games: number;
   pick_count: number;
   wins: number;
@@ -84,6 +86,8 @@ export interface IRTAData {
       win_rate: number;
     };
   };
+  min_battle_date: string;
+  max_battle_date: string;
 }
 
 export interface GearRecommendation {

@@ -8,13 +8,25 @@
   {
     "id": "hero",
     "title": "영웅",
-    "to": "/hero",
-    "sidebar": true
+    "to": "#",
+    "sidebar": true,
+    "submenus": [
+      {
+        "id": "heroList",
+        "title": "영웅목록",
+        "to": "/hero"
+      },
+      {
+        "id": "heroRta",
+        "title": "실시간 아레나정보",
+        "to": "/rta"
+      }
+    ]
   },
   {
     "id": "gear",
     "title": "장비",
-    "to": "/gear",
+    "to": "#",
     "sidebar": true,
     "submenus": [
       {

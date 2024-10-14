@@ -10,6 +10,7 @@ import { loadHeroData } from "./loaders/heroLoader";
 import NotFound from "./modules/NotFound"; // 새로 추가
 import { GearOwnerWrap } from "./modules/gear/owner";
 import GearEnhanceWrap from "./modules/gear/gearEnhance";
+import RtaInfo from "./modules/rta";
 
 // import Hero from './routes/Hero';
 // import Camping from './routes/Camping';
@@ -28,6 +29,10 @@ export const router = createBrowserRouter(
         {
           path: "hero",
           element: <HeroListWrap />,
+        },
+        {
+          path: "rta",
+          element: <RtaInfo />,
         },
         {
           path: "/hero/:id",
