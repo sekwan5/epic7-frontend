@@ -16,12 +16,30 @@ export default function HeroDtlWrap() {
   const [builds, setBuilds] = useState<IHeroBuild[]>([]);
 
   useEffect(() => {
-    getData();
-  }, []);
+    const storedData = localStorage.getItem(`heroBuilds_${id}`);
+    const lastUpdated = localStorage.getItem(`heroBuildsLastUpdated_${id}`);
+    const currentTime = new Date().getTime();
+
+    // 데이터가 로컬 스토리지에 있고, 마지막 업데이트가 5분 이내인 경우
+    if (
+      storedData &&
+      lastUpdated &&
+      currentTime - Number(lastUpdated) < 5 * 60 * 1000
+    ) {
+      setBuilds(JSON.parse(storedData)); // 로컬 스토리지에서 데이터 가져오기
+    } else {
+      getData(); // 데이터가 없거나 오래된 경우 API 요청
+    }
+  }, [id]);
 
   const getData = async () => {
     const builds = await api.hero.getHeroBuilds(id);
     setBuilds(builds);
+    localStorage.setItem(`heroBuilds_${id}`, JSON.stringify(builds)); // API 응답을 로컬 스토리지에 저장
+    localStorage.setItem(
+      `heroBuildsLastUpdated_${id}`,
+      new Date().getTime().toString(),
+    ); // 마지막 업데이트 시간 저장
   };
 
   return (

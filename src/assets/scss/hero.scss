@@ -543,6 +543,13 @@ $text-color: #fff;
           border-radius: 50%;
         }
       }
+      .set-icon {
+        position: relative;
+        top: 1px;
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+      }
 
       .sorted-asc {
         background-color: #d1e7dd; /* 정렬된 열의 배경색 (오름차순) */
@@ -555,6 +562,14 @@ $text-color: #fff;
       td {
         padding: 8px;
         border-bottom: 1px solid #393e46;
+      }
+      td {
+        &:first-child {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+        }
       }
     }
   }
@@ -669,6 +684,46 @@ $text-color: #fff;
             width: 15px;
             height: 15px;
           }
+        }
+      }
+    }
+  }
+
+  .rtaInfo-list-wrap {
+    .grid-container {
+      .rta-info-grid {
+        font-size: 11px;
+
+        th,
+        td {
+          padding: 4px;
+        }
+        td {
+          height: 100px;
+        }
+
+        .hero-profile {
+          width: 40px;
+          height: 40px;
+
+          .profile-outline {
+            width: 44px;
+            height: 44px;
+          }
+
+          .profile-img {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        span {
+          display: none !important;
+        }
+
+        .set-icon {
+          width: 24px;
+          height: 24px;
+          margin-right: 3px;
         }
       }
     }

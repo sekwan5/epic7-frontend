@@ -4,6 +4,7 @@ import { IndexSignatureType } from "../types";
 import { ApiBase } from "./base";
 import { IHero } from "../data/getHeroData";
 import { IParseData } from "@/components/gear/owner/ImageToText";
+import { IRTAListData } from "@/components/rta/RtaInfoGrid";
 export interface IHeroBuild {
   hero_id: string;
   artifactCode: string;
@@ -115,6 +116,15 @@ export class ApiHero extends ApiBase<IndexSignatureType> {
   async getHeroRtaData(hero_id: string, season: string): Promise<IRTAData> {
     return this.client
       .get(`/builds/statistics/${hero_id}`, {
+        params: { season },
+      })
+      .then((res) => {
+        return res.data;
+      });
+  }
+  async getHeroRtaDataList(season: string): Promise<IRTAListData[]> {
+    return this.client
+      .get(`/builds/statisticsList`, {
         params: { season },
       })
       .then((res) => {
