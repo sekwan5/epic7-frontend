@@ -464,7 +464,28 @@ export function RtaInfoGrid(props: { rtaDataList: IRTAListData[] }) {
       </thead>
       <tbody>
         {sortedRows.map((row) => {
-          const topEquipKey = Object.keys(row.statistics.top_8_equips)[0];
+          const top8Equips = row.statistics.top_8_equips
+            ? Object.entries(row.statistics.top_8_equips)
+                .sort((a, b) => b[1].usage_rate - a[1].usage_rate)
+                .reduce(
+                  (
+                    acc: Record<
+                      string,
+                      { usage_rate: number; win_rate: number }
+                    >,
+                    [key, value],
+                  ) => {
+                    acc[key] = value as {
+                      usage_rate: number;
+                      win_rate: number;
+                    };
+                    return acc;
+                  },
+                  {},
+                )
+            : {};
+
+          const topEquipKey = Object.keys(top8Equips)[0];
           const topEquipSets = topEquipKey ? parseSets(topEquipKey) : [];
           return (
             <tr key={row.hero_id}>
