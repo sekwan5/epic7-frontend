@@ -13,7 +13,7 @@ export function PageTitle({ children, depth }: PageTitleProps) {
         <div className="page-path">
           <span>
             <Link to="/">Home / </Link>
-            {depth && <Link to="#"> depth </Link>}
+            {depth && <Link to="#"> {depth} </Link>}
           </span>
         </div>
         {children}

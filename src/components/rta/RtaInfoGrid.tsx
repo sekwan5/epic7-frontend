@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProfileImg from "../hero/heroIcon/ProfileImg";
 import CoImage from "../common/CoImages";
 import { useInView } from "react-intersection-observer";
+import { getHeroById } from "@/modules/data/getHeroData";
 
 export interface IRTAListData {
   last_updated: string;
@@ -209,11 +210,17 @@ export function RtaInfoGrid(props: { rtaDataList: IRTAListData[] }) {
                 >
                   <ProfileImg id={row.hero_id as string} />
                 </div>
-                {/* <span>{row.name}</span> */}
+                <span>{getHeroById(row.hero_id)?.name}</span>
               </td>
-              <td>{row.statistics.pick_rate.toFixed(2)}%</td>
-              <td>{row.statistics.win_rate.toFixed(2)}%</td>
-              <td>{row.statistics.preban_rate.toFixed(2)}%</td>
+              <td className="text-center">
+                {row.statistics.pick_rate.toFixed(2)}%
+              </td>
+              <td className="text-center">
+                {row.statistics.win_rate.toFixed(2)}%
+              </td>
+              <td className="text-center">
+                {row.statistics.preban_rate.toFixed(2)}%
+              </td>
               <td>
                 {topEquipSets.map((setName: string, i: number) => (
                   <CoImage

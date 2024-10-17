@@ -32,7 +32,7 @@ export default function RtaInfo() {
   };
   return (
     <div className="container rta-info">
-      <PageTitle>
+      <PageTitle depth="hero">
         <h2>실시간 아레나 정보</h2>
       </PageTitle>
       <div className="adfit-wrap d-flex justify-content-center">

@@ -5,7 +5,7 @@ import KakaoAdFit from "../KakaoAdFit";
 export default function HeroListWrap() {
   return (
     <div className="container hero-list">
-      <PageTitle>
+      <PageTitle depth="hero">
         <h2>영웅 목록</h2>
       </PageTitle>
       <div className="adfit-wrap d-flex justify-content-center">
