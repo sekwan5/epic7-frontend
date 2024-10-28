@@ -169,8 +169,8 @@ export function RtaInfoGrid(props: { rtaDataList: IRTAListData[] }) {
               : ""}
           </th>
           <th className="col-1 text-center">세트 1순위</th>
-          <th className="col-3 text-center">상대하기 어려운 영웅</th>
           <th className="col-3 text-center">함께 사용된 영웅</th>
+          <th className="col-3 text-center">상대하기 어려운 영웅</th>
         </tr>
       </thead>
       <tbody>
@@ -238,27 +238,7 @@ export function RtaInfoGrid(props: { rtaDataList: IRTAListData[] }) {
                   />
                 )}
               </td>
-              <td>
-                <div
-                  className="d-flex flex-wrap gap-2 justify-content-center"
-                  style={{ maxWidth: "250px" }}
-                >
-                  {Object.keys(row.statistics.top_5_counters)
-                    .slice(0, 4)
-                    .map((counterId) => (
-                      <div
-                        key={counterId}
-                        className="hero-profile"
-                        style={{ cursor: "pointer" }}
-                        onClick={() => {
-                          // window.location.href = `/hero/${counterId}`;
-                        }}
-                      >
-                        <ProfileImg id={counterId} />
-                      </div>
-                    ))}
-                </div>
-              </td>
+
               <td>
                 <div
                   className="d-flex flex-wrap gap-2 justify-content-center"
@@ -276,6 +256,27 @@ export function RtaInfoGrid(props: { rtaDataList: IRTAListData[] }) {
                         }}
                       >
                         <ProfileImg id={teammateId} />
+                      </div>
+                    ))}
+                </div>
+              </td>
+              <td>
+                <div
+                  className="d-flex flex-wrap gap-2 justify-content-center"
+                  style={{ maxWidth: "250px" }}
+                >
+                  {Object.keys(row.statistics.top_5_counters)
+                    .slice(0, 4)
+                    .map((counterId) => (
+                      <div
+                        key={counterId}
+                        className="hero-profile"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          // window.location.href = `/hero/${counterId}`;
+                        }}
+                      >
+                        <ProfileImg id={counterId} />
                       </div>
                     ))}
                 </div>
