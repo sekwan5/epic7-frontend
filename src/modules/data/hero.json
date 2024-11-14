@@ -29091,7 +29091,7 @@
     "status": "",
     "name": "전승의 아미키",
     "camping": {
-      "personalities": [25, 13],
+      "personalities": ["25", "13"],
       "topics": ["Sad Memory", "Advice"],
       "topics_kr": ["슬픈 추억", "고민 상담"]
     },
@@ -29172,7 +29172,7 @@
     "status": "",
     "name": "한낮의 유영 플랑",
     "camping": {
-      "personalities": [26, 10],
+      "personalities": ["26", "10"],
       "topics": ["Joyful Memory", "Advice"],
       "topics_kr": ["즐거운 추억", "고민 상담"]
     },
@@ -29241,7 +29241,7 @@
     "grade": "5",
     "status": "new",
     "camping": {
-      "personalities": [18, 23],
+      "personalities": ["18", "23"],
       "topics": ["Unique Comment", "Bizarre Story"],
       "topics_kr": ["4차원 발언", "엽기적 이야기"]
     },
@@ -29301,7 +29301,7 @@
     "grade": "5",
     "status": "new",
     "camping": {
-      "personalities": [23, 13],
+      "personalities": ["23", "13"],
       "topics": ["Advice", "Reality Check"],
       "topics_kr": ["고민상담", "현실직시"]
     },
