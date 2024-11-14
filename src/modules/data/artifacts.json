@@ -2284,7 +2284,7 @@
     "health_max": 702,
     "job": "j01",
     "identifier": "efw24",
-    "status": "update"
+    "status": ""
   },
   {
     "id": "art0147",
@@ -3005,7 +3005,7 @@
     "health_max": 416,
     "job": "j03",
     "identifier": "efa22",
-    "status": "update"
+    "status": ""
   },
   {
     "id": "art0187",
@@ -4034,7 +4034,7 @@
     "health_max": 416,
     "job": "j03",
     "identifier": "efa01",
-    "status": "update"
+    "status": ""
   },
   {
     "id": "art5_12",
@@ -4089,7 +4089,7 @@
     "health_max": 416,
     "job": null,
     "identifier": "ef503",
-    "status": "update"
+    "status": ""
   },
   {
     "id": "art5_18",
@@ -4288,6 +4288,25 @@
     "health_max": 416,
     "job": "j04",
     "identifier": "efr27",
+    "status": ""
+  },
+  {
+    "id": "art0210",
+    "arti_nm_kr": "오마주 투 타르만",
+    "arti_nm_en": "Homage to Tarman",
+    "grade": 5,
+    "arti_desc_kr": null,
+    "arti_desc_en": "",
+    "arti_max_kr": "아군이 피격 후 받은 피해량이 최대 생명력의 25% 이상이라면 대상에게 자신의 최대 생명력의 10%만큼 2턴간 보호막을 발생시킵니다. 1턴에 1번만 발생합니다.",
+    "arti_max_en": "",
+    "arti_base_kr": "아군이 피격 후 받은 피해량이 최대 생명력의 25% 이상이라면 대상에게 자신의 최대 생명력의 20%만큼 2턴간 보호막을 발생시킵니다. 1턴에 1번만 발생합니다.",
+    "arti_base_en": "",
+    "atk_base": 9,
+    "atk_max": 76,
+    "health_base": 117,
+    "health_max": 988,
+    "job": "j06",
+    "identifier": "efh22",
     "status": "new"
   }
 ]

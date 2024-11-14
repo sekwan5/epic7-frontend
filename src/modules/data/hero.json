@@ -3,7 +3,6 @@
     "id": "c1140",
     "nm_kr": "ae-닝닝",
     "type_nm_en": "Fire",
-    "job_nm_kr": "정령사",
     "zodiac_id": "z11",
     "zodiac_nm_en": "Scorpio",
     "zodiac_nm_kr": "천갈궁",
@@ -13,6 +12,7 @@
     "nm_en": "ae-NINGNING",
     "job_id": "j06",
     "job_nm_en": "Weaver",
+    "job_nm_kr": "정령사",
     "grade": "5",
     "status": null,
     "name": "ae-닝닝",
@@ -148,12 +148,12 @@
   {
     "id": "c1138",
     "nm_kr": "ae-지젤",
-    "type_nm_en": "Earth",
     "job_nm_kr": "마도사",
     "zodiac_id": "z11",
     "zodiac_nm_en": "Scorpio",
     "keyword": null,
     "type_id": "t03",
+    "type_nm_en": "Earth",
     "type_nm_kr": "자연속성",
     "nm_en": "ae-GISELLE",
     "job_id": "j05",
@@ -382,13 +382,13 @@
   {
     "id": "c2028",
     "nm_kr": "고양이 클라릿사",
+    "type_id": "t05",
     "type_nm_en": "Dark",
+    "type_nm_kr": "암속성",
     "job_nm_kr": "전사",
     "zodiac_id": "z06",
     "zodiac_nm_en": "Virgo",
     "keyword": "냥클",
-    "type_id": "t05",
-    "type_nm_kr": "암속성",
     "nm_en": "Kitty Clarissa",
     "job_id": "j01",
     "job_nm_en": "Warrior",
@@ -920,7 +920,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "천갈궁",
     "grade": "4",
-    "status": "update",
+    "status": "",
     "name": "균형의 퓨리우스",
     "camping": {
       "id": "c2087",
@@ -1567,13 +1567,13 @@
     "job_nm_kr": "정령사",
     "zodiac_id": "z09",
     "zodiac_nm_en": "Taurus",
+    "zodiac_nm_kr": "금우궁",
     "keyword": "달도미,달뚀미",
     "type_id": "t04",
     "type_nm_kr": "광속성",
     "nm_en": "Moon Bunny Dominiel",
     "job_id": "j06",
     "job_nm_en": "Weaver",
-    "zodiac_nm_kr": "금우궁",
     "grade": "4",
     "status": null,
     "name": "달토끼 도미니엘",
@@ -2451,7 +2451,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "천갈궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "뒤틀린 망령 카일론",
     "camping": {
       "id": "c2023",
@@ -2721,7 +2721,7 @@
     "job_nm_en": "Warrior",
     "zodiac_nm_kr": "거해궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "디자이너 릴리벳",
     "camping": {
       "id": "c2095",
@@ -3208,7 +3208,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "라스트 라이더 크라우",
     "camping": {
       "id": "c2070",
@@ -7254,7 +7254,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "사자궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "멜리사",
     "camping": {
       "id": "c1096",
@@ -7344,7 +7344,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "모르트",
     "camping": {
       "id": "c1104",
@@ -9559,7 +9559,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "백은칼날의 아라민타",
     "camping": {
       "id": "c2048",
@@ -9780,7 +9780,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "처녀궁",
     "grade": "4",
-    "status": "update",
+    "status": "",
     "name": "베로니카",
     "camping": {
       "id": "c1150",
@@ -10122,7 +10122,7 @@
     "job_nm_en": "Mage",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "4",
-    "status": "update",
+    "status": "",
     "name": "보조형 랏츠",
     "camping": {
       "id": "c2031",
@@ -10483,13 +10483,13 @@
     "job_nm_kr": "사수",
     "zodiac_id": "z08",
     "zodiac_nm_en": "Pisces",
+    "zodiac_nm_kr": "쌍어궁",
     "keyword": null,
     "type_id": "t02",
     "type_nm_kr": "냉기속성",
     "nm_en": "Byblis",
     "job_id": "j04",
     "job_nm_en": "Ranger",
-    "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
     "status": null,
     "name": "비브리스",
@@ -10983,7 +10983,7 @@
     "job_nm_en": "Weaver",
     "zodiac_nm_kr": "쌍어궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "빛의 루엘",
     "camping": {
       "id": "c1022",
@@ -11134,7 +11134,7 @@
     "job_nm_en": "Ranger",
     "zodiac_nm_kr": "금우궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "사령관 파벨",
     "camping": {
       "id": "c2080",
@@ -12264,7 +12264,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "천갈궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "세즈",
     "camping": {
       "id": "c1038",
@@ -15102,7 +15102,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "마갈궁",
     "grade": "4",
-    "status": "update",
+    "status": "",
     "name": "아밍",
     "camping": {
       "id": "c1008",
@@ -17250,7 +17250,7 @@
     "job_nm_en": "Weaver",
     "zodiac_nm_kr": "쌍아궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "엘레나",
     "camping": {
       "id": "c1091",
@@ -19165,7 +19165,7 @@
     "job_nm_en": "Knight",
     "zodiac_nm_kr": "인마궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "율하",
     "camping": {
       "id": "c1131",
@@ -28673,7 +28673,7 @@
     "job_nm_en": "Thief",
     "zodiac_nm_kr": "마갈궁",
     "grade": "5",
-    "status": "update",
+    "status": "",
     "name": "화원의 리디카",
     "camping": {
       "id": "c5046",
@@ -29168,8 +29168,8 @@
     "job_id": "j04",
     "job_nm_kr": "사수",
     "job_nm_en": "Ranger",
-    "grade": "3",
-    "status": "new",
+    "grade": "5",
+    "status": "",
     "name": "한낮의 유영 플랑",
     "camping": {
       "personalities": [26, 10],
@@ -29219,6 +29219,127 @@
       "chd": 1.5,
       "dac": 0.03,
       "eff": 0.18,
+      "efr": 0
+    }
+  },
+  {
+    "id": "c2126",
+    "nm_kr": "소악마 루아",
+    "name": "소악마 루아",
+
+    "nm_en": "Hellion Lua",
+    "keyword": "",
+    "zodiac_id": "z08",
+    "zodiac_nm_en": "Pisces",
+    "zodiac_nm_kr": "쌍어궁",
+    "type_id": "t05",
+    "type_nm_en": "Dark",
+    "type_nm_kr": "암속성",
+    "job_id": "j04",
+    "job_nm_kr": "사수",
+    "job_nm_en": "Ranger",
+    "grade": "5",
+    "status": "new",
+    "camping": {
+      "personalities": [18, 23],
+      "topics": ["Unique Comment", "Bizarre Story"],
+      "topics_kr": ["4차원 발언", "엽기적 이야기"]
+    },
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "B": 0.09,
+        "A": 0.135,
+        "S": 0.18,
+        "SS": 0.225,
+        "SSS": 0.27
+      }
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "options": []
+      }
+    },
+    "lv60SixStarFullyAwakened": {
+      "cp": 21659,
+      "atk": 993,
+      "hp": 6002,
+      "spd": 120,
+      "def": 611,
+      "chc": 0.15,
+      "chd": 1.5,
+      "dac": 0.03,
+      "eff": 0,
+      "efr": 0
+    }
+  },
+  {
+    "id": "c1060",
+    "nm_kr": "슈니엘",
+    "name": "슈니엘",
+    "nm_en": "Schniel",
+    "keyword": "",
+    "zodiac_id": "z09",
+    "zodiac_nm_en": "Taurus",
+    "zodiac_nm_kr": "금우궁",
+    "type_id": "t03",
+    "type_nm_en": "Earth",
+    "type_nm_kr": "자연속성",
+    "job_id": "j06",
+    "job_nm_en": "Weaver",
+    "job_nm_kr": "정령사",
+    "grade": "5",
+    "status": "new",
+    "camping": {
+      "personalities": [23, 13],
+      "topics": ["Advice", "Reality Check"],
+      "topics_kr": ["고민상담", "현실직시"]
+    },
+    "self_devotion": {
+      "type": "acc",
+      "grades": {
+        "B": 0.09,
+        "A": 0.135,
+        "S": 0.18,
+        "SS": 0.225,
+        "SSS": 0.27
+      }
+    },
+    "ex_equip": [],
+    "skills": {
+      "S1": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S2": {
+        "hitTypes": [],
+        "options": []
+      },
+      "S3": {
+        "hitTypes": [],
+        "options": []
+      }
+    },
+    "lv60SixStarFullyAwakened": {
+      "cp": 21659,
+      "atk": 993,
+      "hp": 6002,
+      "spd": 120,
+      "def": 611,
+      "chc": 0.15,
+      "chd": 1.5,
+      "dac": 0.03,
+      "eff": 0,
       "efr": 0
     }
   }
